@@ -38,6 +38,11 @@ dependencies:
   google_fonts: ^6.2.1
   intl: ^0.19.0
   video_player: ^2.8.0
+  bottom_picker: any
+  flutter_screenutil: ^5.9.0
+  get: ^4.6.6
+
+
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +100,8 @@ flutter:
       - assets/images/mobile.png
       - assets/images/fast-food.png
       - assets/images/app_bar.png
+      - assets/images/date_time.png
+     
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

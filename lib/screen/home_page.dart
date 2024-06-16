@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
+import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
@@ -52,31 +53,7 @@ class _home_pageState extends State<home_page> {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10),
                   children: [
-                    Column(children: [
-                      
-                     GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const app_bar()));
-                        },
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/app_bar.png'),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'App-Bar',
-                        style: GoogleFonts.aDLaMDisplay(),
-                      ),
-                    ]),
+                    
                    
                     Column(children: [
                      
@@ -154,6 +131,7 @@ class _home_pageState extends State<home_page> {
                        style: GoogleFonts.aDLaMDisplay(),
                      ),
                    ]),
+                  
                    
                     Column(children: [
                      
@@ -162,7 +140,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const splashSc_progres()));
+                                  builder: (context) => const time_date()));
                         },
                         child: Container(
                           height: 60,
@@ -170,18 +148,43 @@ class _home_pageState extends State<home_page> {
                           decoration: BoxDecoration(
                               image: const DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage("assets/images/camera.png"),
+                                image: AssetImage("assets/images/date_time.png"),
                               ),
                               color: Color.fromARGB(255, 118, 76, 216),
                               borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
                        Text(
-                        'camera',
+                        'Time-date',
                         style: GoogleFonts.aDLaMDisplay(),
                       ),
                     ]),
                    
+                    Column(children: [
+                      
+                     GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const time_date()));
+                        },
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/app_bar.png'),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'App-Bar',
+                        style: GoogleFonts.aDLaMDisplay(),
+                      ),
+                    ]),
                     Column(children: [
                       
                       GestureDetector(

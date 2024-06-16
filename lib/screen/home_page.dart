@@ -4,6 +4,7 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/sign_up.dart';
+import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
   const home_page({super.key});
@@ -141,14 +142,14 @@ class _home_pageState extends State<home_page> {
                          decoration: BoxDecoration(
                              image: const DecorationImage(
                                fit: BoxFit.cover,
-                               image: AssetImage("assets/images/profile.png"),
+                               image: AssetImage("assets/images/wel_come.png"),
                              ),
                              color: Color.fromARGB(255, 118, 76, 216),
                              borderRadius: BorderRadius.circular(30)),
                        ),
                      ),
                      Text(
-                       'camera',
+                       'WellCome',
                        style: GoogleFonts.aDLaMDisplay(),
                      ),
                    ]),
@@ -187,7 +188,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const app_bar()));
+                                  builder: (context) => const wel_come()));
                         },
                         child: Container(
                          height: 60,
@@ -201,7 +202,29 @@ class _home_pageState extends State<home_page> {
                               borderRadius: BorderRadius.circular(20)),
                         ),
                       ),
-                      Text('welcome'),
+                      RichText(
+                        text: const TextSpan(
+                            text: 'well',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 80, 43, 244),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'C',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontStyle: FontStyle.italic)),
+                              TextSpan(
+                                  text: 'ome',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 78, 186, 235),
+                                  ))
+                            ]),
+                      ),
                     ]),
                     Column(children: [
                       
@@ -210,7 +233,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => app_bar()));
+                                  builder: (context) => wel_come()));
                         },
                         child: Container(
                          height: 60,

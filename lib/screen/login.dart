@@ -7,7 +7,7 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/home_page.dart';
 
 class Login extends StatefulWidget {
-  static const routeName = '/LoginScreen';
+  static const routeName = '/Login';
   const Login({super.key});
 
   @override

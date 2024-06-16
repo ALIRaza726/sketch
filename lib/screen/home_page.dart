@@ -4,6 +4,7 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/sign_up.dart';
+import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
@@ -134,7 +135,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) => const app_bar()));
+                                 builder: (context) => const splashSc_progres()));
                        },
                        child: Container(
                         height: 60,
@@ -142,14 +143,14 @@ class _home_pageState extends State<home_page> {
                          decoration: BoxDecoration(
                              image: const DecorationImage(
                                fit: BoxFit.cover,
-                               image: AssetImage("assets/images/wel_come.png"),
+                               image: AssetImage("assets/images/progress.png"),
                              ),
-                             color: Color.fromARGB(255, 118, 76, 216),
+                             color: Color.fromARGB(255, 183, 161, 233),
                              borderRadius: BorderRadius.circular(30)),
                        ),
                      ),
                      Text(
-                       'WellCome',
+                       'SplashVideo',
                        style: GoogleFonts.aDLaMDisplay(),
                      ),
                    ]),
@@ -161,7 +162,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const app_bar()));
+                                  builder: (context) => const splashSc_progres()));
                         },
                         child: Container(
                           height: 60,
@@ -188,7 +189,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const wel_come()));
+                                  builder: (context) => const splashSc_progres()));
                         },
                         child: Container(
                          height: 60,
@@ -233,7 +234,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => wel_come()));
+                                  builder: (context) => splashSc_progres()));
                         },
                         child: Container(
                          height: 60,

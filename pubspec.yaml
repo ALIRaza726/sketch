@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   intl: ^0.19.0
+  video_player: ^2.8.0
 
 dev_dependencies:
   flutter_test:
@@ -80,7 +81,7 @@ flutter:
       - assets/images/soda_video.mp4
       - assets/images/sign_up.png
       - assets/images/wel_come.png
-      - assets/images/pizza3.jpg
+      - assets/images/progress.png
       - assets/images/app_bar.png
       - assets/images/popular.png
       - assets/images/starter.png

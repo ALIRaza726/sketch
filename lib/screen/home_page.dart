@@ -4,6 +4,7 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/login.dart';
+import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/wel_come.dart';
@@ -280,7 +281,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) => const app_bar()));
+                                 builder: (context) => const RadioButton()));
                        },
                        child: Container(
                          height: 60,

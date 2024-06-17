@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sketch/screen/app_bar.dart';
-import 'package:sketch/screen/home_page.dart';
-import 'package:sketch/screen/login.dart';
+import 'package:sketch/utils/routes/route_name.dart';
+import 'package:sketch/utils/routes/routes.dart';
+
 
 void main() {
   runApp(const
@@ -27,12 +27,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: 
-      const home_page(),
-       routes: {
-            Login.routeName: (context) => const Login(),
-            
-          },
+     initialRoute: RouteName.home,
+     onGenerateRoute: Routes.generateRoute,
     );
   }
 }

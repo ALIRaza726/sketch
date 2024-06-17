@@ -40,7 +40,7 @@ dependencies:
   video_player: ^2.8.0
   bottom_picker: any
   flutter_screenutil: ^5.9.0
-  get: ^4.6.6
+
 
 
 
@@ -88,7 +88,7 @@ flutter:
       - assets/images/wel_come.png
       - assets/images/progress.png
       - assets/images/app_bar.png
-      - assets/images/popular.png
+      - assets/images/radio_button.png
       - assets/images/starter.png
       - assets/images/camera.png
       - assets/images/cart.png

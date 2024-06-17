@@ -288,16 +288,35 @@ class _home_pageState extends State<home_page> {
                          decoration: BoxDecoration(
                              image: const DecorationImage(
                                fit: BoxFit.cover,
-                               image: AssetImage("assets/images/camera.png"),
+                               image: AssetImage("assets/images/radio_button.png"),
                              ),
-                             color: Color.fromARGB(255, 118, 76, 216),
+                             color: Color.fromARGB(255, 216, 202, 249),
                              borderRadius: BorderRadius.circular(30)),
                        ),
                      ),
-                      Text(
-                       'camera',
-                       style: GoogleFonts.aDLaMDisplay(),
-                     ),
+                      RichText(
+                        text: const TextSpan(
+                            text: 'radio',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 80, 43, 244),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'B',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontStyle: FontStyle.italic)),
+                              TextSpan(
+                                  text: 'utton',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 78, 186, 235),
+                                  ))
+                            ]),
+                      ),
                    ]),
                    
                   ],

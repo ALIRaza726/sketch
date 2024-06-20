@@ -4,6 +4,7 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/cart.dart';
 import 'package:sketch/screen/cart_menu.dart';
+import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/login.dart';
@@ -184,9 +185,28 @@ class _home_pageState extends State<home_page> {
                           ),
                         ),
                       ),
-                      Text(
-                        'App-Bar',
-                        style: GoogleFonts.aDLaMDisplay(),
+                     RichText(
+                        text: const TextSpan(
+                            text: 'App',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 80, 43, 244),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Ba',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontStyle: FontStyle.italic)),
+                              TextSpan(
+                                  text: 'r',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 234, 133, 117),
+                                  ))
+                            ]),
                       ),
                     ]),
                     Column(children: [
@@ -344,6 +364,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Hide-View')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const checkBox()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/check_box.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(30)),
+                       ),
+                     ),
+                     const Text('Check Box')
                    ]),
                    
                   ],

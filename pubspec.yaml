@@ -42,6 +42,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   provider: any
   awesome_dialog: ^3.2.1
+  url_launcher: ^6.0.20
+  
 
 
 
@@ -107,6 +109,8 @@ flutter:
       - assets/images/check_box.png
       - assets/images/menu_buton.png
       - assets/images/pop_up.png
+      - assets/images/send_mail.png
+      - assets/images/list_view.png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

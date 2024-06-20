@@ -7,10 +7,12 @@ import 'package:sketch/screen/cart_menu.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
+import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
+import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/wel_come.dart';
@@ -435,6 +437,52 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Pop Up')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const SendMail()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/send_mail.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
+                       ),
+                     ),
+                     const Text('Send Mail')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const ListViewScreen()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/list_view.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
+                       ),
+                     ),
+                     const Text('List View')
                    ]),
                   ],
                 ),

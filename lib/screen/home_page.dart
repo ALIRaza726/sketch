@@ -10,6 +10,7 @@ import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/menu_buton.dart';
+import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/send_mail.dart';
@@ -483,6 +484,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('List View')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const PageScroll()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/pageview_scroll.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
+                       ),
+                     ),
+                     const Text('Page Scroll')
                    ]),
                   ],
                 ),

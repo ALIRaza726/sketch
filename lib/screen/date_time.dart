@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class time_date extends StatefulWidget {
-  static const routeName = '/ProfileScreen';
+  
 
   const time_date({Key? key}) : super(key: key);
 

@@ -101,6 +101,7 @@ flutter:
       - assets/images/fast-food.png
       - assets/images/app_bar.png
       - assets/images/date_time.png
+      - assets/images/hide_view.png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/date_time.dart';
+import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/sign_up.dart';
@@ -169,7 +170,7 @@ class _home_pageState extends State<home_page> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const time_date()));
+                                      const app_bar()));
                         },
                         child: Container(
                           height: 60,
@@ -193,7 +194,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const splashSc_progres()));
+                                  builder: (context) => const wel_come()));
                         },
                         child: Container(
                          height: 60,
@@ -318,6 +319,29 @@ class _home_pageState extends State<home_page> {
                                   ))
                             ]),
                       ),
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const hide_view()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/hide_view.png"),
+                             ),
+                             color: Color.fromARGB(255, 150, 239, 233),
+                             borderRadius: BorderRadius.circular(30)),
+                       ),
+                     ),
+                     const Text('Hide-View')
                    ]),
                    
                   ],

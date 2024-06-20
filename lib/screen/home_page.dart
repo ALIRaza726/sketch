@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
+import 'package:sketch/screen/cart.dart';
+import 'package:sketch/screen/cart_menu.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/login.dart';
@@ -239,7 +241,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => splashSc_progres()));
+                                  builder: (context) => MenuScreen()));
                         },
                         child: Container(
                          height: 60,

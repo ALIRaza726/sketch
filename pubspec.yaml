@@ -40,6 +40,7 @@ dependencies:
   video_player: ^2.8.0
   bottom_picker: any
   flutter_screenutil: ^5.9.0
+  provider: any
 
 
 

@@ -41,6 +41,7 @@ dependencies:
   bottom_picker: any
   flutter_screenutil: ^5.9.0
   provider: any
+  awesome_dialog: ^3.2.1
 
 
 
@@ -105,6 +106,7 @@ flutter:
       - assets/images/hide_view.png
       - assets/images/check_box.png
       - assets/images/menu_buton.png
+      - assets/images/pop_up.png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

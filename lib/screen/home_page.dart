@@ -9,6 +9,7 @@ import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/menu_buton.dart';
+import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
@@ -411,6 +412,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Menu Button')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const PopUp()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/pop_up.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
+                       ),
+                     ),
+                     const Text('Pop Up')
                    ]),
                   ],
                 ),

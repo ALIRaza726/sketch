@@ -104,6 +104,7 @@ flutter:
       - assets/images/date_time.png
       - assets/images/hide_view.png
       - assets/images/check_box.png
+      - assets/images/menu_buton.png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

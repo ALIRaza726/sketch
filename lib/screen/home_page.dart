@@ -8,6 +8,7 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/login.dart';
+import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
@@ -359,8 +360,8 @@ class _home_pageState extends State<home_page> {
                                fit: BoxFit.cover,
                                image: AssetImage("assets/images/hide_view.png"),
                              ),
-                             color: Color.fromARGB(255, 150, 239, 233),
-                             borderRadius: BorderRadius.circular(30)),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
                        ),
                      ),
                      const Text('Hide-View')
@@ -388,7 +389,29 @@ class _home_pageState extends State<home_page> {
                      ),
                      const Text('Check Box')
                    ]),
-                   
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const MenuButon()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/menu_buton.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(10)),
+                       ),
+                     ),
+                     const Text('Menu Button')
+                   ]),
                   ],
                 ),
       

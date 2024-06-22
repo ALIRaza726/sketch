@@ -19,6 +19,7 @@ import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/send_mail.dart';
+import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/tabs_screen.dart';
@@ -694,6 +695,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Navigation')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const Signature_barCode()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/signpad_barcode].png"),
+                             ),
+                             color: const Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Sign Barcode')
                    ]),
                   ],
                 ),

@@ -49,6 +49,8 @@ dependencies:
   get: ^4.6.6
   circular_bottom_navigation: ^2.4.0
   image_picker: ^1.1.2
+  syncfusion_flutter_signaturepad: ^25.1.40
+  syncfusion_flutter_barcodes: ^25.2.6
   
   
 
@@ -122,6 +124,7 @@ flutter:
       - assets/images/tabs_screen.png
       - assets/images/map_screen.png
       - assets/images/bottom_navigation.png
+      - assets/images/signpad_barcode].png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

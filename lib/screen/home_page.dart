@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
+import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/cart.dart';
 import 'package:sketch/screen/cart_menu.dart';
 import 'package:sketch/screen/check_box.dart';
@@ -555,6 +556,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Google Map')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const bottombar()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/bottom_navigation.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Navigation')
                    ]),
                   ],
                 ),

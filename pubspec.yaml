@@ -47,6 +47,8 @@ dependencies:
   geolocator: ^12.0.0
   permission_handler: ^11.0.1
   get: ^4.6.6
+  circular_bottom_navigation: ^2.4.0
+  
   
 
 
@@ -118,6 +120,7 @@ flutter:
       - assets/images/pageview_scroll.png
       - assets/images/tabs_screen.png
       - assets/images/map_screen.png
+      - assets/images/bottom_navigation.png
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

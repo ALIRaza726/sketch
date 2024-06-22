@@ -80,7 +80,7 @@ class _home_pageState extends State<home_page> {
     });
     Navigator.pop(context);
   }
-
+// end the code of camera objects and class
   @override
   final List<String> _yourList = ["Home", "About", "Contact", "Login"];
 

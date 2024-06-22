@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
@@ -29,6 +32,55 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+  // camera classes and variables strart
+  File? _selectedImage;
+  _showImagePickerBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.camera),
+              title: const Text('Take a picture'),
+              onTap: () {
+                _openCamera(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Select from gallery'),
+              onTap: () {
+                _openGallery(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void _openCamera(BuildContext context) async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      _selectedImage = File(pickedFile!.path);
+    });
+    Navigator.pop(context);
+  }
+
+  void _openGallery(BuildContext context) async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _selectedImage = File(pickedFile!.path);
+    });
+    Navigator.pop(context);
+  }
+
   @override
   final List<String> _yourList = ["Home", "About", "Contact", "Login"];
 
@@ -49,11 +101,59 @@ class _home_pageState extends State<home_page> {
     return  SafeArea(
       child: Scaffold(
         appBar: AppBar(
+
           elevation: 10,
           shadowColor: Colors.green[200],
           backgroundColor: Colors.green[300],
       
-          title: Container(),
+          title:Column(
+          children: [
+            const SizedBox(height: (0)),
+            InkWell(
+              onTap: () => _showImagePickerBottomSheet(context),
+              child: Stack(
+                children: [
+                  Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 2,
+                          color: Color.fromARGB(255, 5, 5, 5),
+                        ),
+                        image: _selectedImage != null
+                            ? DecorationImage(
+                                image: FileImage(_selectedImage!),
+                                fit: BoxFit.fill,
+                              )
+                            : const DecorationImage(
+                                image: AssetImage(
+                                    "assets/images")), // Fallback in case no image is selected
+                      )),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      child: const Icon(
+                        Icons.camera_alt,
+                        color: Color.fromARGB(255, 248, 50, 50),
+                        size: 18,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            
+          ],
+        ),
         ),
          body: SingleChildScrollView(
             child: Column(

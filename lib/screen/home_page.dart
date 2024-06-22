@@ -16,6 +16,7 @@ import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
+import 'package:sketch/screen/tabs_screen.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
@@ -507,6 +508,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Page Scroll')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const tabs_screen()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/tabs_screen.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Tabs Screen')
                    ]),
                   ],
                 ),

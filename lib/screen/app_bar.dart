@@ -38,7 +38,7 @@ class _app_barState extends State<app_bar> {
                               // fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.w500),
                         )
-                      : Text(
+                      : const Text(
                           'Ali Raza',
                           style: TextStyle(
                               color: Color.fromARGB(255, 1, 1, 17),

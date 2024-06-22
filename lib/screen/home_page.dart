@@ -103,57 +103,72 @@ class _home_pageState extends State<home_page> {
         appBar: AppBar(
 
           elevation: 10,
-          shadowColor: Colors.green[200],
-          backgroundColor: Colors.green[300],
+          shadowColor: Color.fromARGB(255, 148, 218, 248),
+          backgroundColor: Color.fromARGB(255, 134, 196, 223),
       
-          title:Column(
-          children: [
-            const SizedBox(height: (0)),
-            InkWell(
-              onTap: () => _showImagePickerBottomSheet(context),
-              child: Stack(
-                children: [
-                  Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 2,
-                          color: Color.fromARGB(255, 5, 5, 5),
+          title:Row(
+            children: [
+              Column(
+              children: [
+                const SizedBox(height: (0)),
+                InkWell(
+                  onTap: () => _showImagePickerBottomSheet(context),
+                  child: Stack(
+                    children: [
+                      Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              width: 2,
+                              color: Color.fromARGB(255, 5, 5, 5),
+                            ),
+                            image: _selectedImage != null
+                                ? DecorationImage(
+                                    image: FileImage(_selectedImage!),
+                                    fit: BoxFit.fill,
+                                  )
+                                : const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/profile.png")), // Fallback in case no image is selected
+                          )),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: Color.fromARGB(255, 248, 50, 50),
+                            size: 18,
+                          ),
                         ),
-                        image: _selectedImage != null
-                            ? DecorationImage(
-                                image: FileImage(_selectedImage!),
-                                fit: BoxFit.fill,
-                              )
-                            : const DecorationImage(
-                                image: AssetImage(
-                                    "assets/images")), // Fallback in case no image is selected
-                      )),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      width: 20,
-                      height: 20,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 255, 255, 255),
                       ),
-                      child: const Icon(
-                        Icons.camera_alt,
-                        color: Color.fromARGB(255, 248, 50, 50),
-                        size: 18,
-                      ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            
-          ],
-        ),
+                ),
+                  
+                            ],
+                      ),
+                      SizedBox(width: 20,),
+                      const Text(
+                          'Ali Raza',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 25,
+                               fontStyle: FontStyle.italic,
+                               
+                              fontWeight: FontWeight.w900),
+                        ),
+            ],
+          ),
+        
         ),
          body: SingleChildScrollView(
             child: Column(

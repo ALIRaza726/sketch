@@ -9,6 +9,7 @@ import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/login.dart';
+import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
@@ -531,6 +532,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Tabs Screen')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const MapScreen()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/map_screen.png"),
+                             ),
+                             color: Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Google Map')
                    ]),
                   ],
                 ),

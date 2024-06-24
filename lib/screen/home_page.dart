@@ -257,7 +257,7 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      Text(
-                       'SplashVideo',
+                       'Splash-Vid',
                        style: GoogleFonts.aDLaMDisplay(),
                      ),
                    ]),
@@ -323,7 +323,7 @@ class _home_pageState extends State<home_page> {
                                   text: 'Ba',
                                   style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: 20,
+                                      fontSize: 12,
                                       fontStyle: FontStyle.italic)),
                               TextSpan(
                                   text: 'r',
@@ -368,7 +368,7 @@ class _home_pageState extends State<home_page> {
                                   text: 'C',
                                   style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: 20,
+                                      fontSize: 12,
                                       fontStyle: FontStyle.italic)),
                               TextSpan(
                                   text: 'ome',
@@ -411,7 +411,7 @@ class _home_pageState extends State<home_page> {
                                   text: 'A',
                                   style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: 20,
+                                      fontSize: 12,
                                       fontStyle: FontStyle.italic)),
                               TextSpan(
                                   text: 'rt',
@@ -456,7 +456,7 @@ class _home_pageState extends State<home_page> {
                                   text: 'B',
                                   style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: 20,
+                                      fontSize: 12,
                                       fontStyle: FontStyle.italic)),
                               TextSpan(
                                   text: 'utton',
@@ -718,7 +718,7 @@ class _home_pageState extends State<home_page> {
                              borderRadius: BorderRadius.circular(5)),
                        ),
                      ),
-                     const Text('Sign Barcode')
+                     const Text('SignBarcode')
                    ]),
                    Column(children: [
                     

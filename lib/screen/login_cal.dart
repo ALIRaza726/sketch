@@ -1,35 +1,16 @@
-import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/home_page.dart';
 
-class Login extends StatefulWidget {
-  static const routeName = '/Login';
-  const Login({super.key});
-static String username='';
- static String userid='';
-  @override
-  State<Login> createState() => LoginState();
-}
-
-class LoginState extends State<Login> {
-  final TextEditingController _textfieldController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
- 
-  final _formKey = GlobalKey<FormState>();
-  @override
-  void dispose() {
-    _textfieldController.dispose();
-    super.dispose();
-  }
+class Login_cal extends StatelessWidget {
+   Login_cal({Key? key}):super(key: key);
+   static String username='';
+   static String userid='';
+    final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
+     return Scaffold(
       backgroundColor: Color.fromARGB(255, 73, 247, 192),
       body: SingleChildScrollView(
         child: Column(
@@ -196,7 +177,7 @@ class LoginState extends State<Login> {
                     ),
                     TextFormField(
                       onChanged: (val){
-                        var username=val;
+                        username=val;
                       },
                       onFieldSubmitted: (value) {},
                      // controller: _textfieldController,
@@ -220,7 +201,7 @@ class LoginState extends State<Login> {
                     ),
                     TextFormField(
                       onChanged: (val){
-                        var userid=val;
+                        userid=val;
                       },
                       onFieldSubmitted: (value) {},
                       //controller: _passwordController,

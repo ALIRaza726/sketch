@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sketch/models/cart.dart';
 import 'package:sketch/utils/routes/route_name.dart';
@@ -24,9 +25,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return 
-    
-    MaterialApp(
+    return ScreenUtilInit(
+      // meditateSize: Responsive.isMobile(context)
+        //     ? const Size(375, 812)
+        //     : const Size(1101, 640),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child:
+        MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sketch',
       theme: ThemeData(
@@ -36,7 +42,9 @@ class MyApp extends StatelessWidget {
       ),
      initialRoute: RouteName.home,
      onGenerateRoute: Routes.generateRoute,
-    );
+    ));
+    
+    
   }
 }
 

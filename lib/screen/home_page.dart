@@ -24,6 +24,7 @@ import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/tabs_screen.dart';
+import 'package:sketch/screen/video_cal.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
@@ -742,6 +743,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Scrol Video')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const CallPage(callID: '1',)));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/scroll_video.png"),
+                             ),
+                             color: const Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Video Call')
                    ]),
                   ],
                 ),

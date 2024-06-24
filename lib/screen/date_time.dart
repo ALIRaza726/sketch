@@ -19,12 +19,22 @@ class time_date extends StatefulWidget {
 
 class _ProfileScreenState extends State<time_date> {
   bool isEditBooking = false;
-
-  TextEditingController startDate = TextEditingController(
+ late TextEditingController startDate;
+  @override
+  void initState() {
+     startDate = TextEditingController(
     text: DateFormat('MM-dd-yyyy HH:mm').format(
       DateTime.now(),
     ),
   );
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
+  void dispose(){
+    super.dispose();
+    startDate.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

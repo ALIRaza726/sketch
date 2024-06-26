@@ -24,7 +24,7 @@ import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/tabs_screen.dart';
-import 'package:sketch/screen/video_cal.dart';
+import 'package:sketch/screen/text_msg.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
@@ -751,7 +751,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) => const CallPage(callID: '1',)));
+                                 builder: (context) =>  Message()));
                        },
                        child: Container(
                          height: 60,
@@ -759,7 +759,7 @@ class _home_pageState extends State<home_page> {
                          decoration: BoxDecoration(
                              image: const DecorationImage(
                                fit: BoxFit.cover,
-                               image: AssetImage("assets/images/scroll_video.png"),
+                               image: AssetImage("assets/images/video-call.png"),
                              ),
                              color: const Color.fromARGB(255, 255, 255, 255),
                              borderRadius: BorderRadius.circular(5)),

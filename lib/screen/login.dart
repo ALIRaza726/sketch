@@ -16,15 +16,15 @@ static String username='';
 }
 
 class LoginState extends State<Login> {
-  final TextEditingController _textfieldController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  //final TextEditingController _textfieldController = TextEditingController();
+  //final TextEditingController _passwordController = TextEditingController();
  
   final _formKey = GlobalKey<FormState>();
   @override
-  void dispose() {
-    _textfieldController.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   _textfieldController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -257,10 +257,10 @@ class LoginState extends State<Login> {
                                 content: Text('Login Sucessfull'),
                               ),
                             );
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const home_page()));
+                           Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) => const Login()));
                           }
                         },
                         child: const Text(

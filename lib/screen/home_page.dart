@@ -765,7 +765,7 @@ class _home_pageState extends State<home_page> {
                              borderRadius: BorderRadius.circular(5)),
                        ),
                      ),
-                     const Text('Video Call')
+                     const Text('Message')
                    ]),
                   ],
                 ),

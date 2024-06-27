@@ -23,6 +23,7 @@ import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
+import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
 import 'package:sketch/screen/text_msg.dart';
 import 'package:sketch/screen/wel_come.dart';
@@ -751,7 +752,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) =>  Message()));
+                                 builder: (context) =>  Stepper_Class()));
                        },
                        child: Container(
                          height: 60,

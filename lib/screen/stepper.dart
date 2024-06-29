@@ -40,7 +40,7 @@ class _Stepper_ClassState extends State<Stepper_Class> {
         },
         steps: [
           Step(
-            state: _currentStep <= 0 ? StepState.indexed : StepState.error,
+            state: _currentStep <= 0 ? StepState.indexed : StepState.complete,
             title: Text('ok'),
             content: Column(
               children: <Widget>[

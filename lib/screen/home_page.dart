@@ -8,6 +8,7 @@ import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/cart.dart';
 import 'package:sketch/screen/cart_menu.dart';
+import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
@@ -752,6 +753,52 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
+                                 builder: (context) =>  Message()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/message.png"),
+                             ),
+                             color: const Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Message')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) =>  Message()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/language.png"),
+                             ),
+                             color: const Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Text')
+                   ]),
+                    Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
                                  builder: (context) =>  Stepper_Class()));
                        },
                        child: Container(
@@ -760,16 +807,18 @@ class _home_pageState extends State<home_page> {
                          decoration: BoxDecoration(
                              image: const DecorationImage(
                                fit: BoxFit.cover,
-                               image: AssetImage("assets/images/video-call.png"),
+                               image: AssetImage("assets/images/stepper.png"),
                              ),
                              color: const Color.fromARGB(255, 255, 255, 255),
                              borderRadius: BorderRadius.circular(5)),
                        ),
                      ),
-                     const Text('Message')
+                     const Text('Stepper')
                    ]),
                   ],
                 ),
+                
+                 
       
                 //   GridView.builder(
                 //     scrollDirection: Axis.vertical,

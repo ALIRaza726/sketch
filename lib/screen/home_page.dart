@@ -776,7 +776,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) =>  Message()));
+                                 builder: (context) =>  chang_language()));
                        },
                        child: Container(
                          height: 60,

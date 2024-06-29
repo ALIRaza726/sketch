@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 
 class chang_language extends StatefulWidget {
+  
   const chang_language({super.key});
 
   @override
   State<chang_language> createState() => _chang_languageState();
+  
 }
-final _useRtlText=false;
+ 
 
 class _chang_languageState extends State<chang_language> {
+  bool _useRtlText=false;
   @override
   Widget build(BuildContext context) {
-        return MaterialApp(
-      title: 'Marquee',
-      home: Scaffold(
+        return   Scaffold(
         backgroundColor: Colors.deepOrange,
         body: ListView(
           padding: const EdgeInsets.only(top: 50),
@@ -24,21 +25,21 @@ class _chang_languageState extends State<chang_language> {
           ].map(_wrapWithStuff).toList(),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => setState(() => useRtlText = !useRtlText),
+          onPressed: () => setState(() => _useRtlText = !_useRtlText),
           label: !_useRtlText
               ? const Text('Switch to German')
               : const Text('Zu englisch wechseln'),
-          backgroundColor: Colors.pink,
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
         ),
-      ),
-    );
+      );
+    
   }
 
   Widget _buildMarquee() {
     return Marquee(
       key: Key("$_useRtlText"),
       text: !_useRtlText
-          ? 'There once was a boy who told this story about a boy: '
+          ? 'There once was a boy who told this story about a boy:'
           : 'Es war einmal ein Junge, der diese Geschichte über einen Jungen erzählte:',
       velocity: 50.0,
     );
@@ -52,27 +53,28 @@ class _chang_languageState extends State<chang_language> {
           : 'Einige Beispieltexte, die etwas Platz beanspruchen',
       style: const TextStyle(fontWeight: FontWeight.bold),
       scrollAxis: Axis.horizontal,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      blankSpace: 20,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      
+      blankSpace: 40,
       velocity: 100,
       pauseAfterRound: const Duration(seconds: 1),
-      showFadingOnlyWhenScrolling: true,
+      showFadingOnlyWhenScrolling: false,
       fadingEdgeStartFraction: 0.1,
       fadingEdgeEndFraction: 0.1,
       numberOfRounds: 3,
-      startPadding: 10,
+      startPadding: 20,
       accelerationDuration: const Duration(seconds: 1),
-      accelerationCurve: Curves.linear,
+      accelerationCurve: Curves.bounceIn,
       decelerationDuration: const Duration(milliseconds: 500),
       decelerationCurve: Curves.easeOut,
       textDirection: _useRtlText ? TextDirection.rtl : TextDirection.ltr,
     );
   }
 
-  Widget _wrapWithStuff(Widget child) {
+  Widget _wrapWithStuff(Widget fetchData) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Container(height: 50, color: Colors.white, child: child),
+      child: Container(height: 50, color: Color.fromARGB(255, 253, 253, 252), child: fetchData),
     );
   }
 }

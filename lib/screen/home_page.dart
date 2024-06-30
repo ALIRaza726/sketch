@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
-import 'package:sketch/screen/cart.dart';
 import 'package:sketch/screen/cart_menu.dart';
 import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';

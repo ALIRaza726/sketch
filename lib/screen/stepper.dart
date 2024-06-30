@@ -28,7 +28,7 @@ class _Stepper_ClassState extends State<Stepper_Class> {
         },
         onStepContinue: () {
           
-          if (_currentStep < 3) {
+          if (_currentStep < 2) {
             setState(() {
               _currentStep += 1;
             });

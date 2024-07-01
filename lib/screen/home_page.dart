@@ -18,6 +18,7 @@ import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
+import 'package:sketch/screen/recording.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
@@ -813,6 +814,29 @@ class _home_pageState extends State<home_page> {
                        ),
                      ),
                      const Text('Stepper')
+                   ]),
+                   Column(children: [
+                    
+                     GestureDetector(
+                       onTap: () {
+                         Navigator.push(
+                             context,
+                             MaterialPageRoute(
+                                 builder: (context) =>  SoundRecording()));
+                       },
+                       child: Container(
+                         height: 60,
+                          width: 60,
+                         decoration: BoxDecoration(
+                             image: const DecorationImage(
+                               fit: BoxFit.cover,
+                               image: AssetImage("assets/images/sound_recording.png"),
+                             ),
+                             color: const Color.fromARGB(255, 255, 255, 255),
+                             borderRadius: BorderRadius.circular(5)),
+                       ),
+                     ),
+                     const Text('Sound Record')
                    ]),
                   ],
                 ),

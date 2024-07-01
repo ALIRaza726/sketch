@@ -2,7 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We need your permission to use the microphone to record audio.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>We need your permission to save the recorded audio to your library.</string>
+    <key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Sketch</string>

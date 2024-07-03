@@ -17,7 +17,7 @@ class _SoundRecordingState extends State<SoundRecording> {
   final FlutterSoundPlayer _player = FlutterSoundPlayer();
   bool _isRecording = false;
   bool _isPlaying = true;
-  String _filePath = '';
+   String _filePath = '';
    final List<String> _recordings = [];
    String? _currentPlayingPath;
 

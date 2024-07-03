@@ -18,7 +18,7 @@ import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
-import 'package:sketch/screen/recording.dart';
+import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';

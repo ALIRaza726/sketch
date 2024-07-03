@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+
 class SoundRecording extends StatefulWidget {
   const SoundRecording({super.key});
 
@@ -15,8 +16,10 @@ class _SoundRecordingState extends State<SoundRecording> {
    final FlutterSoundRecorder _recorder = FlutterSoundRecorder();
   final FlutterSoundPlayer _player = FlutterSoundPlayer();
   bool _isRecording = false;
-  bool _isPlaying = false;
+  bool _isPlaying = true;
   String _filePath = '';
+   final List<String> _recordings = [];
+   String? _currentPlayingPath;
 
   @override
   void initState() {
@@ -39,7 +42,8 @@ class _SoundRecordingState extends State<SoundRecording> {
 
   Future<void> _startRecording() async {
     final Directory tempDir = Directory.systemTemp;
-    final String path = '${tempDir.path}/voice_record.aac';
+   final String path =
+         '${tempDir.path}/voice_record_${DateTime.now().millisecondsSinceEpoch}.aac';
     await _recorder.startRecorder(
       toFile: path,
       codec: Codec.aacADTS,
@@ -50,25 +54,30 @@ class _SoundRecordingState extends State<SoundRecording> {
     });
   }
 
-  Future<void> _stopRecording() async {
-    await _recorder.stopRecorder();
-    setState(() {
-      _isRecording = false;
-    });
+ Future<void> _stopRecording() async {
+    String? path = await _recorder.stopRecorder();
+    if (path != null) {
+      setState(() {
+        _isRecording = false;
+        _recordings.add(path);
+      });
+    }
   }
 
-  Future<void> _startPlayback() async {
+  Future<void> _startPlayback(String path) async {
     await _player.startPlayer(
-      fromURI: _filePath,
+      fromURI: path,
       codec: Codec.aacADTS,
       whenFinished: () {
         setState(() {
           _isPlaying = false;
+          _currentPlayingPath = null;
         });
       },
     );
     setState(() {
       _isPlaying = true;
+      _currentPlayingPath = path;
     });
   }
 
@@ -78,7 +87,18 @@ class _SoundRecordingState extends State<SoundRecording> {
       _isPlaying = false;
     });
   }
-
+Future<void> _deleteRecording(String path) async {
+    if (_isPlaying && _currentPlayingPath == path) {
+      await _stopPlayback();
+    }
+    File file = File(path);
+    if (await file.exists()) {
+      await file.delete();
+    }
+    setState(() {
+      _recordings.remove(path);
+    });
+  }
   @override
   void dispose() {
     _recorder.closeRecorder();
@@ -88,6 +108,7 @@ class _SoundRecordingState extends State<SoundRecording> {
 
   @override
   Widget build(BuildContext context) {
+    //final recording1 = Provider.of<RecordingModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Voice Recorder'),
@@ -100,22 +121,53 @@ class _SoundRecordingState extends State<SoundRecording> {
               onPressed: _isRecording ? _stopRecording : _startRecording,
               child: Text(_isRecording ? 'Stop Recording' : 'Start Recording'),
             ),
-            if (_filePath.isNotEmpty && !_isRecording)
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Recorded file: $_filePath'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _isPlaying ? _stopPlayback : _startPlayback,
-                    child:
-                        Text(_isPlaying ? 'Stop Playback' : 'Start Playback'),
-                  ),
-                ],
+               Expanded(
+              child: ListView.builder(
+                itemCount: _recordings.length,
+                itemBuilder: (context, index) {
+                  String recording = _recordings[index];
+                  return ListTile(
+                    title: Text('Recording ${index + 1}'),
+                    subtitle: Text(recording),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _currentPlayingPath == recording && _isPlaying
+                            ? IconButton(
+                                icon: Icon(Icons.stop),
+                                onPressed: _stopPlayback,
+                              )
+                            : IconButton(
+                                icon: Icon(Icons.play_arrow),
+                                onPressed: () => _startPlayback(recording),
+                              ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () => _deleteRecording(recording),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
-          ],
-        ),
+            ),
+         
+          //   if (_filePath.isNotEmpty && !_isRecording)
+          //     Column(
+          //       children: [
+          //         Padding(
+          //           padding: const EdgeInsets.all(8.0),
+          //           child: Text('Recorded file: $_filePath'),
+          //         ),
+          //         ElevatedButton(
+          //           onPressed: _isPlaying ? _stopPlayback : _startPlayback,
+          //           child:
+          //               Text(_isPlaying ? 'Stop Playback' : 'Start Playback'),
+          //         ),
+          //       ],
+          //     ),
+          // ],
+        ]),
       ),
     );
   }

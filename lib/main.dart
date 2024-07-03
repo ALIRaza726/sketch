@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sketch/models/cart.dart';
+import 'package:sketch/models/recording.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 import 'package:sketch/utils/routes/routes.dart';
 
@@ -10,6 +11,7 @@ void main() {
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider<CartModel>(create: (context) => CartModel()),
+        ChangeNotifierProvider<RecordingModel>(create: (context) => RecordingModel()),
         //ChangeNotifierProvider<ThemeProvider>(
         //    create: (context) => ThemeProvider())
       ],

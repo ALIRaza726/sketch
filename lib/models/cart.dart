@@ -8,10 +8,13 @@ class CartModel extends ChangeNotifier {
   void addItem(String item) {
     _items.add(item);
     notifyListeners();
+
   }
 
   void removeItem(String item) {
     _items.remove(item);
     notifyListeners();
   }
+
+  
 }

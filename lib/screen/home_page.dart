@@ -11,6 +11,7 @@ import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/hide_view.dart';
+import 'package:sketch/screen/image_video.dart';
 import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/map_screen.dart';
@@ -730,7 +731,7 @@ class _home_pageState extends State<home_page> {
                          Navigator.push(
                              context,
                              MaterialPageRoute(
-                                 builder: (context) => const scrol_video()));
+                                 builder: (context) => const ImageVideo()));
                        },
                        child: Container(
                          height: 60,

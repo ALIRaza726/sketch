@@ -57,6 +57,9 @@ dependencies:
   flutter_sound: ^9.6.0
   image_picker: ^0.8.4+4
   video_player: ^2.2.18
+  file_picker: ^5.2.1
+  open_file: ^3.2.1
+  #permission_handler: ^10.2.0
   
   
   
@@ -164,6 +167,8 @@ flutter:
       - assets/images/message.png
       - assets/images/language.png
       - assets/images/sound_recording.png
+      - assets/images/pick_aud_docx.png
+      - assets/images/pick_img_video.png
       
      
 

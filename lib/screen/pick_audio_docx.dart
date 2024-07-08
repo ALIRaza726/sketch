@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound/public/flutter_sound_player.dart';
+import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -12,9 +16,15 @@ class AudioDocx extends StatefulWidget {
 }
 
 class _AudioDocxState extends State<AudioDocx> {
+  final FlutterSoundRecorder _recorder = FlutterSoundRecorder();
+  final FlutterSoundPlayer _player = FlutterSoundPlayer();
+  bool _isRecording = false;
+  bool _isPlaying = true;
+  String? _currentPlayingPath;
 List<String> audioFiles = [];
   List<String> documentFiles = [];
   FlutterSoundPlayer? _audioPlayer;
+  final List<String> _recordings = [];
 
   @override
   void initState() {
@@ -23,11 +33,7 @@ List<String> audioFiles = [];
     openAudioSession();
   }
 
-  @override
-  void dispose() {
-    _audioPlayer?.closePlayer();
-    super.dispose();
-  }
+  
 
   Future<void> openAudioSession() async {
     await _audioPlayer?.openPlayer();
@@ -80,6 +86,50 @@ List<String> audioFiles = [];
     await OpenFile.open(path);
   }
 
+
+Future<void> _startPlayback(String path) async {
+    await _player.startPlayer(
+      fromURI: path,
+      codec: Codec.aacADTS,
+      whenFinished: () {
+        setState(() {
+          _isPlaying = false;
+          _currentPlayingPath = null;
+        });
+      },
+    );
+    setState(() {
+      _isPlaying = true;
+      _currentPlayingPath = path;
+    });
+  }
+
+  Future<void> _stopPlayback() async {
+    await _player.stopPlayer();
+    setState(() {
+      _isPlaying = false;
+    });
+  }
+Future<void> _deleteAudio(String path) async {
+    if (_isPlaying && _currentPlayingPath == path) {
+      await _stopPlayback();
+    }
+    File file = File(path);
+    if (await file.exists()) {
+      await file.delete();
+    }
+    setState(() {
+      _recordings.remove(path);
+    });
+  }
+@override
+  void dispose() {
+    _audioPlayer?.closePlayer();
+   // _recorder.closeRecorder();
+    _player.closePlayer();
+    
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,13 +147,46 @@ List<String> audioFiles = [];
             if (audioFiles.isNotEmpty)
               Column(
                 children: audioFiles.map((file) {
+                  return Expanded(
+              child: ListView.builder(
+                itemCount: audioFiles.length,
+                itemBuilder: (context, index) {
+                  String audioFile = audioFiles[index];
                   return ListTile(
                     title: Text(file.split('/').last),
-                    trailing: IconButton(
-                      icon: Icon(Icons.play_arrow),
-                      onPressed: () => playAudio(file),
+                    subtitle: Text(audioFile),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _currentPlayingPath == audioFile && _isPlaying
+                            ? IconButton(
+                                icon: Icon(Icons.stop),
+                                onPressed: _stopPlayback,
+                              )
+                            : IconButton(
+                                icon: Icon(Icons.play_arrow),
+                                onPressed: () => _startPlayback(audioFile),
+                              ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () => _deleteAudio(audioFile),
+                        ),
+                      ],
                     ),
                   );
+                },
+              ),
+            );
+                  
+                  
+                  
+                  // ListTile(
+                  //   title: Text(file.split('/').last),
+                  //   trailing: IconButton(
+                  //     icon: Icon(Icons.play_arrow),
+                  //     onPressed: () => playAudio(file),
+                  //   ),
+                  // );
                 }).toList(),
               ),
             SizedBox(height: 20),
@@ -112,9 +195,16 @@ List<String> audioFiles = [];
               child: Text('Pick Document Files'),
             ),
             if (documentFiles.isNotEmpty)
+
               Column(
                 children: documentFiles.map((file) {
-                  return ListTile(
+                  return 
+                  
+                  
+                  
+                  
+                  
+                  ListTile(
                     title: Text(file.split('/').last),
                     trailing: IconButton(
                       icon: Icon(Icons.open_in_new),

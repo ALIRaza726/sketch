@@ -16,15 +16,14 @@ class AudioDocx extends StatefulWidget {
 }
 
 class _AudioDocxState extends State<AudioDocx> {
-  final FlutterSoundRecorder _recorder = FlutterSoundRecorder();
-  final FlutterSoundPlayer _player = FlutterSoundPlayer();
-  bool _isRecording = false;
-  bool _isPlaying = true;
-  String? _currentPlayingPath;
-List<String> audioFiles = [];
+  List<String>_recordings=[];
+  List<String> audioFiles = [];
   List<String> documentFiles = [];
   FlutterSoundPlayer? _audioPlayer;
-  final List<String> _recordings = [];
+  bool _isPlaying = false;
+  String? _currentPlayingPath;
+  bool _isRecording = false;
+  final FlutterSoundPlayer _player = FlutterSoundPlayer();
 
   @override
   void initState() {
@@ -33,7 +32,12 @@ List<String> audioFiles = [];
     openAudioSession();
   }
 
-  
+  @override
+  void dispose() {
+    _audioPlayer?.closePlayer();
+    _player.closePlayer();
+    super.dispose();
+  }
 
   Future<void> openAudioSession() async {
     await _audioPlayer?.openPlayer();
@@ -48,7 +52,39 @@ List<String> audioFiles = [];
       await Permission.manageExternalStorage.request();
     }
   }
-
+   Future<void> _stopPlayback() async {
+    await _player.stopPlayer();
+    setState(() {
+      _isPlaying = false;
+    });
+  }
+Future<void> _startPlayback(String path)  async {
+    if (audioFiles.isNotEmpty)
+              Column(
+                children: audioFiles.map((file) {
+                  return ListTile(
+                    title: Text(file.split('/').last),
+                    trailing: IconButton(
+                      icon: Icon(Icons.play_arrow),
+                      onPressed: () => playAudio(file),
+                    ),
+                  );
+                }).toList(),
+              );
+  }
+  Future<void> _deleteRecording(String path) async {
+    if (_isPlaying && _currentPlayingPath == path) {
+      await _stopPlayback();
+    }
+    File file = File(path);
+    if (await file.exists()) {
+      await file.delete();
+    }
+    setState(() {
+      _recordings.remove(path);
+    });
+  }
+ 
   Future<void> pickAudioFiles() async {
     await requestPermissions();
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -86,50 +122,6 @@ List<String> audioFiles = [];
     await OpenFile.open(path);
   }
 
-
-Future<void> _startPlayback(String path) async {
-    await _player.startPlayer(
-      fromURI: path,
-      codec: Codec.aacADTS,
-      whenFinished: () {
-        setState(() {
-          _isPlaying = false;
-          _currentPlayingPath = null;
-        });
-      },
-    );
-    setState(() {
-      _isPlaying = true;
-      _currentPlayingPath = path;
-    });
-  }
-
-  Future<void> _stopPlayback() async {
-    await _player.stopPlayer();
-    setState(() {
-      _isPlaying = false;
-    });
-  }
-Future<void> _deleteAudio(String path) async {
-    if (_isPlaying && _currentPlayingPath == path) {
-      await _stopPlayback();
-    }
-    File file = File(path);
-    if (await file.exists()) {
-      await file.delete();
-    }
-    setState(() {
-      _recordings.remove(path);
-    });
-  }
-@override
-  void dispose() {
-    _audioPlayer?.closePlayer();
-   // _recorder.closeRecorder();
-    _player.closePlayer();
-    
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,67 +136,46 @@ Future<void> _deleteAudio(String path) async {
               onPressed: pickAudioFiles,
               child: Text('Pick Audio Files'),
             ),
-            if (audioFiles.isNotEmpty)
-              Column(
-                children: audioFiles.map((file) {
-                  return Expanded(
+            Expanded(
               child: ListView.builder(
-                itemCount: audioFiles.length,
+                shrinkWrap: true,
+                itemCount: _recordings.length,
                 itemBuilder: (context, index) {
-                  String audioFile = audioFiles[index];
+                  String recording = _recordings[index];
                   return ListTile(
-                    title: Text(file.split('/').last),
-                    subtitle: Text(audioFile),
+                    title: Text('Recording ${index + 1}'),
+                    subtitle: Text(recording),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _currentPlayingPath == audioFile && _isPlaying
+                        _currentPlayingPath == recording && _isPlaying
                             ? IconButton(
-                                icon: Icon(Icons.stop),
+                                icon: const Icon(Icons.stop),
                                 onPressed: _stopPlayback,
                               )
                             : IconButton(
-                                icon: Icon(Icons.play_arrow),
-                                onPressed: () => _startPlayback(audioFile),
+                                icon: const Icon(Icons.play_arrow),
+                                onPressed: () => _startPlayback(recording),
                               ),
                         IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () => _deleteAudio(audioFile),
+                          icon: const Icon(Icons.delete),
+                          onPressed: () => _deleteRecording(recording),
                         ),
                       ],
                     ),
                   );
                 },
               ),
-            );
-                  
-                  
-                  
-                  // ListTile(
-                  //   title: Text(file.split('/').last),
-                  //   trailing: IconButton(
-                  //     icon: Icon(Icons.play_arrow),
-                  //     onPressed: () => playAudio(file),
-                  //   ),
-                  // );
-                }).toList(),
-              ),
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: pickDocumentFiles,
               child: Text('Pick Document Files'),
             ),
             if (documentFiles.isNotEmpty)
-
               Column(
                 children: documentFiles.map((file) {
-                  return 
-                  
-                  
-                  
-                  
-                  
-                  ListTile(
+                  return ListTile(
                     title: Text(file.split('/').last),
                     trailing: IconButton(
                       icon: Icon(Icons.open_in_new),
@@ -219,6 +190,3 @@ Future<void> _deleteAudio(String path) async {
     );
   }
 }
-
-
-  

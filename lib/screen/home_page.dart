@@ -1,20 +1,15 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
-import 'package:sketch/screen/cart_menu.dart';
 import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
+import 'package:sketch/screen/e_mail.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/pick_audio_docx.dart';
 import 'package:sketch/screen/pick_image_video.dart';
-import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
@@ -23,7 +18,6 @@ import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/screen/scroll_video.dart';
-import 'package:sketch/screen/send_mail.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
@@ -90,79 +84,7 @@ class _home_pageState extends State<home_page> {
   }
 // end the code of camera objects and class
   
-  final List<Map<String, dynamic>> _widgetIcon = [
-    {'image': 'assets/images/login.png', "text": 'Login'},
-    {'image': 'assets/images/sign_up.png', "text": 'SignUp'},
-    {'image': 'assets/images/progress.png', "text": 'Splash-Vid'},
-    {'image': 'assets/images/date_time.png', "text": 'Time-date'},
-    {'image': 'assets/images/app_bar.png', "text": 'AppBar'},
-    {'image': 'assets/images/wel_come.png', "text": 'WellCome'},
-    {'image': 'assets/images/radio_button.png', "text": 'RadioButon'},
-    {'image': 'assets/images/hide_view.png', "text": 'Hide-View'},
-    {'image': 'assets/images/check_box.png', "text": 'Check Box'},
-    {'image': 'assets/images/menu_buton.png', "text": 'Menu Buttton'},
-    {'image': 'assets/images/pop_up.png', "text": 'Pop Up'},
-    {'image': 'assets/images/send_mail.png', "text": 'Send Email'},
-    {'image': 'assets/images/list_view.png', "text": 'List View'},
-    {'image': 'assets/images/pageview_scroll.png', "text": 'Page Scroll'},
-    {'image': 'assets/images/tabs_screen.png', "text": 'Tabs Screen'},
-    {'image': 'assets/images/map_screen.png', "text": 'Google Map'},
-    {'image': 'assets/images/bottom_navigation.png', "text": 'Navigation'},
-    {'image': 'assets/images/signpad_barcode].png', "text": 'SignBarCode'},
-    {'image': 'assets/images/scroll_video.png', "text": 'Scrol Video'},
-    {'image': 'assets/images/message.png', "text": 'Message'},
-    {'image': 'assets/images/language.png', "text": 'Text'},
-    {'image': 'assets/images/stepper.png', "text": 'Stepper'},
-    {'image': 'assets/images/sound_recording.png', "text": 'Sound'},
-    {'image': 'assets/images/pick_img_video.png', "text": 'Pick_VidImg'},
-    {'image': 'assets/images/pick_aud_docx.png', "text": 'Pic_DocxAud'},
-    
-  ];
-
-   Widget _buitlerGridView(int index) {
-  
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child:Column(
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color:  Color.fromARGB(255, 255, 254, 254),
-                
-            ),
-            child: Transform.scale(
-              scale: 0.9,
-              child: Image.asset(
-                _widgetIcon[index]['image'],
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            _widgetIcon[index]['text'],
-           
-          ),
-         
-          const SizedBox(
-            height: 15,
-          )
-        ],
-      ),
-    );
-  }
-// List<List<Map<String, dynamic>>> iconList = [];
-  // @override
-  // void initState() {
-  // super.initState();
-  // iconList = List.generate(_widgetIcon.length, (index) => _widgetIcon);
-   
-   
-  // }
-  @override
+ @override
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
@@ -236,744 +158,164 @@ class _home_pageState extends State<home_page> {
           ),
         
         ),
-        body: 
-        //  body: SingleChildScrollView(
-        //    child: Expanded(
-        //     child:   GridView.builder(
-        //              scrollDirection: Axis.vertical,
-        //              shrinkWrap: true,
-        //              physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
-        //              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //                  crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
-        //              itemCount: _widgetIcon.length,
-        //              itemBuilder: (context, int index) {
-        //                return _buitlerGridView(index);
-        //              },
-        //            ),
-              SingleChildScrollView(
-                child: Column(
-                 children: [
-                   const SizedBox(height: 15),
-                   GridView(
+        
+         body: SingleChildScrollView(
+           child: Expanded(
+            child:   GridView(
+                     scrollDirection: Axis.vertical,
                      shrinkWrap: true,
-                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                         crossAxisCount: Responsive.isMobile(context) ? 4 : 8,
-                         crossAxisSpacing: 10,
-                         mainAxisSpacing: 10),
-                     children: [
-                       
+                     physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
+                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                         crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                   children: [
+                    GridTileofApp(image: 'assets/images/login.png', screenName: 'Login',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUP',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigation',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/message.png', screenName: 'Message',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/language.png', screenName: 'Language',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx',fontsize: 15),
                     
-                       Column(children: [
-                        
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => const Login()));
-                           },
-                           child: Container(
-                             height: 60,
-                             width: 60,
-                             decoration: BoxDecoration(
-                                 image: const DecorationImage(
-                                   fit: BoxFit.cover,
-                                   image: AssetImage("assets/images/login.png"),
-                                 ),
-                                 color: Color.fromARGB(255, 118, 76, 216),
-                                 borderRadius: BorderRadius.circular(30)),
-                           ),
-                           
-                         ),
-                          Text(
-                           'Login',
-                           style: GoogleFonts.aDLaMDisplay(),
-                         ),
-                       ]),
-                      
-                       Column(children: [
-                         
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) =>
-                                         const signup()));
-                           },
-                           child: Container(
-                             height: 60,
-                             width: 60,
-                             decoration: const BoxDecoration(
-                               image: DecorationImage(
-                                 image: AssetImage('assets/images/sign_up.png'),
-                               ),
-                             ),
-                           ),
-                         ),
-                         Text('Sign_Up',style: GoogleFonts.aDLaMDisplay(),),
-                       ]),
-                      Column(children: [
-                        
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const splashSc_progres()));
-                          },
-                          child: Container(
-                           height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/progress.png"),
-                                ),
-                                color: Color.fromARGB(255, 183, 161, 233),
-                                borderRadius: BorderRadius.circular(30)),
-                          ),
-                        ),
-                        Text(
-                          'Splash-Vid',
-                          style: GoogleFonts.aDLaMDisplay(),
-                        ),
-                      ]),
-                     
-                      
-                       Column(children: [
-                        
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => const time_date()));
-                           },
-                           child: Container(
-                             height: 60,
-                             width: 60,
-                             decoration: BoxDecoration(
-                                 image: const DecorationImage(
-                                   fit: BoxFit.cover,
-                                   image: AssetImage("assets/images/date_time.png"),
-                                 ),
-                                 color: Color.fromARGB(255, 118, 76, 216),
-                                 borderRadius: BorderRadius.circular(30)),
-                           ),
-                         ),
-                          Text(
-                           'Time-date',
-                           style: GoogleFonts.aDLaMDisplay(),
-                         ),
-                       ]),
-                      
-                       Column(children: [
-                         
-                        GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) =>
-                                         const app_bar()));
-                           },
-                           child: Container(
-                             height: 60,
-                             width: 60,
-                             decoration: const BoxDecoration(
-                               image: DecorationImage(
-                                 image: AssetImage('assets/images/app_bar.png'),
-                               ),
-                             ),
-                           ),
-                         ),
-                        RichText(
-                           text: const TextSpan(
-                               text: 'App',
-                               style: TextStyle(
-                                 fontSize: 15,
-                                 color: Color.fromARGB(255, 80, 43, 244),
-                                 fontWeight: FontWeight.bold,
-                               ),
-                               children: <TextSpan>[
-                                 TextSpan(
-                                     text: 'Ba',
-                                     style: TextStyle(
-                                         color: Colors.red,
-                                         fontSize: 12,
-                                         fontStyle: FontStyle.italic)),
-                                 TextSpan(
-                                     text: 'r',
-                                     style: TextStyle(
-                                       fontSize: 12,
-                                       color: Color.fromARGB(255, 234, 133, 117),
-                                     ))
-                               ]),
-                         ),
-                       ]),
-                       Column(children: [
-                         
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => const wel_come()));
-                           },
-                           child: Container(
-                            height: 60,
-                             width: 60,
-                             decoration: BoxDecoration(
-                                 image: const DecorationImage(
-                                   fit: BoxFit.cover,
-                                   image: AssetImage("assets/images/wel_come.png"),
-                                 ),
-                                 color: const Color.fromARGB(255, 243, 245, 246),
-                                 borderRadius: BorderRadius.circular(20)),
-                           ),
-                         ),
-                         RichText(
-                           text: const TextSpan(
-                               text: 'well',
-                               style: TextStyle(
-                                 fontSize: 15,
-                                 color: Color.fromARGB(255, 80, 43, 244),
-                                 fontWeight: FontWeight.bold,
-                               ),
-                               children: <TextSpan>[
-                                 TextSpan(
-                                     text: 'C',
-                                     style: TextStyle(
-                                         color: Colors.red,
-                                         fontSize: 12,
-                                         fontStyle: FontStyle.italic)),
-                                 TextSpan(
-                                     text: 'ome',
-                                     style: TextStyle(
-                                       fontSize: 12,
-                                       color: Color.fromARGB(255, 78, 186, 235),
-                                     ))
-                               ]),
-                         ),
-                       ]),
-                       Column(children: [
-                         
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) => MenuScreen()));
-                           },
-                           child: Container(
-                            height: 60,
-                             width: 60,
-                             decoration: const BoxDecoration(
-                               image: DecorationImage(
-                                 image: AssetImage('assets/images/cart.png'),
-                               ),
-                             ),
-                           ),
-                         ),
-                         RichText(
-                           text: const TextSpan(
-                               text: 'c',
-                               style: TextStyle(
-                                 fontSize: 15,
-                                 color: Color.fromARGB(255, 80, 43, 244),
-                                 fontWeight: FontWeight.bold,
-                               ),
-                               children: <TextSpan>[
-                                 TextSpan(
-                                     text: 'A',
-                                     style: TextStyle(
-                                         color: Colors.red,
-                                         fontSize: 12,
-                                         fontStyle: FontStyle.italic)),
-                                 TextSpan(
-                                     text: 'rt',
-                                     style: TextStyle(
-                                       fontSize: 12,
-                                       color: Color.fromARGB(255, 78, 186, 235),
-                                     ))
-                               ]),
-                         ),
-                       ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const RadioButton()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/radio_button.png"),
-                                ),
-                                color: Color.fromARGB(255, 216, 202, 249),
-                                borderRadius: BorderRadius.circular(30)),
-                          ),
-                        ),
-                         RichText(
-                           text: const TextSpan(
-                               text: 'radio',
-                               style: TextStyle(
-                                 fontSize: 15,
-                                 color: Color.fromARGB(255, 80, 43, 244),
-                                 fontWeight: FontWeight.bold,
-                               ),
-                               children: <TextSpan>[
-                                 TextSpan(
-                                     text: 'B',
-                                     style: TextStyle(
-                                         color: Colors.red,
-                                         fontSize: 12,
-                                         fontStyle: FontStyle.italic)),
-                                 TextSpan(
-                                     text: 'utton',
-                                     style: TextStyle(
-                                       fontSize: 12,
-                                       color: Color.fromARGB(255, 78, 186, 235),
-                                     ))
-                               ]),
-                         ),
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const hide_view()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/hide_view.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('Hide-View')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const checkBox()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/check_box.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(30)),
-                          ),
-                        ),
-                        const Text('Check Box')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MenuButon()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/menu_buton.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('Menu Button')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const PopUp()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/pop_up.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('Pop Up')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const SendMail()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/send_mail.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('Send Mail')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const ListViewScreen()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/list_view.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('List View')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const PageScroll()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/pageview_scroll.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        const Text('Page Scroll')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const tabs_screen()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/tabs_screen.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Tabs Screen')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MapScreen()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/map_screen.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Google Map')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const bottombar()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/bottom_navigation.png"),
-                                ),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Navigation')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Signature_barCode()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/signpad_barcode].png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('SignBarcode')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const scrol_video()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/scroll_video.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Scrol Video')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  Message()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/message.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Message')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  chang_language()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/language.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Text')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  Stepper_Class()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/stepper.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Stepper')
-                      ]),
-                      Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  SoundRecording()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/sound_recording.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Sound Record')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  ImageVideo()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/pick_image_video.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Pic img Video')
-                      ]),
-                       Column(children: [
-                       
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>  AudioDocx()));
-                          },
-                          child: Container(
-                            height: 60,
-                             width: 60,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/images/pick_audio_docx.png"),
-                                ),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                        const Text('Pic Docx Aud'),
-                      ]),
-                     ],
+                   ],
                    ),
-                   
-                    
-                       
-                   
-                 ],
-                             ),
-              ),
-          
-          
-           ),
-         );
+     ),
+     ),
+     ),
+     );
          
          
      
+  }
+}
+
+
+
+class GridTileofApp extends StatelessWidget {
+   GridTileofApp({
+    super.key,
+    required this.image,
+    required this.screenName,
+    this.fontsize=12,
+  });
+
+  final String image;
+  final String screenName;
+  final double fontsize;
+
+  @override
+  Widget build(BuildContext context) {
+   // final data = ModalRoute.of(context)?.settings.arguments;
+
+    return GestureDetector(
+      onTap: () {
+        if (screenName == 'Login') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+        }
+         if (screenName == 'SignUP') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => signup(),));
+        }
+         if (screenName == 'SplashVid') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => splashSc_progres(),));
+        }
+         if (screenName == 'DateTime') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => time_date(),));
+        }
+         if (screenName == 'AppBar') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => app_bar(),));
+        }
+         if (screenName == 'WelCome') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => wel_come(),));
+        }
+         if (screenName == 'RadioBtn') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RadioButton(),));
+        }
+         if (screenName == 'HideView') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => hide_view(),));
+        }
+         if (screenName == 'CheckBox') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => checkBox(),));
+        }
+         if (screenName == 'Menu') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MenuButon(),));
+        }
+         if (screenName == 'PopUp') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUp(),));
+        }
+         if (screenName == 'Mail') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => e_mail(),));
+        }
+         if (screenName == 'listView') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ListView(),));
+         }
+         
+         if (screenName == 'Pagescrol') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PageScroll(),));
+        }
+         if (screenName == 'TabScreen') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => tabs_screen(),));
+        }
+         if (screenName == 'Map') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen(),));
+        }
+         if (screenName == 'B-Navigation') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => bottombar(),));
+        }
+         if (screenName == 'Sign-Bar') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Signature_barCode(),));
+        }
+         if (screenName == 'ScrolVideo') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => scrol_video(),));
+        }
+         if (screenName == 'Message') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Message(),));
+        }
+         if (screenName == 'Language') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => chang_language(),));
+        }
+         if (screenName == 'Stepper') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Stepper_Class(),));
+        }
+         if (screenName == 'S-Record') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SoundRecording(),));
+        }
+         if (screenName == 'ImgVid') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageVideo(),));
+        }
+         if (screenName == 'AudDocx') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AudioDocx(),));
+        }
+
+      },
+      child: Column(
+        children: [
+          Image(
+            image: AssetImage(image),
+            width: 55,
+            height: 55,
+          ),
+          const SizedBox(height: 10),
+          Text(screenName, style:  TextStyle(fontSize:fontsize)),
+          //Text(secondText, style: const TextStyle(fontSize: 12)),
+        ],
+      ),
+    );
   }
 }

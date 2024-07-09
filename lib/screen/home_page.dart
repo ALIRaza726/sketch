@@ -15,6 +15,7 @@ import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pop_up.dart';
+import 'package:sketch/screen/preferences.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/screen/scroll_video.dart';
@@ -294,7 +295,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => Stepper_Class(),));
         }
          if (screenName == 'S-Record') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SoundRecording(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PreferencesScreen(),));
         }
          if (screenName == 'ImgVid') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageVideo(),));

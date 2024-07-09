@@ -194,6 +194,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record',fontsize: 15),
                     GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid',fontsize: 15),
                     GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx',fontsize: 15),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences',fontsize: 15),
                     
                    ],
                    ),
@@ -294,15 +295,18 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Stepper') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => Stepper_Class(),));
         }
-         if (screenName == 'S-Record') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => PreferencesScreen(),));
-        }
+        if (screenName == 'S-Record') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SoundRecording(),));
+        } 
          if (screenName == 'ImgVid') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageVideo(),));
         }
          if (screenName == 'AudDocx') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => AudioDocx(),));
         }
+          if (screenName == 'Preferrences') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PreferencesScreen(),));
+        } 
 
       },
       child: Column(

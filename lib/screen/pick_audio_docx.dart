@@ -16,7 +16,7 @@ class AudioDocx extends StatefulWidget {
 }
 
 class _AudioDocxState extends State<AudioDocx> {
-  List<String>_recordings=[];
+ // List<String>_recordings=[];
   List<String> audioFiles = [];
   List<String> documentFiles = [];
   FlutterSoundPlayer? _audioPlayer;
@@ -61,7 +61,7 @@ class _AudioDocxState extends State<AudioDocx> {
 Future<void> _startPlayback(String path)  async {
     if (audioFiles.isNotEmpty)
               Column(
-                children: audioFiles.map((file) {
+                children:await audioFiles.map((file) {
                   return ListTile(
                     title: Text(file.split('/').last),
                     trailing: IconButton(
@@ -81,7 +81,7 @@ Future<void> _startPlayback(String path)  async {
       await file.delete();
     }
     setState(() {
-      _recordings.remove(path);
+      audioFiles.remove(path);
     });
   }
  
@@ -139,27 +139,27 @@ Future<void> _startPlayback(String path)  async {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: _recordings.length,
+                itemCount: audioFiles.length,
                 itemBuilder: (context, index) {
-                  String recording = _recordings[index];
+                  String audio = audioFiles[index];
                   return ListTile(
-                    title: Text('Recording ${index + 1}'),
-                    subtitle: Text(recording),
+                    title: Text('Audio ${index + 1}'),
+                    subtitle: Text(audio),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _currentPlayingPath == recording && _isPlaying
+                        _currentPlayingPath == audio && _isPlaying
                             ? IconButton(
                                 icon: const Icon(Icons.stop),
                                 onPressed: _stopPlayback,
                               )
                             : IconButton(
                                 icon: const Icon(Icons.play_arrow),
-                                onPressed: () => _startPlayback(recording),
+                                onPressed: () => _startPlayback(audio),
                               ),
                         IconButton(
                           icon: const Icon(Icons.delete),
-                          onPressed: () => _deleteRecording(recording),
+                          onPressed: () => _deleteRecording(audio),
                         ),
                       ],
                     ),

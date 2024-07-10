@@ -196,7 +196,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
                     GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
                     GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences'),
-                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'screenshot'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
                    ],
                    ),
      ),

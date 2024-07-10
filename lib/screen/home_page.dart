@@ -18,6 +18,7 @@ import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/preferences.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/recording2.dart';
+import 'package:sketch/screen/screenshot.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
 import 'package:sketch/screen/sign_up.dart';
@@ -169,33 +170,33 @@ class _home_pageState extends State<home_page> {
                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                          crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
                    children: [
-                    GridTileofApp(image: 'assets/images/login.png', screenName: 'Login',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUP',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigation',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/message.png', screenName: 'Message',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/language.png', screenName: 'Language',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx',fontsize: 15),
-                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences',fontsize: 15),
-                    
+                    GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
+                    GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUP',fontsize: 16.5,),
+                    GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
+                    GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
+                    GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'),
+                    GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome'),
+                    GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn'),
+                    GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView'),
+                    GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox'),
+                    GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu'),
+                    GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp'),
+                    GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail'),
+                    GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView'),
+                    GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'),
+                    GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'),
+                    GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'),
+                    GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigation'),
+                    GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'),
+                    GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'),
+                    GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'),
+                    GridTileofApp(image: 'assets/images/language.png', screenName: 'Language'),
+                    GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper'),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'),
+                    GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
+                    GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences'),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'screenshot'),
                    ],
                    ),
      ),
@@ -215,7 +216,7 @@ class GridTileofApp extends StatelessWidget {
     super.key,
     required this.image,
     required this.screenName,
-    this.fontsize=12,
+    this.fontsize=15,
   });
 
   final String image;
@@ -306,6 +307,9 @@ class GridTileofApp extends StatelessWidget {
         }
           if (screenName == 'Preferrences') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => PreferencesScreen(),));
+        } 
+         if (screenName == 'screenshot') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenShot(),));
         } 
 
       },

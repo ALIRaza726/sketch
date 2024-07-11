@@ -14,6 +14,7 @@ void main() {
         ChangeNotifierProvider<CartModel>(create: (context) => CartModel()),
         ChangeNotifierProvider<RecordingProvider>(create: (context) => RecordingProvider()),
         ChangeNotifierProvider<MenuButtonProvider>(create: (context) => MenuButtonProvider()),
+       
       //ChangeNotifierProvider<ThemeProvider>(
       //    create: (context) => ThemeProvider())
       ],

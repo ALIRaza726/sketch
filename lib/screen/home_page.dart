@@ -6,8 +6,10 @@ import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
+import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
 import 'package:sketch/screen/hide_view.dart';
+import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
 import 'package:sketch/screen/pick_audio_docx.dart';
 import 'package:sketch/screen/pick_image_video.dart';
@@ -198,6 +200,8 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
                     GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
                    ],
                    ),
      ),
@@ -311,6 +315,12 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'screenshot') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenShot(),));
+        } 
+         if (screenName == 'SaveImage') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageSaveToGallery(),));
+        } 
+         if (screenName == 'ImageUrl') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageUrl(),));
         } 
 
       },

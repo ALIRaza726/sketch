@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sketch/models/listview_model.dart';
 
 class ListViewScreen extends StatefulWidget {
   const ListViewScreen({super.key});
@@ -75,47 +77,63 @@ class _ListViewScreenState extends State<ListViewScreen> {
                         Text('Phone Num ${index + 3}'),
                       ],
                     ),
-                    trailing: DropdownButton<String>(
-                      underline: Container(
-                        height: 2,
-                        color: Colors.cyan,
-                      ),
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 53, 165, 179)),
-                      icon: const Icon(Icons.arrow_drop_down),
-                      elevation: 10,
-                      value: selectedItems[
-                          items[index]], // Use index to refer to a single item
-                      items: <String>['Item1', 'Item2', 'Item3', 'Item4']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedItems[items[index]] =
-                              newValue; // Update using index
-                        });
-                      },
-                    ),
+                    trailing: Consumer<ListProvider>(
+          builder: (context, list, child) {
+                            
+               return DropdownButton<String>(
+                        underline: Container(
+                          height: 2,
+                          color: Colors.cyan,
+                        ),
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 53, 165, 179)),
+                        icon: const Icon(Icons.arrow_drop_down),
+                        elevation: 10,
+                        value: selectedItems[
+                            items[index]], // Use index to refer to a single item
+                        items: <String>['Item1', 'Item2', 'Item3', 'Item4']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          // setState(() {
+                          //   selectedItems[items[index]] =
+                          //       newValue; // Update using index
+                          // });
+                           Provider.of<ListProvider>(context, listen: false)
+                      .addvalue(items[index],newValue);
+                       Text(
+                            '${list.selectedItems}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 9,
+                            ),
+                            textAlign: TextAlign.center,
+                          );
+                        },
+                      );
+              })));
                     // title: Text('Item $index'),
                     // onTap: () {
                     //   print('Item $index tapped');
                     // },
-                  ),
-                );
+              
+                
               },
-            ),
-           
-           
-          ]),
-        ),
-      ),
-    );
-  }
+              ),
+              ],
+              ),
+              ),
+              ),
+              );
+          
+          
+    }
 }
+
 
 
 

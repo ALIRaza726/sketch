@@ -8,6 +8,7 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
+import 'package:sketch/screen/getApi_Screen.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
@@ -202,6 +203,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
+                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApi'),
                    ],
                    ),
      ),
@@ -321,6 +323,9 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'ImageUrl') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageUrl(),));
+        } 
+         if (screenName == 'GetApi') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiScreen(),));
         } 
 
       },

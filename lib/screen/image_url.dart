@@ -14,6 +14,7 @@ class ImageUrl extends StatefulWidget {
 class _ImageUrlState extends State<ImageUrl> {
   String? _imageUrl;
   bool _isLoading = false;
+  String? _VideoUrl;
 
   Future<void> _openBrowser() async {
     const url = 'https://www.google.com/search?q=cars+wallpapers&tbm=isch';
@@ -28,6 +29,7 @@ class _ImageUrlState extends State<ImageUrl> {
     setState(() {
       _isLoading = true;
       _imageUrl = null;
+      _VideoUrl = null;
     });
 
     try {
@@ -36,6 +38,7 @@ class _ImageUrlState extends State<ImageUrl> {
         setState(() {
           _imageUrl = imageUrl;
           _isLoading = false;
+          _VideoUrl = imageUrl;
         });
       } else {
         setState(() {
@@ -76,6 +79,31 @@ class _ImageUrlState extends State<ImageUrl> {
       },
     );
   }
+  void _promptForImageUrlVideo() async {
+    final TextEditingController _urlController = TextEditingController();
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Enter Image URL'),
+          content: TextField(
+            controller: _urlController,
+            decoration: InputDecoration(hintText: 'Enter the URL of the image'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _loadImage(_urlController.text);
+              },
+              child: Text('Load Video'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +123,10 @@ class _ImageUrlState extends State<ImageUrl> {
             const SizedBox(height: 8.0),
             ElevatedButton(
               onPressed: _promptForImageUrl,
+              child: Text('Enter Image URL Manually'),
+            ),
+             ElevatedButton(
+              onPressed: _promptForImageUrlVideo,
               child: Text('Enter Image URL Manually'),
             ),
             const SizedBox(height: 16.0),

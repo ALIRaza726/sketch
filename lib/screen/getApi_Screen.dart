@@ -56,6 +56,8 @@ class _GetApiScreenState extends State<GetApiScreen> {
                                 title: Text(
                                     '${users[index].firstName} ${users[index].lastName}'),
                                 subtitle: Text(users[index].email),
+                                trailing:  Text(
+                                    '${users[index].id}') ,
                               );
                             },
                           ),

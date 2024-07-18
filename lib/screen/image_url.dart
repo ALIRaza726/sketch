@@ -1,7 +1,13 @@
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 
 
 class ImageUrl extends StatefulWidget {
@@ -15,6 +21,8 @@ class _ImageUrlState extends State<ImageUrl> {
   String? _imageUrl;
   bool _isLoading = false;
   String? _VideoUrl;
+  String? _videoFile;
+  VideoPlayerController? _videoController;
 
   Future<void> _openBrowser() async {
     const url = 'https://www.google.com/search?q=cars+wallpapers&tbm=isch';
@@ -29,7 +37,7 @@ class _ImageUrlState extends State<ImageUrl> {
     setState(() {
       _isLoading = true;
       _imageUrl = null;
-      _VideoUrl = null;
+     
     });
 
     try {
@@ -38,7 +46,7 @@ class _ImageUrlState extends State<ImageUrl> {
         setState(() {
           _imageUrl = imageUrl;
           _isLoading = false;
-          _VideoUrl = imageUrl;
+          
         });
       } else {
         setState(() {
@@ -51,6 +59,44 @@ class _ImageUrlState extends State<ImageUrl> {
         _isLoading = false;
       });
       throw 'Could not load image';
+    }
+  }
+  Future<void> _loadVideo(String VideoUrl) async {
+    setState(() {
+      _isLoading = true;
+      _imageUrl = null;
+      _VideoUrl = null;
+    });
+
+    try {
+      final response = await http.get(Uri.parse(VideoUrl));
+      if (response.statusCode == 200) {
+        setState(() {
+          _VideoUrl=VideoUrl;
+          _isLoading = false;
+
+        });
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
+        throw 'Could not load image';
+      }
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      throw 'Could not load image';
+    }
+         if (_VideoUrl != null) {
+      setState(() {
+       
+        _videoController = VideoPlayerController.networkUrl(VideoUrl as Uri)
+          ..initialize().then((_) {
+            setState(() {});
+            _videoController!.play();
+          });
+      });
     }
   }
 
@@ -86,16 +132,16 @@ class _ImageUrlState extends State<ImageUrl> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Enter Image URL'),
+          title: Text('Enter Video URL'),
           content: TextField(
             controller: _urlController,
-            decoration: InputDecoration(hintText: 'Enter the URL of the image'),
+            decoration: InputDecoration(hintText: 'Enter the URL of the Video'),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                _loadImage(_urlController.text);
+                _loadVideo(_urlController.text);
               },
               child: Text('Load Video'),
             ),
@@ -103,6 +149,7 @@ class _ImageUrlState extends State<ImageUrl> {
         );
       },
     );
+    
   }
 
   @override
@@ -127,7 +174,7 @@ class _ImageUrlState extends State<ImageUrl> {
             ),
              ElevatedButton(
               onPressed: _promptForImageUrlVideo,
-              child: Text('Enter Image URL Manually'),
+              child: Text('Enter Video URL Manually'),
             ),
             const SizedBox(height: 16.0),
             _isLoading
@@ -151,6 +198,12 @@ class _ImageUrlState extends State<ImageUrl> {
                           ),
                         ),
                       )
+                       : _VideoUrl != null
+                    ?Container(
+                      height: 200,
+                      width: 200,
+                      color: Colors.lightBlueAccent,
+                    )
                     : Container(
                         width: double.infinity,
                         height: 200.0,

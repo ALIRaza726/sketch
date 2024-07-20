@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sketch/models/gteApiLink_model.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
@@ -203,7 +204,9 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
-                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApi'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApi'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiLink'),
+
                    ],
                    ),
      ),
@@ -326,6 +329,9 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'GetApi') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiScreen(),));
+        } 
+        if (screenName == 'GetApiLink') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => getApiLink(),));
         } 
 
       },

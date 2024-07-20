@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sketch/models/gteApiLink_model.dart';
+import 'package:sketch/screen/gteApiLink.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';

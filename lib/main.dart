@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:sketch/helpers/getAPi_Provider_class.dart';
 import 'package:sketch/models/cart.dart';
 import 'package:sketch/models/listview_model.dart';
 import 'package:sketch/models/menuBtn_provider.dart';
@@ -16,6 +17,7 @@ void main() {
         ChangeNotifierProvider<RecordingProvider>(create: (context) => RecordingProvider()),
         ChangeNotifierProvider<MenuButtonProvider>(create: (context) => MenuButtonProvider()),
         ChangeNotifierProvider<ListProvider>(create: (context) => ListProvider()),
+        ChangeNotifierProvider<UserProvider>(create: (context) => UserProvider()),
        
       //ChangeNotifierProvider<ThemeProvider>(
       //    create: (context) => ThemeProvider())

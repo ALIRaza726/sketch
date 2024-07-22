@@ -335,7 +335,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => getApiLink(),));
         } 
         if (screenName == 'GetApiProvider') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => VideoCallScreen(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiProvider(),));
         } 
 
       },

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sketch/helpers/getAPi_Provider_class.dart';
 import 'package:sketch/models/getApiModel_provider.dart';
 
-class VideoCallScreen extends StatelessWidget {
+class GetApiProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);

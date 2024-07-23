@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sketch/models/getApi_singleUser.dart';
 import 'package:http/http.dart' as http;
 
@@ -46,7 +47,38 @@ class _UserScreenState extends State<UserScreen> {
             children: [
               if (_isLoading) CircularProgressIndicator(),
               if (_userApi != null && _userApi!.data != null) ...[
-                Image.network(_userApi!.data!.avatar!),
+                 _isLoading
+                ? Shimmer.fromColors(
+                    baseColor: Color.fromARGB(255, 163, 157, 157)!,
+                    highlightColor: Color.fromARGB(255, 201, 199, 203)!,
+                    child: Container(
+                      width: 150.0,
+                      height: 150.0,
+                      color: Color.fromARGB(255, 50, 110, 43),
+                    ),
+                  )
+                : _userApi!.data!.avatar != null
+                    ? Container(
+                        width: 150.0,
+                        height: 150.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(_userApi!.data!.avatar!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                          : Container(
+                        width: double.infinity,
+                        height: 200.0,
+                        color: Colors.grey[300],
+                        child: Icon(
+                          Icons.image,
+                          size: 100,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+               // Image.network(_userApi!.data!.avatar!),
                 Text('ID: ${_userApi!.data!.id}'),
                 Text('Email: ${_userApi!.data!.email}'),
                 Text('First Name: ${_userApi!.data!.firstName}'),

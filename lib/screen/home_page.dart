@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sketch/screen/ResourcesApi_Screen.dart';
+import 'package:sketch/screen/getApi_findUser.dart';
 import 'package:sketch/screen/getApi_provider.dart';
 import 'package:sketch/screen/getApi_singleUser.dart';
 import 'package:sketch/screen/gteApiLink.dart';
@@ -210,6 +212,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiLink'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiProvider'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiSingleUser'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiFindUser'),
                    ],
                    ),
      ),
@@ -341,7 +344,10 @@ class GridTileofApp extends StatelessWidget {
         }
          if (screenName == 'GetApiSingleUser') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserScreen(),));
-        }  
+        } 
+         if (screenName == 'GetApiFindUser') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
+        }   
 
       },
       child: Column(

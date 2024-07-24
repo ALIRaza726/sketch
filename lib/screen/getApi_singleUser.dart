@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sketch/models/getApi_singleUser.dart';
@@ -45,7 +47,7 @@ class _UserScreenState extends State<UserScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (_isLoading) CircularProgressIndicator(),
+             // if (_isLoading) CircularProgressIndicator(),
               if (_userApi != null && _userApi!.data != null) ...[
                  _isLoading
                 ? Shimmer.fromColors(
@@ -97,4 +99,31 @@ class _UserScreenState extends State<UserScreen> {
       ),
     );
   }
+   Future<SingleuserApi?> fetchUser() async {
+  var headers = {
+    'Accept': 'application/json',
+    'Authorization':
+        'Bearer 59387|rVxTQUFzgeptn2NWBgcNxnO4exfHo880AJApBJEI49e733d9',
+  };
+
+  var request = http.Request('GET', Uri.parse('https://reqres.in/api/users/2'))
+    ..headers.addAll(headers);
+
+  try {
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      String responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
+      return SingleuserApi.fromMap(data);
+    } else {
+      print('Error: ${response.reasonPhrase}');
+      return null;
+    }
+  } catch (e) {
+    print('Exception: $e');
+    return null;
+  }
+ 
+}
 }

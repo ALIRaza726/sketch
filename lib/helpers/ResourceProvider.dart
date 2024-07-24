@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:sketch/models/resourceApi.dart';
+import 'package:sketch/models/ResourceApiModel.dart';
 
 
 class ResourceProvider extends ChangeNotifier {

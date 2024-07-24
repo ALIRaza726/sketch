@@ -213,6 +213,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiProvider'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiSingleUser'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiFindUser'),
+                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiResource'),
                    ],
                    ),
      ),
@@ -346,8 +347,11 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserScreen(),));
         } 
          if (screenName == 'GetApiFindUser') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => FindUserScreen(),));
+        }  
+         if (screenName == 'GetApiResource') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
-        }   
+        }    
 
       },
       child: Column(

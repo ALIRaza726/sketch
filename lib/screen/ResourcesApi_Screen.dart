@@ -87,3 +87,53 @@ class ResourceDetailScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+// import 'dart:convert';
+
+// // Define a model class
+// class Product {
+//   final int id;
+//   final String name;
+//   final double price;
+
+//   Product({required this.id, required this.name, required this.price});
+
+//   // A method to convert a JSON map into a Product object
+//   // 
+//   factory Product.fromJson(Map<String, dynamic> json) {
+//     return Product(
+//       id: json['id'],
+//       name: json['name'],
+//       price: json['price'],
+//     );
+//   }
+
+//   // A method to convert a Product object into a JSON map
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'id': id,
+//       'name': name,
+//       'price': price,
+//     };
+//   }
+// }
+
+// void main() {
+//   // Example JSON string
+//   String jsonString = '{"id":1,"name":"Sample Product","price":29.99}';
+
+//  // firstly we decode json into json Map, Then we convert Map into variable in  order to use it to get value
+//   // Deserialization: JSON string to Dart object
+//   Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+//   Product product = Product.fromJson(jsonMap);
+//   print('id: ${product.id}, Product name: ${product.name}, price: ${product.price}');
+//  // firstly we encode variable into ToJson  
+//   // Serialization: Dart object to JSON string
+//   String serialized = jsonEncode(product.toJson());
+//   print('Serialized JSON: $serialized');
+// }

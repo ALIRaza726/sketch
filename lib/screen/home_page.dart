@@ -13,7 +13,7 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
-import 'package:sketch/screen/getApi_Screen.dart';
+import 'package:sketch/screen/getApi_Simple.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';

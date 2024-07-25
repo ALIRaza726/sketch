@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 class SingleuserApi {
   Data? data;
   Support? support;
@@ -74,3 +74,30 @@ class Support {
 }
 
 // Function to fetch data
+ Future<SingleuserApi?> fetchUser() async {
+  var headers = {
+    'Accept': 'application/json',
+    'Authorization':
+        'Bearer 59387|rVxTQUFzgeptn2NWBgcNxnO4exfHo880AJApBJEI49e733d9',
+  };
+
+  var request = http.Request('GET', Uri.parse('https://reqres.in/api/users/2'))
+    ..headers.addAll(headers);
+
+  try {
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      String responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
+      return SingleuserApi.fromMap(data);
+    } else {
+      print('Error: ${response.reasonPhrase}');
+      return null;
+    }
+  } catch (e) {
+    print('Exception: $e');
+    return null;
+  }
+ 
+}

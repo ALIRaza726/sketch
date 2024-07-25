@@ -349,9 +349,9 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'GetApiFindUser') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => FindUserScreen(),));
         }  
-         if (screenName == 'GetApiResource') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
-        }    
+        //  if (screenName == 'GetApiResource') {
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
+        // }    
 
       },
       child: Column(

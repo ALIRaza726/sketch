@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sketch/models/getApi_singleUser.dart';
-import 'package:http/http.dart' as http;
+
 
 class UserScreen extends StatefulWidget {
   @override
@@ -34,7 +32,7 @@ class _UserScreenState extends State<UserScreen> {
       });
     }
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +49,8 @@ class _UserScreenState extends State<UserScreen> {
               if (_userApi != null && _userApi!.data != null) ...[
                  _isLoading
                 ? Shimmer.fromColors(
-                    baseColor: Color.fromARGB(255, 163, 157, 157)!,
-                    highlightColor: Color.fromARGB(255, 201, 199, 203)!,
+                    baseColor: Color.fromARGB(255, 163, 157, 157),
+                    highlightColor: Color.fromARGB(255, 201, 199, 203),
                     child: Container(
                       width: 150.0,
                       height: 150.0,
@@ -99,31 +97,5 @@ class _UserScreenState extends State<UserScreen> {
       ),
     );
   }
-   Future<SingleuserApi?> fetchUser() async {
-  var headers = {
-    'Accept': 'application/json',
-    'Authorization':
-        'Bearer 59387|rVxTQUFzgeptn2NWBgcNxnO4exfHo880AJApBJEI49e733d9',
-  };
-
-  var request = http.Request('GET', Uri.parse('https://reqres.in/api/users/2'))
-    ..headers.addAll(headers);
-
-  try {
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      String responseBody = await response.stream.bytesToString();
-      final data = json.decode(responseBody);
-      return SingleuserApi.fromMap(data);
-    } else {
-      print('Error: ${response.reasonPhrase}');
-      return null;
-    }
-  } catch (e) {
-    print('Exception: $e');
-    return null;
-  }
- 
-}
+  
 }

@@ -208,12 +208,12 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApi'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiLink'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiProvider'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiSingleUser'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiFindUser'),
-                    GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'GetApiResource'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
                    ],
                    ),
      ),
@@ -337,19 +337,19 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'GetApi') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiScreen(),));
         } 
-        if (screenName == 'GetApiLink') {
+        if (screenName == 'Link') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => getApiLink(),));
         } 
-        if (screenName == 'GetApiProvider') {
+        if (screenName == 'Provider') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiProvider(),));
         }
-         if (screenName == 'GetApiSingleUser') {
+         if (screenName == 'SingleUser') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserScreen(),));
         } 
-         if (screenName == 'GetApiFindUser') {
+         if (screenName == 'FindUser') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => FindUserScreen(),));
         }  
-         if (screenName == 'GetApiResource') {
+         if (screenName == 'Resource') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
         }    
 

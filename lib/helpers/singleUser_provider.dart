@@ -62,7 +62,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sketch/models/getApiSingleUser_Provider.dart';
-import 'package:sketch/models/getApi_singleUser.dart';
+
 
 class SingleUserProvider extends ChangeNotifier {
   String _email = '';

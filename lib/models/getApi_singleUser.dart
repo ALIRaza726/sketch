@@ -1,103 +1,82 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-class SingleuserApi {
-  Data? data;
-  Support? support;
+// import 'dart:convert';
 
-  SingleuserApi({
-    this.data,
-    this.support,
-  });
+// class SingleuserApi {
+//   // String? email;
+//   // String? firstname;
+//   // String? lastname;
+//   // String? avatar;
+//   Data? data;
+//   Support? support;
 
-  factory SingleuserApi.fromMap(Map<String, dynamic> json) => SingleuserApi(
-        data: json["data"] == null ? null : Data.fromMap(json["data"]),
-        support:
-            json["support"] == null ? null : Support.fromMap(json["support"]),
-      );
+//   SingleuserApi({
+//     // this.email,
+//     // this.firstname,
+//     // this.lastname,
+//     // this.avatar,
+//     this.data,
+//     this.support,
+//   });
 
-  Map<String, dynamic> toMap() => {
-        "data": data?.toMap(),
-        "support": support?.toMap(),
-      };
-}
+//   factory SingleuserApi.fromMap(Map<String, dynamic> json) => SingleuserApi(
+//         data: json["data"] == null ? null : Data.fromMap(json["data"]),
+//         support:
+//             json["support"] == null ? null : Support.fromMap(json["support"]),
+//       );
 
-class Data {
-  int? id;
-  String? email;
-  String? firstName;
-  String? lastName;
-  String? avatar;
+//   Map<String, dynamic> toMap() => {
+//         "data": data?.toMap(),
+//         "support": support?.toMap(),
+//       };
+// }
 
-  Data({
-    this.id,
-    this.email,
-    this.firstName,
-    this.lastName,
-    this.avatar,
-  });
+// class Data {
+//   int? id;
+//   String email='';
+//   String firstName='';
+//   String lastName='';
+//   String avatar='';
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
-        id: json["id"] ?? 0,
-        email: json["email"] ?? "",
-        firstName: json["first_name"] ?? "",
-        lastName: json["last_name"] ?? "",
-        avatar: json["avatar"] ?? "",
-      );
+//   Data({
+//     this.id,
+//     required this.email,
+//     required this.firstName,
+//     required this.lastName,
+//     required this.avatar,
+//   });
 
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "email": email,
-        "first_name": firstName,
-        "last_name": lastName,
-        "avatar": avatar,
-      };
-}
+//   factory Data.fromMap(Map<String, dynamic> json) => Data(
+//         id: json["id"] ?? 0,
+//         email: json["email"] ?? "",
+//         firstName: json["first_name"] ?? "",
+//         lastName: json["last_name"] ?? "",
+//         avatar: json["avatar"] ?? "",
+//       );
 
-class Support {
-  String? url;
-  String? text;
+//   Map<String, dynamic> toMap() => {
+//         "id": id,
+//         "email": email,
+//         "first_name": firstName,
+//         "last_name": lastName,
+//         "avatar": avatar,
+//       };
+// }
 
-  Support({
-    this.url,
-    this.text,
-  });
+// class Support {
+//   String? url;
+//   String? text;
 
-  factory Support.fromMap(Map<String, dynamic> json) => Support(
-        url: json["url"],
-        text: json["text"],
-      );
+//   Support({
+//     this.url,
+//     this.text,
+//   });
 
-  Map<String, dynamic> toMap() => {
-        "url": url,
-        "text": text,
-      };
-}
+//   factory Support.fromMap(Map<String, dynamic> json) => Support(
+//         url: json["url"],
+//         text: json["text"],
+//       );
 
-// Function to fetch data
- Future<SingleuserApi?> fetchUser() async {
-  var headers = {
-    'Accept': 'application/json',
-    'Authorization':
-        'Bearer 59387|rVxTQUFzgeptn2NWBgcNxnO4exfHo880AJApBJEI49e733d9',
-  };
-
-  var request = http.Request('GET', Uri.parse('https://reqres.in/api/users/2'))
-    ..headers.addAll(headers);
-
-  try {
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      String responseBody = await response.stream.bytesToString();
-      final data = json.decode(responseBody);
-      return SingleuserApi.fromMap(data);
-    } else {
-      print('Error: ${response.reasonPhrase}');
-      return null;
-    }
-  } catch (e) {
-    print('Exception: $e');
-    return null;
-  }
- 
-}
+//   Map<String, dynamic> toMap() => {
+//         "url": url,
+//         "text": text,
+//       };
+// }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sketch/models/getApi_singleUser.dart';
+import 'package:sketch/helpers/singleUser_provider.dart';
+import 'package:sketch/models/getApiSingleUser_Provider.dart';
+
+
 
 
 class UserScreen extends StatefulWidget {
@@ -9,32 +13,34 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
-  SingleuserApi? _userApi;
+  SingleuserApiProvider? _userApi;
   bool _isLoading = false;
   
 
-  void _fetchData() async {
-    setState(() {
-      _isLoading = true;
-    });
+  // void _fetchData() async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
 
-    try {
-      final userApi = await fetchUser();
-      setState(() {
-        _userApi = userApi;
-      });
-    } catch (e) {
-      // Handle errors here
-      print(e);
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
+  //   try {
+  //     final userApi = await fetchUser();
+  //     setState(() {
+  //       _userApi = userApi;
+  //     });
+  //   } catch (e) {
+  //     // Handle errors here
+  //     print(e);
+  //   } finally {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
  
   @override
   Widget build(BuildContext context) {
+     final userProvider = Provider.of<SingleUserProvider>(context);
+    var fetchUser;
     return Scaffold(
       appBar: (_userApi != null && _userApi!.data != null)? AppBar(title:Text('${_userApi!.data!.firstName}'))
       : AppBar(title:Text('User Info')),
@@ -79,16 +85,16 @@ class _UserScreenState extends State<UserScreen> {
                         ),
                       ),
                // Image.network(_userApi!.data!.avatar!),
-                Text('ID: ${_userApi!.data!.id}'),
-                Text('Email: ${_userApi!.data!.email}'),
-                Text('First Name: ${_userApi!.data!.firstName}'),
-                Text('Last Name: ${_userApi!.data!.lastName}'),
+                Text('Email: ${userProvider.data?.email}'),
+               
+                Text('First Name: ${userProvider.data?.firstName}'),
+                Text('Last Name: ${userProvider.data?.lastName}'),
               ] else if (!_isLoading) ...[
                 Text('No data available.'),
               ],
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _fetchData,
+                onPressed: fetchUser,
                 child: Text('Fetch Data'),
               ),
             ],

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sketch/screen/ResourcesApi_Screen.dart';
-import 'package:sketch/screen/gatApiBox.dart';
+import 'package:sketch/screen/postApi_addUser.dart';
 import 'package:sketch/screen/getApi_findUser.dart';
 import 'package:sketch/screen/getApi_provider.dart';
 import 'package:sketch/screen/getApi_singleUser.dart';

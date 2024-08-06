@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sketch/screen/ResourcesApi_Screen.dart';
+import 'package:sketch/screen/UpdateApi_UserProfile.dart';
 import 'package:sketch/screen/postApi_addUser.dart';
 import 'package:sketch/screen/getApi_findUser.dart';
 import 'package:sketch/screen/getApi_provider.dart';
@@ -215,7 +216,8 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
-                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'UserList'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'UserListPost'),
+                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'ProfileUpd'),
                    ],
                    ),
      ),
@@ -354,8 +356,11 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Resource') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
         }
-         if (screenName == 'UserList') {
+         if (screenName == 'UserListPost') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserListPage(),));
+        }
+        if (screenName == 'ProfileUpd') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfileForm(),));
         }    
     
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:sketch/helpers/PostApi_RegisterProvider.dart';
 import 'package:sketch/helpers/ResourceProvider.dart';
 import 'package:sketch/helpers/UpdateApi_UserProfile.dart';
 import 'package:sketch/helpers/getAPi_Provider_class.dart';
@@ -24,6 +25,7 @@ void main() {
         ChangeNotifierProvider<ResourceProvider>(create: (context) => ResourceProvider()),
         ChangeNotifierProvider<SingleUserProvider>(create: (context) => SingleUserProvider()),
         ChangeNotifierProvider<UserDataProvider>(create: (context) => UserDataProvider()),
+        ChangeNotifierProvider<RegisterUserProvider>(create: (context) =>RegisterUserProvider())
        
       //ChangeNotifierProvider<ThemeProvider>(
       //    create: (context) => ThemeProvider())

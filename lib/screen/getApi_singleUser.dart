@@ -94,7 +94,7 @@ class _UserScreenState extends State<UserScreen> {
               ],
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: fetchUser,
+                onPressed: userProvider.fetchUser,
                 child: Text('Fetch Data'),
               ),
             ],

@@ -9,6 +9,7 @@ import 'package:sketch/helpers/singleUser_provider.dart';
 import 'package:sketch/models/cart.dart';
 import 'package:sketch/models/listview_model.dart';
 import 'package:sketch/models/menuBtn_provider.dart';
+import 'package:sketch/screen/DeleteApi.dart';
 import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 import 'package:sketch/utils/routes/routes.dart';
@@ -25,7 +26,8 @@ void main() {
         ChangeNotifierProvider<ResourceProvider>(create: (context) => ResourceProvider()),
         ChangeNotifierProvider<SingleUserProvider>(create: (context) => SingleUserProvider()),
         ChangeNotifierProvider<UserDataProvider>(create: (context) => UserDataProvider()),
-        ChangeNotifierProvider<RegisterUserProvider>(create: (context) =>RegisterUserProvider())
+        ChangeNotifierProvider<RegisterUserProvider>(create: (context) =>RegisterUserProvider()),
+        ChangeNotifierProvider<DeleteUserProvider>(create: (context) =>DeleteUserProvider()),
        
       //ChangeNotifierProvider<ThemeProvider>(
       //    create: (context) => ThemeProvider())

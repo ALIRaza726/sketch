@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sketch/screen/DeleteApi.dart';
 import 'package:sketch/screen/PostApi_LoginUser.dart';
 import 'package:sketch/screen/PostApi_RegisterUser.dart';
 import 'package:sketch/screen/PostApi_RegisterUser2.dart';
@@ -375,7 +376,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUser2(),));
         }  
          if (screenName == 'Login') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUser(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteUser(),));
         }            
     
 

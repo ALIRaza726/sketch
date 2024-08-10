@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sketch/helpers/PostApi_RegisterProvider.dart';
 
 class RegisterUser extends StatefulWidget {
   const RegisterUser({super.key});
@@ -15,12 +17,17 @@ class _RegisterUserState extends State<RegisterUser> {
   bool _isLoading = false;
   String? _message;
 
-  void _register() async {
+ 
+
+  @override
+  Widget build(BuildContext context) {
+    final registeruserProvider = Provider.of<RegisterUserProvider>(context);
+     void _register() async {
     setState(() {
       _isLoading = true;
     });
 
-    final response = await registerUser(
+    final response = await registeruserProvider.registerUser(
       _emailController.text,
       _passwordController.text,
     );
@@ -29,15 +36,13 @@ class _RegisterUserState extends State<RegisterUser> {
       _isLoading = false;
       if (response != null) {
         _message =
-            'Registration successful! ID: ${response.id}, Token: ${response.token}';
+            'Registration successful! ID: ${registeruserProvider.id}, Token: ${registeruserProvider.token}';
+            
       } else {
         _message = 'Registration failed!';
       }
     });
   }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Register')),
       body: Padding(
@@ -75,37 +80,37 @@ class _RegisterUserState extends State<RegisterUser> {
 }
 
 // Function to register a user
-Future<Datum?> registerUser(String email, String password) async {
-  var headers = {
-    'Content-Type': 'application/json',
-  };
+// Future<Datum?> registerUser(String email, String password) async {
+//   var headers = {
+//     'Content-Type': 'application/json',
+//   };
 
-  var request =
-      http.Request('POST', Uri.parse('https://reqres.in/api/register'))
-        ..headers.addAll(headers)
-        ..body = json.encode({
-          'email': email,
-          'password': password,
-        });
+//   var request =
+//       http.Request('POST', Uri.parse('https://reqres.in/api/register'))
+//         ..headers.addAll(headers)
+//         ..body = json.encode({
+//           'email': email,
+//           'password': password,
+//         });
 
-  try {
-    http.StreamedResponse response = await request.send();
+//   try {
+//     http.StreamedResponse response = await request.send();
 
-    if (response.statusCode == 200) {
+//     if (response.statusCode == 200) {
      
-      String responseBody = await response.stream.bytesToString();
-       print('response: ${responseBody}');
-      final data = json.decode(responseBody);
-      return Datum.fromMap(data);
-    } else {
-      print('Error: ${response.reasonPhrase}');
-      return null;
-    }
-  } catch (e) {
-    print('Exception: $e');
-    return null;
-  }
-}
+//       String responseBody = await response.stream.bytesToString();
+//        print('response: ${responseBody}');
+//       final data = json.decode(responseBody);
+//       return Datum.fromMap(data);
+//     } else {
+//       print('Error: ${response.reasonPhrase}');
+//       return null;
+//     }
+//   } catch (e) {
+//     print('Exception: $e');
+//     return null;
+//   }
+// }
 
 Registeruser registeruserFromMap(String str) =>
     Registeruser.fromMap(json.decode(str));

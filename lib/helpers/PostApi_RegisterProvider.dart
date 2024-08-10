@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:sketch/screen/PostApi_RegisterUser.dart';
 
 class RegisterUserProvider with ChangeNotifier {
-   String _email = '';
+  String _token = '';
   String _id = '';
- 
+  
  
   
 
-  String get email => _email;
+  String get token => _token;
   String get id => _id;
  
  
@@ -27,8 +27,10 @@ class RegisterUserProvider with ChangeNotifier {
         ..body = json.encode({
           'email': email,
           'password': password,
+          // 'token':token,
+          // 'id': id,
         });
-
+notifyListeners();
   try {
     http.StreamedResponse response = await request.send();
 
@@ -38,8 +40,11 @@ class RegisterUserProvider with ChangeNotifier {
        print('response: ${responseBody}');
       final data = json.decode(responseBody);
       final registerUserApi = Datum.fromMap(data);
-      _email = registerUserApi.id as String;
+      _token = registerUserApi.token??'';
+      _id = registerUserApi.id?.toString()??'';
+      notifyListeners();
       return registerUserApi;
+      
     } else {
       print('Error: ${response.reasonPhrase}');
       return null;
@@ -48,5 +53,7 @@ class RegisterUserProvider with ChangeNotifier {
     print('Exception: $e');
     return null;
   }
+
 }
+
 }

@@ -40,7 +40,7 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
      final userProvider = Provider.of<SingleUserProvider>(context);
-    var fetchUser;
+    
     return Scaffold(
       appBar: (_userApi != null && _userApi!.data != null)? AppBar(title:Text('${_userApi!.data!.firstName}'))
       : AppBar(title:Text('User Info')),

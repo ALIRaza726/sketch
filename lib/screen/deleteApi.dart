@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -63,10 +64,32 @@ class _DeleteUserState extends State<DeleteUser> {
                 Text(provider.message!),
               ],
               const SizedBox(height: 20),
+              // ElevatedButton(
+              //   onPressed: _isLoading ? null : _deleteUser,
+              //   child: const Text('Delete User'),
+              // ),
               ElevatedButton(
-                onPressed: _isLoading ? null : _deleteUser,
-                child: const Text('Delete User'),
+              onPressed: () {
+                AwesomeDialog(
+                  context: context,
+                  dialogBackgroundColor: Color.fromARGB(255, 173, 215, 233),
+                  barrierColor: Color.fromARGB(255, 149, 238, 250),
+                  dialogType: DialogType.warning,
+                  headerAnimationLoop: true,
+                  animType: AnimType.bottomSlide,
+                  title: 'Warning',
+                  reverseBtnOrder: true,
+                  btnOkOnPress: _isLoading ? null : _deleteUser,
+                  btnCancelOnPress: () {},
+                  desc: 'Are You Sure ?',
+                ).show();
+              },
+              child: const Text(
+                'Delete User',
+                style: TextStyle(
+                    color: Color.fromARGB(255, 14, 14, 14), fontSize: 14),
               ),
+            ),
             ],
           ),
         ),

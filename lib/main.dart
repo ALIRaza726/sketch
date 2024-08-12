@@ -10,6 +10,7 @@ import 'package:sketch/models/cart.dart';
 import 'package:sketch/models/listview_model.dart';
 import 'package:sketch/models/menuBtn_provider.dart';
 import 'package:sketch/screen/DeleteApi.dart';
+import 'package:sketch/screen/PostApi_RegisterUser.dart';
 import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 import 'package:sketch/utils/routes/routes.dart';

@@ -370,7 +370,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfileForm(),));
         } 
         if (screenName == 'Register') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUser(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUserScreen(),));
         } 
          if (screenName == 'Register2') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUser2(),));

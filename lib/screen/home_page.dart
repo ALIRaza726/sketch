@@ -224,7 +224,8 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'ProfileUpd'),
                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register'),
                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
-                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
+                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
+                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Delete User'),
                    ],
                    ),
      ),
@@ -376,8 +377,11 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUser2(),));
         }  
          if (screenName == 'Login') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUser(),));
+        }
+         if (screenName == 'Delete User') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteUser(),));
-        }            
+        }              
     
 
       },

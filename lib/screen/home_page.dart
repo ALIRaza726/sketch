@@ -8,6 +8,7 @@ import 'package:sketch/screen/PostApi_RegisterUser2.dart';
 import 'package:sketch/screen/ResourcesApi_Screen.dart';
 import 'package:sketch/screen/UpdateApi_UserProfile.dart';
 import 'package:sketch/screen/PostApi_AddUser.dart';
+import 'package:sketch/screen/actualApi_register.dart';
 import 'package:sketch/screen/getApi_findUser.dart';
 import 'package:sketch/screen/getApi_provider.dart';
 import 'package:sketch/screen/getApi_singleUser.dart';
@@ -226,6 +227,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
+                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
                    ],
                    ),
      ),
@@ -381,7 +383,10 @@ class GridTileofApp extends StatelessWidget {
         }
          if (screenName == 'Delete User') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteUser(),));
-        }              
+        } 
+         if (screenName == 'Actual Register') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
+        }                
     
 
       },

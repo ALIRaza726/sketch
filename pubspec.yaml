@@ -183,6 +183,8 @@ flutter:
       - assets/images/screenshot.png
       - assets/images/getApi.png
       - assets/images/postApi.png
+      - assets/images/ApiDelete.png
+      - assets/images/ApiUpdate.png
       
      
 

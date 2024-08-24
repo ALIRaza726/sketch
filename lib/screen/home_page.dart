@@ -11,6 +11,7 @@ import 'package:sketch/screen/PostApi_AddUser.dart';
 import 'package:sketch/screen/actualApi_login.dart';
 import 'package:sketch/screen/actualApi_register.dart';
 import 'package:sketch/screen/actual_reg_login.dart';
+import 'package:sketch/screen/chkConectivity.dart';
 import 'package:sketch/screen/getApi_findUser.dart';
 import 'package:sketch/screen/getApi_provider.dart';
 import 'package:sketch/screen/getApi_singleUser.dart';
@@ -232,6 +233,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
+                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
                    ],
                    ),
      ),
@@ -396,7 +398,10 @@ class GridTileofApp extends StatelessWidget {
         }
          if (screenName == 'Ac RegLogin') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterLogin(),));
-        }                      
+        }
+         if (screenName == 'Connectivity') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
+        }                        
     
 
       },

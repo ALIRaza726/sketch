@@ -1,30 +1,50 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/home_page.dart';
+import 'package:sketch/screen/sign_up.dart';
 
-class Login extends StatefulWidget {
-  static const routeName = '/Login';
-  const Login({super.key});
+class LoginReal extends StatefulWidget {
+  static const routeName = '/LoginReal';
+  const LoginReal({super.key});
 static String username='';
  static String userid='';
   @override
-  State<Login> createState() => LoginState();
+  State<LoginReal> createState() => LoginRealState();
 }
+String? _message;
+class LoginRealState extends State<LoginReal> {
 
-class LoginState extends State<Login> {
-  //final TextEditingController _textfieldController = TextEditingController();
-  //final TextEditingController _passwordController = TextEditingController();
+final _formKey = GlobalKey<FormState>();
+final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _isLoading = false;
  
-  final _formKey = GlobalKey<FormState>();
-  @override
-  // void dispose() {
-  //   _textfieldController.dispose();
-  //   super.dispose();
-  // }
+
+  void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final response = await loginUser(
+      _usernameController.text,
+      _passwordController.text,
+    );
+
+    setState(() {
+      _isLoading = false;
+      
+      if (response != null) {
+        if (response.token != null) {
+           Navigator.pushReplacementNamed(context, 'home_page');
+          _message = 'Login successfull Token: ${response.token}';
+        } else {
+          _message = 'Login failed: ${response.error}';
+        }
+       } 
+    });
+  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -195,11 +215,7 @@ class LoginState extends State<Login> {
                       height: 10,
                     ),
                     TextFormField(
-                      onChanged: (val){
-                        var username=val;
-                      },
-                      onFieldSubmitted: (value) {},
-                     // controller: _textfieldController,
+                      controller: _usernameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a value';
@@ -207,6 +223,7 @@ class LoginState extends State<Login> {
                         return null;
                       },
                       decoration: InputDecoration(
+                        labelText: 'User-Name',
                           errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: Colors.red)),
@@ -219,11 +236,12 @@ class LoginState extends State<Login> {
                       height: 10,
                     ),
                     TextFormField(
-                      onChanged: (val){
-                        var userid=val;
-                      },
-                      onFieldSubmitted: (value) {},
-                      //controller: _passwordController,
+                      // onChanged: (val){
+                      //   var userid=val;
+                      // },
+                     // onFieldSubmitted: (value) {},
+                      
+                      controller: _passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a value';
@@ -231,6 +249,7 @@ class LoginState extends State<Login> {
                         return null;
                       },
                       decoration: InputDecoration(
+                        labelText: 'Password',
                         errorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(color: Colors.red)),
@@ -240,6 +259,12 @@ class LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
+                     SizedBox(height: 20),
+              if (_isLoading) CircularProgressIndicator(),
+              if (_message != null) ...[
+                SizedBox(height: 20),
+                Text(_message!),
+              ],
                     const SizedBox(
                       height: 10,
                     ),
@@ -250,29 +275,40 @@ class LoginState extends State<Login> {
                           backgroundColor: MaterialStatePropertyAll(
                               Color.fromARGB(255, 131, 124, 123)),
                         ),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Login Sucessfull'),
-                              ),
-                            );
-                           Navigator.push(
-                             context,
-                             MaterialPageRoute(
-                                 builder: (context) => const Login()));
-                          }
-                        },
+                        // onPressed: () {
+                        //   if (_formKey.currentState!.validate()) {
+                        //     ScaffoldMessenger.of(context).showSnackBar(
+                        //       const SnackBar(
+                        //         content: Text('Login Sucessfull'),
+                        //       ),
+                        //     );
+                        //    Navigator.push(
+                        //      context,
+                        //      MaterialPageRoute(
+                        //          builder: (context) => const LoginReal()));
+                        //   }
+                          
+                        // },
+                        onPressed: _isLoading ? null : _login,
                         child: const Text(
-                          'Add Value',
+                          'Login User',
                           style: TextStyle(
                               color: Color.fromARGB(255, 250, 249, 249)),
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
+                    TextButton(
+                             onPressed: () {
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                              builder: (context) => const signup()));
+              },
+                              child: const Text("Don't have an account? Register"),
+            ),
                   ],
                 ),
               ),
@@ -283,4 +319,66 @@ class LoginState extends State<Login> {
     );
   
   }
+}
+// Function to log in a user
+Future<LoginSuccessful?> loginUser(String username, String password) async {
+  var headers = {
+    'Content-Type': 'application/json',
+  };
+  var request = http.Request('POST', Uri.parse('https://test.theposgeniee.com/api/login'))
+    ..headers.addAll(headers)
+    ..body = json.encode({
+      'username': username,
+      'password': password,
+    });
+// print('name:$password');
+  try {
+    http.StreamedResponse response = await request.send();
+    
+
+    if (response.statusCode == 200) {
+      
+      String responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
+      print('responselogin: ${responseBody}');
+      return LoginSuccessful.fromMap(data);
+    }
+     else if(response.statusCode == 500)
+      {
+        _message = 'Username and Password is incorrect'; 
+      }
+       else if(response.statusCode == 422)
+      {
+        _message = 'Username Already exist'; 
+      }
+       else {
+      String responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
+      return LoginSuccessful.fromMap(data);
+    }
+  } catch (e) {
+    print('Exception: $e');
+    return null;
+  }
+}
+
+class LoginSuccessful {
+  String? token;
+  String? error;
+
+  LoginSuccessful({
+    this.token,
+    this.error,
+  });
+
+  factory LoginSuccessful.fromMap(Map<String, dynamic> json) => LoginSuccessful(
+        token: json["token"],
+        error: json["error"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "token": token,
+        "error": error,
+      };
+
 }

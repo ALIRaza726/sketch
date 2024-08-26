@@ -10,6 +10,7 @@ import 'package:sketch/screen/UpdateApi_UserProfile.dart';
 import 'package:sketch/screen/PostApi_AddUser.dart';
 import 'package:sketch/screen/actualApi_login.dart';
 import 'package:sketch/screen/actualApi_register.dart';
+import 'package:sketch/screen/actual_loin_preferrance.dart';
 import 'package:sketch/screen/actual_reg_login.dart';
 import 'package:sketch/screen/chkConectivity.dart';
 import 'package:sketch/screen/getApi_findUser.dart';
@@ -48,6 +49,7 @@ import 'package:sketch/screen/text_msg.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 class home_page extends StatefulWidget {
+  static const routeName = '/home_page';
   const home_page({super.key});
 
   @override
@@ -189,7 +191,7 @@ class _home_pageState extends State<home_page> {
                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                          crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
                    children: [
-                    GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
+                    GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUP',fontsize: 16.5,),
                     GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
                     GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
@@ -234,6 +236,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
+                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
                    ],
                    ),
      ),
@@ -266,8 +269,8 @@ class GridTileofApp extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (screenName == 'Login') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+        if (screenName == 'LoginReal') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginReal(),));
         }
          if (screenName == 'SignUP') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => signup(),));
@@ -401,7 +404,10 @@ class GridTileofApp extends StatelessWidget {
         }
          if (screenName == 'Connectivity') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
-        }                        
+        } 
+        if (screenName == 'Pre login') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+        }                          
     
 
       },

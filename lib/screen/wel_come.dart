@@ -71,7 +71,7 @@ class _WelcomeScreenState extends State<wel_come> {
                   ),
                   onPressed: () {
                     Navigator.pushReplacementNamed(
-                        context, Login.routeName);
+                        context, LoginReal.routeName);
                   },
                   child: const Text(
                     'Login',
@@ -128,7 +128,7 @@ class _WelcomeScreenState extends State<wel_come> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Login()));
+                                builder: (context) => const LoginReal()));
                       },
                       child: Container(
                         height: 40,

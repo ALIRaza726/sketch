@@ -1,9 +1,9 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/login.dart';
+
 
 class signup extends StatefulWidget {
   const signup({super.key});
@@ -13,13 +13,71 @@ class signup extends StatefulWidget {
 }
 
 class _signupState extends State<signup> {
-  final TextEditingController _textfieldController = TextEditingController();
-  final TextEditingController _EmailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _fNameController = TextEditingController();
+  final _lNameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  @override
-  void Dispose() {
-    _textfieldController.dispose();
+
+  Future<void> _registerAndLogin() async {
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+    final fName = _fNameController.text;
+    final lName = _lNameController.text;
+    final email = _emailController.text;
+    
+    
+
+    // Register the user
+    final registerResponse = await http.post(
+      Uri.parse('https://test.theposgeniee.com/api/register'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'username': username,
+        'password': password,
+        'f_name': fName,
+        'l_name': lName,
+        'email': email,
+      }),
+    );
+
+    final registerResponseData = jsonDecode(registerResponse.body);
+
+    if (registerResponse.statusCode == 201) {
+      // Automatically login after successful registration
+      final loginResponse = await http.post(
+        Uri.parse('https://test.theposgeniee.com/api/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'username': username,
+          'password': password,
+        }),
+      );
+     
+   
+  
+
+      final loginResponseData = jsonDecode(loginResponse.body);
+
+      if (loginResponse.statusCode == 200) {
+        final token = loginResponseData['token'];
+
+        // You can save the token locally if needed
+        // For example, using SharedPreferences or a provider
+
+        Navigator.pushReplacementNamed(context, 'home_page');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(loginResponseData['error'] ?? 'Login failed')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(registerResponseData['error'] ?? 'Registration failed')),
+      );
+    }
+    
   }
 
   @override
@@ -60,7 +118,7 @@ class _signupState extends State<signup> {
                       Row(
                         children: [
                           Text(
-                            "Name",
+                            "UserName",
                             style: TextStyle(
                                 fontSize:
                                     Responsive.isMobile(context) ? 10 : 20,
@@ -74,7 +132,7 @@ class _signupState extends State<signup> {
                              inputFormatters: [
                              FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))
                               ],
-                          controller: _textfieldController,
+                          controller: _usernameController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter a value';
@@ -93,7 +151,119 @@ class _signupState extends State<signup> {
                                   color: Color.fromARGB(255, 3, 1, 24),
                                 ),
                               ),
-                              hintText: 'Name:',
+                              hintText: 'UserName:',
+                              hintStyle: TextStyle(
+                                  fontSize:
+                                      Responsive.isMobile(context) ? 10 : 20,
+                                  color: const Color.fromARGB(255, 20, 2, 2)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromARGB(255, 63, 54, 238))),
+                              errorBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
+                      ),
+                       const SizedBox(
+                        height: 10,
+                      ),
+                       Row(
+                        children: [
+                          Text(
+                            "First-Name",
+                            style: TextStyle(
+                                fontSize:
+                                    Responsive.isMobile(context) ? 10 : 20,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                             inputFormatters: [
+                             FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))
+                              ],
+                          controller: _fNameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a value';
+                            }
+                            return null;
+                          },
+                          cursorHeight: 20,
+                          mouseCursor: MaterialStateMouseCursor.textable,
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 1),
+                                child: Icon(
+                                  Icons.edit,
+                                  size: Responsive.isMobile(context) ? 10 : 20,
+                                  color: Color.fromARGB(255, 3, 1, 24),
+                                ),
+                              ),
+                              hintText: 'First-Name:',
+                              hintStyle: TextStyle(
+                                  fontSize:
+                                      Responsive.isMobile(context) ? 10 : 20,
+                                  color: const Color.fromARGB(255, 20, 2, 2)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: Color.fromARGB(255, 63, 54, 238))),
+                              errorBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
+                      ),
+                       const SizedBox(
+                        height: 10,
+                      ),
+                       Row(
+                        children: [
+                          Text(
+                            "Last-Name",
+                            style: TextStyle(
+                                fontSize:
+                                    Responsive.isMobile(context) ? 10 : 20,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                             inputFormatters: [
+                             FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))
+                              ],
+                          controller: _lNameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a value';
+                            }
+                            return null;
+                          },
+                          cursorHeight: 20,
+                          mouseCursor: MaterialStateMouseCursor.textable,
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 1),
+                                child: Icon(
+                                  Icons.edit,
+                                  size: Responsive.isMobile(context) ? 10 : 20,
+                                  color: Color.fromARGB(255, 3, 1, 24),
+                                ),
+                              ),
+                              hintText: 'Last-Name:',
                               hintStyle: TextStyle(
                                   fontSize:
                                       Responsive.isMobile(context) ? 10 : 20,
@@ -129,7 +299,7 @@ class _signupState extends State<signup> {
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           
-                          controller: _EmailController,
+                          controller: _emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter a value';
@@ -256,16 +426,12 @@ class _signupState extends State<signup> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('SignUP Sucessfull'),
-                                    ),
-                                  );
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Login()));
+                                  // ScaffoldMessenger.of(context).showSnackBar(
+                                  //   const SnackBar(
+                                  //     content: Text('SignUP Sucessfull'),
+                                  //   ),
+                                  // );
+                                  _registerAndLogin();
                                 }
                               },
                               child: const Text(

@@ -1,11 +1,14 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+
+
 
 class RegisterLogin extends StatefulWidget {
   @override
   _RegisterLoginState createState() => _RegisterLoginState();
 }
+
 
 class _RegisterLoginState extends State<RegisterLogin> {
   final _usernameController = TextEditingController();
@@ -20,6 +23,8 @@ class _RegisterLoginState extends State<RegisterLogin> {
     final fName = _fNameController.text;
     final lName = _lNameController.text;
     final email = _emailController.text;
+    
+    
 
     // Register the user
     final registerResponse = await http.post(
@@ -46,6 +51,9 @@ class _RegisterLoginState extends State<RegisterLogin> {
           'password': password,
         }),
       );
+     
+   
+  
 
       final loginResponseData = jsonDecode(loginResponse.body);
 
@@ -66,7 +74,9 @@ class _RegisterLoginState extends State<RegisterLogin> {
         SnackBar(content: Text(registerResponseData['error'] ?? 'Registration failed')),
       );
     }
+    
   }
+ 
 
   @override
   Widget build(BuildContext context) {

@@ -78,7 +78,7 @@ class _chkConnectivityState extends State<chkConnectivity> {
               // For example, using SharedPreferences or a provider
 
               // Navigate to the home screen after successful login
-              Navigator.of(context).pushReplacementNamed('/home');
+              Navigator.of(context).pushReplacementNamed('/home_page');
             } else {
               // Handle login failure
               setState(() {

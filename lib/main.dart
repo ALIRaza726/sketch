@@ -62,11 +62,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     initialRoute: RouteName.home,
+     initialRoute: RouteName.login,
      onGenerateRoute: Routes.generateRoute,
       routes: {
           home_page.routeName: (context) => home_page(),
-           LoginScreen.routeName: (context) => LoginScreen(),
+          SignupScreen.routeName: (context) => SignupScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
+
+          
          
           },
     ));

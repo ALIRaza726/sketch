@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sketch/screen/sign_up.dart';
 
 class LoginReal extends StatefulWidget {
-  static const routeName = '/LoginReal';
+   static const routeName = '/LoginReal';
   const LoginReal({super.key});
 static String username='';
  static String userid='';

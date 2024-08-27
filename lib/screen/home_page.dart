@@ -406,7 +406,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
         } 
         if (screenName == 'Pre login') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthScreen(),));
         }                          
     
 

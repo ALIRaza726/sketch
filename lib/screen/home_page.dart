@@ -109,6 +109,15 @@ class _home_pageState extends State<home_page> {
     return  SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          title:  Text(
+                          'Sketch',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 1, 1, 17),
+                              fontSize:
+                                  Responsive.isMobile(context) ? 30 : 20,
+                              // fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w900),
+                        ),
           elevation: 10,
           shadowColor: Color.fromARGB(255, 148, 218, 248),
           backgroundColor: Color.fromARGB(255, 134, 196, 223),

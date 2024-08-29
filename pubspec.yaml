@@ -186,6 +186,8 @@ flutter:
       - assets/images/postApi.png
       - assets/images/ApiDelete.png
       - assets/images/ApiUpdate.png
+      - assets/images/loginfolder.png
+      - assets/images/registerfolder.png
       
      
 

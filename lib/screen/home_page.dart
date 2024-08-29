@@ -1,22 +1,12 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sketch/screen/DeleteApi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/PostApi_LoginUser.dart';
-import 'package:sketch/screen/PostApi_RegisterUser.dart';
-import 'package:sketch/screen/PostApi_RegisterUser2.dart';
-import 'package:sketch/screen/ResourcesApi_Screen.dart';
-import 'package:sketch/screen/UpdateApi_UserProfile.dart';
-import 'package:sketch/screen/PostApi_AddUser.dart';
-import 'package:sketch/screen/actualApi_login.dart';
-import 'package:sketch/screen/actualApi_register.dart';
+import 'package:sketch/screen/actualPostCreate.dart';
 import 'package:sketch/screen/actual_loin_preferrance.dart';
-import 'package:sketch/screen/actual_reg_login.dart';
-import 'package:sketch/screen/chkConectivity.dart';
-import 'package:sketch/screen/getApi_findUser.dart';
-import 'package:sketch/screen/getApi_provider.dart';
-import 'package:sketch/screen/getApi_singleUser.dart';
-import 'package:sketch/screen/gteApiLink.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
@@ -24,20 +14,21 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
-import 'package:sketch/screen/getApi_Simple.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
-import 'package:sketch/screen/pick_audio_docx.dart';
-import 'package:sketch/screen/pick_image_video.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
+import 'package:sketch/screen/pick_audio_docx.dart';
+import 'package:sketch/screen/pick_image_video.dart';
 import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/preferences.dart';
 import 'package:sketch/screen/radio_button.dart';
+import 'package:sketch/screen/realApi.dart.dart';
 import 'package:sketch/screen/recording2.dart';
+import 'package:sketch/screen/reqresApi.dart.dart';
 import 'package:sketch/screen/screenshot.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
@@ -57,6 +48,12 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+   Future<void> _logout(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('isLoggedIn'); // Clear login state
+    Navigator.pushReplacementNamed(context, SignupScreen.routeName);
+  }
+  
   // camera classes and variables strart
   File? _selectedImage;
   _showImagePickerBottomSheet(BuildContext context) {
@@ -112,17 +109,22 @@ class _home_pageState extends State<home_page> {
     return  SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          
           elevation: 10,
           shadowColor: Color.fromARGB(255, 148, 218, 248),
           backgroundColor: Color.fromARGB(255, 134, 196, 223),
-      
-          title:Row(
+        
+        ),
+            drawer: Drawer(
+          backgroundColor: Color.fromARGB(255, 63, 214, 225),
+          width: 200,
+          child: ListView(
             children: [
-              Column(
-              children: [
-                const SizedBox(height: (0)),
-                InkWell(
+              DrawerHeader(
+                curve: Curves.bounceOut,
+                duration: const Duration(milliseconds: 500),
+                child: Column(
+                  children: [
+                    InkWell(
                   onTap: () => _showImagePickerBottomSheet(context),
                   child: Stack(
                     children: [
@@ -164,11 +166,18 @@ class _home_pageState extends State<home_page> {
                     ],
                   ),
                 ),
-                  
-                            ],
-                      ),
-                      SizedBox(width: 20,),
-                      const Text(
+                    // Container(
+                    //   height: 80,
+                    //   width: 80,
+                    //   decoration: const BoxDecoration(
+                    //     image: DecorationImage(
+                    //       image: AssetImage('assets/images/profile.png'),
+                    //     ),
+                    //   ),
+                    // ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: const Text(
                           'Ali Raza',
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
@@ -177,10 +186,128 @@ class _home_pageState extends State<home_page> {
                                
                               fontWeight: FontWeight.w900),
                         ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'User Name: ',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 1, 1, 17),
+                            fontSize:
+                                Responsive.isMobile(context) ? 15: 20,
+                          ),
+                        ),
+                        Text(
+                          'Ali Raza',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 1, 1, 17),
+                              fontSize:
+                                  Responsive.isMobile(context) ? 15 : 20,
+                              // fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w900),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'E-mail: ',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 1, 1, 17),
+                            fontSize:
+                                Responsive.isMobile(context) ? 15 : 20,
+                          ),
+                        ),
+                        const Text(
+                          'Ali@gmail.com',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 1, 1, 17),
+                              fontSize: 15,
+                              // fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w900),
+                        ),
+                      ],
+                    ),
+                    const Row(
+                      children: [
+                        Text(
+                          'Password:    ',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 1, 1, 17),
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          '*******',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 1, 1, 17),
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 230, horizontal: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            '<< Back ',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 1, 1, 17),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 190,
+                          width: 60,
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                     onTap: () {
+                _logout(context);
+              },
+                      child: Container(
+                       
+                        color: Color.fromARGB(255, 51, 171, 180),
+                        height: 50,
+                        width: 200,
+                        margin: EdgeInsets.symmetric(vertical: 70),
+                        alignment: Alignment.bottomCenter,
+                        child: const Center(
+                          child: Text(
+                            "LogOut",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 248, 242, 242),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
-        
         ),
+       
         
          body: SingleChildScrollView(
            child: Expanded(
@@ -192,7 +319,7 @@ class _home_pageState extends State<home_page> {
                          crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
                    children: [
                     GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
-                    GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUP',fontsize: 16.5,),
+                    GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'signup',fontsize: 14.5,),
                     GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
                     GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
                     GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'),
@@ -207,7 +334,7 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'),
                     GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'),
                     GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'),
-                    GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigation'),
+                    GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigate'),
                     GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'),
                     GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'),
                     GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'),
@@ -216,27 +343,30 @@ class _home_pageState extends State<home_page> {
                     GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'),
                     GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
                     GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
-                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferrences'),
+                    GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferences'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
                     GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
-                    GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
-                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserListPost'),
-                    GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
-                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register'),
-                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
-                    GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
-                    GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
+                    // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
+                   // GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
+                   // GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
+                   //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register'),
+                   //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
+                   //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
+                   // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
+                    GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
+                    GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
+                   
                    ],
                    ),
      ),
@@ -270,10 +400,10 @@ class GridTileofApp extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (screenName == 'LoginReal') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginReal(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthLogin(),));
         }
-         if (screenName == 'SignUP') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => signup(),));
+         if (screenName == 'signup') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthUi(),));
         }
          if (screenName == 'SplashVid') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => splashSc_progres(),));
@@ -308,8 +438,7 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'listView') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewScreen(),));
          }
-         
-         if (screenName == 'Pagescrol') {
+          if (screenName == 'Pagescrol') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => PageScroll(),));
         }
          if (screenName == 'TabScreen') {
@@ -318,7 +447,7 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Map') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen(),));
         }
-         if (screenName == 'B-Navigation') {
+         if (screenName == 'B-Navigate') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => bottombar(),));
         }
          if (screenName == 'Sign-Bar') {
@@ -356,58 +485,18 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'ImageUrl') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageUrl(),));
-        } 
-         if (screenName == 'GetApi') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiScreen(),));
-        } 
-        if (screenName == 'Link') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => getApiLink(),));
-        } 
-        if (screenName == 'Provider') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiProvider(),));
         }
-         if (screenName == 'SingleUser') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UserScreen(),));
-        } 
-         if (screenName == 'FindUser') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => FindUserScreen(),));
-        }  
-         if (screenName == 'Resource') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
-        }
-         if (screenName == 'UserListPost') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UserListPage(),));
-        }
-        if (screenName == 'ProfileUpd') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfileForm(),));
-        } 
-        if (screenName == 'Register') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUserScreen(),));
-        } 
-         if (screenName == 'Register2') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterUser2(),));
-        }  
          if (screenName == 'Login') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUser(),));
         }
-         if (screenName == 'Delete User') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteUser(),));
+         if (screenName == 'Reqres Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ReqresApi(),));
         } 
-         if (screenName == 'Actual Register') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
-        } 
-         if (screenName == 'Actual Login') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => actualLogin(),));
+         if (screenName == 'Real Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
-         if (screenName == 'Ac RegLogin') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterLogin(),));
-        }
-         if (screenName == 'Connectivity') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
-        } 
-        if (screenName == 'Pre login') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthScreen(),));
-        }                          
+        
+                                     
     
 
       },

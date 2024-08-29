@@ -1,8 +1,46 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:sketch/screen/home_page.dart';
 import 'package:sketch/screen/sign_up.dart';
+
+class CheckAuthLogin extends StatefulWidget {
+  @override
+  _CheckAuthLoginState createState() => _CheckAuthLoginState();
+}
+
+class _CheckAuthLoginState extends State<CheckAuthLogin> {
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    if (isLoggedIn) {
+      // If user is logged in, navigate to HomeScreen
+      Navigator.pushReplacementNamed(context, home_page.routeName);
+    } else {
+      // If user is not logged in, navigate to SignupScreen
+      Navigator.pushReplacementNamed(context, LoginReal.routeName);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child:
+            CircularProgressIndicator(), // Show a loading indicator while checking login status
+      ),
+    );
+  }
+}
 
 class LoginReal extends StatefulWidget {
    static const routeName = '/LoginReal';
@@ -30,18 +68,22 @@ final _usernameController = TextEditingController();
       _usernameController.text,
       _passwordController.text,
     );
+ if (response != null) {
+        if (response.token != null){
+            // Save login state
 
-    setState(() {
-      _isLoading = false;
-      
-      if (response != null) {
-        if (response.token != null) {
-           Navigator.pushReplacementNamed(context, 'home_page');
+        // Navigate to the home screen
+        Navigator.pushReplacementNamed(context, home_page.routeName);
+          
           _message = 'Login successfull Token: ${response.token}';
         } else {
           _message = 'Login failed: ${response.error}';
         }
        } 
+    setState(() async{
+      _isLoading = false;
+      
+     
     });
   }
  
@@ -261,10 +303,10 @@ final _usernameController = TextEditingController();
                     ),
                      SizedBox(height: 20),
               if (_isLoading) CircularProgressIndicator(),
-              if (_message != null) ...[
-                SizedBox(height: 20),
-                Text(_message!),
-              ],
+              // if (_message != null) ...[
+              //   SizedBox(height: 20),
+              //   Text(_message!),
+              // ],
                     const SizedBox(
                       height: 10,
                     ),
@@ -337,7 +379,8 @@ Future<LoginSuccessful?> loginUser(String username, String password) async {
     
 
     if (response.statusCode == 200) {
-      
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
       String responseBody = await response.stream.bytesToString();
       final data = json.decode(responseBody);
       print('responselogin: ${responseBody}');

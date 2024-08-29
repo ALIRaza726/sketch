@@ -1,11 +1,50 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:sketch/screen/home_page.dart';
+
+class CheckAuthUi extends StatefulWidget {
+  @override
+  _CheckAuthUiState createState() => _CheckAuthUiState();
+}
+
+class _CheckAuthUiState extends State<CheckAuthUi> {
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    if (isLoggedIn) {
+      // If user is logged in, navigate to HomeScreen
+      Navigator.pushReplacementNamed(context, home_page.routeName);
+    } else {
+      // If user is not logged in, navigate to SignupScreen
+      Navigator.pushReplacementNamed(context, signup.routeName);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child:
+            CircularProgressIndicator(), // Show a loading indicator while checking login status
+      ),
+    );
+  }
+}
 
 
 class signup extends StatefulWidget {
+   static const String routeName = '/signup';
   const signup({super.key});
 
   @override
@@ -30,6 +69,7 @@ class _signupState extends State<signup> {
     
 
     // Register the user
+    try{
     final registerResponse = await http.post(
       Uri.parse('https://test.theposgeniee.com/api/register'),
       headers: {'Content-Type': 'application/json'},
@@ -45,6 +85,11 @@ class _signupState extends State<signup> {
     final registerResponseData = jsonDecode(registerResponse.body);
 
     if (registerResponse.statusCode == 201) {
+       SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isLoggedIn', true); // Save login state
+
+        // Navigate to the home screen
+        Navigator.pushReplacementNamed(context, home_page.routeName);
       // Automatically login after successful registration
       final loginResponse = await http.post(
         Uri.parse('https://test.theposgeniee.com/api/login'),
@@ -75,6 +120,12 @@ class _signupState extends State<signup> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(registerResponseData['error'] ?? 'Registration failed')),
+      );
+    }
+  }
+    catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('An error occurred: $e')),
       );
     }
     

@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:image_picker/image_picker.dart';
 
 
 class CreatePostPage extends StatefulWidget {
@@ -14,12 +18,28 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final TextEditingController _categoryIdController = TextEditingController();
   final TextEditingController _authorController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
+    File? _imageFile;
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final XFile? pickedImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      setState(() {
+        _imageFile = File(pickedImage.path);
+      });
+    }
+  }
+
+ 
 
   Future<http.Response> savePostNow() async {
     final String title = _titleController.text;
     final int categoryId = int.parse(_categoryIdController.text);
     final String author = _authorController.text;
     final String desc = _descController.text;
+    final String imagedata=_imageFile.toString();
 
     var headers = {
       'Accept': 'application/json',
@@ -34,13 +54,15 @@ class _CreatePostPageState extends State<CreatePostPage> {
       "tittle": title,
       "category_id": categoryId,
       "author": author,
-      "desc": desc
+      "desc": desc,
+      "image": imagedata
     });
     http.StreamedResponse response = await request.send();
     return await http.Response.fromStream(response);
   }
 
   void _showMessage(String message, Color color) {
+    
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -53,6 +75,7 @@ void clear(){
     _authorController.clear();
     _categoryIdController.clear();
     _titleController.clear();
+    _imageFile?.delete();
 }
 
   @override
@@ -111,18 +134,32 @@ void clear(){
                   return null;
                 },
               ),
+                SizedBox(height: 10),
+                _imageFile != null
+                ? Image.file(
+                    _imageFile!,
+                    height: 150,
+                  )
+                : Text('No image selected.'),
+            ElevatedButton(
+              onPressed: _pickImage,
+              child: Text('Pick Image'),
+            ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate() && _imageFile != null) {
                     var response = await savePostNow();
-                    if (response.statusCode == 200) {
+                    if (response.statusCode == 200 ) {
                       _showMessage('Post created successfully!', Colors.green);
                      clear();
-                    } else {
+                    }
+                     else {
                       _showMessage('Failed to create post.', Colors.red);
+                      
                     }
                   }
+                  else{ _showMessage('Piease select image.', Colors.red);}
                 },
                 child: Text('Create Post'),
               ),

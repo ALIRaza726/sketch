@@ -14,6 +14,7 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
+import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
@@ -110,7 +111,7 @@ class _home_pageState extends State<home_page> {
       child: Scaffold(
         appBar: AppBar(
           title:  Text(
-                          'Sketch',
+                          'Sketch ',
                           style: TextStyle(
                               color: Color.fromARGB(255, 1, 1, 17),
                               fontSize:
@@ -375,6 +376,8 @@ class _home_pageState extends State<home_page> {
                    // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
                     GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
+                    
+                   
                    
                    ],
                    ),
@@ -504,6 +507,8 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Real Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
+         
+        
         
                                      
     

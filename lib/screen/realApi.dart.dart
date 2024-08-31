@@ -5,6 +5,7 @@ import 'package:sketch/screen/actualPostCreate.dart';
 import 'package:sketch/screen/actual_loin_preferrance.dart';
 import 'package:sketch/screen/actual_reg_login.dart';
 import 'package:sketch/screen/chkConectivity.dart';
+import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/login.dart';
 import 'package:sketch/screen/sign_up.dart';
 
@@ -39,7 +40,8 @@ class _RealApiState extends State<RealApi> {
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'Prefrances'),
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Conection'),
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
-                       GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
+                      GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
+                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApiPost'),
                      
                      
                     
@@ -102,7 +104,11 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'PostCreate') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(),));
+        }
+        if (screenName == 'GetApiPost') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => GetPostApi(),));
         } 
+        
         
         
 

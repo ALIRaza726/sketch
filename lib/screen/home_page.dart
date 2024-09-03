@@ -140,7 +140,7 @@ class _home_pageState extends State<home_page> {
           title:  Text(
                           'Sketch ',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 1, 1, 17),
+                              color: Color.fromARGB(255, 38, 56, 61),
                               fontSize:
                                   Responsive.isMobile(context) ? 30 : 20,
                               // fontStyle: FontStyle.italic,

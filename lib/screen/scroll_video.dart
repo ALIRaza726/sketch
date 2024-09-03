@@ -99,7 +99,7 @@ class _scrolScState extends State<scrol_video> {
     }
     _pageController.animateToPage(
       _currentPage,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.bounceInOut,
     );
   }

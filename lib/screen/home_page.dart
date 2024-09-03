@@ -18,7 +18,7 @@ import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
-import 'package:sketch/screen/login.dart';
+import 'package:sketch/screen/login_real.dart';
 import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
@@ -39,6 +39,7 @@ import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
 import 'package:sketch/screen/text_msg.dart';
 import 'package:sketch/screen/wel_come.dart';
+import 'package:sketch/utils/routes/route_name.dart';
 
 class home_page extends StatefulWidget {
   static const routeName = '/home_page';
@@ -49,10 +50,36 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+
+  //Popup  
+   Future popupDialog() {
+    return showDialog(
+      barrierColor: Colors.black54,
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          iconColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 195, 192, 192),
+          title: const Text('Log Out'),
+          content: const Text('Are you sure you want to log out'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  // Navigator.pop(context);
+                  _logout(context);
+                },
+                child: const Text("OK"))
+          ],
+        );
+      },
+    );
+  }
+
    Future<void> _logout(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('isLoggedIn'); // Clear login state
-    Navigator.pushReplacementNamed(context, SignupScreen.routeName);
+    Navigator.pushReplacementNamed(context, RouteName.login);
   }
   
   // camera classes and variables strart
@@ -122,8 +149,15 @@ class _home_pageState extends State<home_page> {
           elevation: 10,
           shadowColor: Color.fromARGB(255, 148, 218, 248),
           backgroundColor: Color.fromARGB(255, 134, 196, 223),
+          actions: [
+              IconButton(
+                  onPressed: () {
+                    popupDialog();
+                  },
+                  icon: const Icon(Icons.logout_rounded,size: 35,))]
         
         ),
+        
             drawer: Drawer(
           backgroundColor: Color.fromARGB(255, 63, 214, 225),
           width: 200,
@@ -295,10 +329,13 @@ class _home_pageState extends State<home_page> {
                 _logout(context);
               },
                       child: Container(
-                       
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
                         color: Color.fromARGB(255, 51, 171, 180),
+                       ),
+                         
                         height: 50,
-                        width: 200,
+                        width: 220,
                         margin: EdgeInsets.symmetric(vertical: 70),
                         alignment: Alignment.bottomCenter,
                         child: const Center(

@@ -6,7 +6,7 @@ import 'package:sketch/screen/actual_loin_preferrance.dart';
 import 'package:sketch/screen/actual_reg_login.dart';
 import 'package:sketch/screen/chkConectivity.dart';
 import 'package:sketch/screen/getApiPost.dart';
-import 'package:sketch/screen/login.dart';
+import 'package:sketch/screen/login_real.dart';
 import 'package:sketch/screen/sign_up.dart';
 
 class RealApi extends StatefulWidget {

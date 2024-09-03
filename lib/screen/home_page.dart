@@ -38,6 +38,7 @@ import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
 import 'package:sketch/screen/text_msg.dart';
+import 'package:sketch/screen/update_realApi.dart';
 import 'package:sketch/screen/wel_come.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 
@@ -417,6 +418,7 @@ class _home_pageState extends State<home_page> {
                      // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
                       GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
                       GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
+                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
                       
                      
                      
@@ -548,6 +550,9 @@ class GridTileofApp extends StatelessWidget {
         } 
          if (screenName == 'Real Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
+        }
+        if (screenName == 'Update Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateRealApi(),));
         }
          
         

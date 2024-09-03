@@ -134,6 +134,7 @@ flutter:
   assets:
       - assets/images/profile.png
       - assets/images/background1.jpg
+      - assets/images/background.jpg
       - assets/images/facebook.png
       - assets/images/google-plus.png
       - assets/images/linkedin.png
@@ -188,6 +189,7 @@ flutter:
       - assets/images/ApiUpdate.png
       - assets/images/loginfolder.png
       - assets/images/registerfolder.png
+      
       
      
 

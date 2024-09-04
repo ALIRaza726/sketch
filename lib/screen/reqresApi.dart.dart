@@ -43,11 +43,11 @@ class _ReqresApiState extends State<ReqresApi> {
                       GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-S'),
                       GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-Pro'),
                       GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetLink Profile'),
+                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetLink-pro'),
                       GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetProvider'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetSingleUser'),
+                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetS-User'),
                       GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetFindUser'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetResource'),
+                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetResourc'),
                       GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
                       GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
                       GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
@@ -94,13 +94,13 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'GetApi') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiScreen(),));
         } 
-        if (screenName == 'GetLink Profile') {
+        if (screenName == 'GetLink-pro') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => getApiLink(),));
         } 
           if (screenName == 'GetProvider') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetApiProvider(),));
         }
-        if (screenName == 'GetSingleUser') {
+        if (screenName == 'GetS-User') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserScreen(),));
         } 
          if (screenName == 'GetFindUser') {

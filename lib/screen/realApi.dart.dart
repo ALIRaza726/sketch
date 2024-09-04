@@ -38,7 +38,7 @@ class _RealApiState extends State<RealApi> {
                       GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'RealSignUP'),
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'Prefrances'),
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Conection'),
+                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Con'),
                       GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
                       GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
                       GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApiPost'),
@@ -96,7 +96,7 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Prefrances') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthScreen(),));
         }
-         if (screenName == 'Net-Conection') {
+         if (screenName == 'Net-Con') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
         }
         if (screenName == 'Login') {

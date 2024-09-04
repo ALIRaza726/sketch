@@ -180,9 +180,11 @@ class UpdateRealApiState extends State<UpdateRealApi> {
             TextButton(
               
               onPressed: () async{
+                
                 var response = await updatePost(post);
                  if (response.statusCode == 200 ) {
                       _showMessage('Post created successfully!', Colors.green);
+                      _isLoading = false;
                      
                     }
                     else {
@@ -199,7 +201,7 @@ class UpdateRealApiState extends State<UpdateRealApi> {
                  
                   updatePost(post);
                 });
-                CircularProgressIndicator();
+               
                 Navigator.of(context).pop();
                
               },

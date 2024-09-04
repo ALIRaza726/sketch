@@ -43,10 +43,13 @@ class _CheckAuthLoginState extends State<CheckAuthLogin> {
 }
 
 class LoginReal extends StatefulWidget {
+  
    static const routeName = '/LoginReal';
   const LoginReal({super.key});
+  
 static String username='';
  static String userid='';
+ 
   @override
   State<LoginReal> createState() => LoginRealState();
 }

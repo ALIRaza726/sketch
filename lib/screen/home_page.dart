@@ -423,8 +423,7 @@ class _home_pageState extends State<home_page> {
                        // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
                         GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
                         GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
-                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
-                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Delete Api'),
+                       
                         
                        
                        
@@ -558,12 +557,7 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Real Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
-        if (screenName == 'Update Api') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateRealApi(),));
-        }
-        if (screenName == 'Delete Api') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
-        }
+        
          
         
         

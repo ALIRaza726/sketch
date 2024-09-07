@@ -63,9 +63,9 @@ final _usernameController = TextEditingController();
  
 
   void _login() async {
-    // setState(() {
-    //   _isLoading = true;
-    // });
+    setState(() {
+      _isLoading = true;
+    });
     print('beforApiCalling:');
 
     final response = await loginUser(
@@ -91,11 +91,11 @@ final _usernameController = TextEditingController();
        } 
         print('AfterApiCalling:');
        //  print('Login successfull Token: ${response!.token}');
-    // setState(() async{
-    //   _isLoading = false;
+     setState(() async{
+       _isLoading = false;
       
      
-    // });
+     });
   }
  
 
@@ -120,9 +120,9 @@ final _usernameController = TextEditingController();
                           ),
                         ),
                         const Positioned(
-                          top: 35,
+                          top: 70,
                           left: 180,
-                          right: 80,
+                          right: 60,
                           child: Image(
                             image: AssetImage('assets/images/key1.png'),
                             fit: BoxFit.cover,
@@ -131,7 +131,7 @@ final _usernameController = TextEditingController();
                         const Positioned(
                           top: 5,
                           left: 30,
-                          right: 260,
+                          right: 200,
                           child: Image(
                             image: AssetImage('assets/images/fingerprint.png'),
                             fit: BoxFit.cover,
@@ -158,8 +158,9 @@ final _usernameController = TextEditingController();
                                   color: Colors.red),
                             )),
                         const Positioned(
-                            top: 100,
-                            left: 360,
+                          right: 80,
+                            top: 140,
+                            left: 130,
                             bottom: 20,
                             child: Text(
                               '? #',
@@ -314,10 +315,10 @@ final _usernameController = TextEditingController();
                     ),
                      SizedBox(height: 20),
               if (_isLoading) CircularProgressIndicator(),
-              // if (_message != null) ...[
-              //   SizedBox(height: 20),
-              //   Text(_message!),
-              // ],
+              if (_message != null) ...[
+                SizedBox(height: 20),
+                Text(_message!),
+              ],
                     const SizedBox(
                       height: 10,
                     ),

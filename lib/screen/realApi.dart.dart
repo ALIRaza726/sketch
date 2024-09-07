@@ -5,9 +5,11 @@ import 'package:sketch/screen/actualPostCreate.dart';
 import 'package:sketch/screen/actual_loin_preferrance.dart';
 import 'package:sketch/screen/actual_reg_login.dart';
 import 'package:sketch/screen/chkConectivity.dart';
+import 'package:sketch/screen/delete_actualAPi.dart';
 import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/login_real.dart';
 import 'package:sketch/screen/sign_up.dart';
+import 'package:sketch/screen/update_realApi.dart';
 
 class RealApi extends StatefulWidget {
   const RealApi({super.key});
@@ -42,7 +44,9 @@ class _RealApiState extends State<RealApi> {
                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Con'),
                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
                      GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
-                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApiPost'),
+                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApi'),
+                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
+                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Delete Api'),
                     
                     
                    
@@ -107,8 +111,14 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'PostCreate') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(),));
         }
-        if (screenName == 'GetApiPost') {
+        if (screenName == 'GetApi') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetPostApi(),));
+        }
+        if (screenName == 'Update Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateRealApi(),));
+        }
+        if (screenName == 'Delete Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
         } 
         
         

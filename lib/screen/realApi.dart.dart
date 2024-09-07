@@ -8,6 +8,7 @@ import 'package:sketch/screen/chkConectivity.dart';
 import 'package:sketch/screen/delete_actualAPi.dart';
 import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/login_real.dart';
+import 'package:sketch/screen/search_actualAPi.dart';
 import 'package:sketch/screen/sign_up.dart';
 import 'package:sketch/screen/update_realApi.dart';
 
@@ -47,6 +48,7 @@ class _RealApiState extends State<RealApi> {
                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApi'),
                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Delete Api'),
+                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Search Api'),
                     
                     
                    
@@ -119,7 +121,10 @@ class GridTileofApp extends StatelessWidget {
         }
         if (screenName == 'Delete Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
-        } 
+        }
+        if (screenName == 'Search Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SearchApi(),));
+        }  
         
         
         

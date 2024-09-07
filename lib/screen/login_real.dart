@@ -48,7 +48,7 @@ class LoginReal extends StatefulWidget {
   const LoginReal({super.key});
   
 static String username='';
- static String userid='';
+static String userid='';
  
   @override
   State<LoginReal> createState() => LoginRealState();

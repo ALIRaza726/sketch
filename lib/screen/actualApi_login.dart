@@ -80,6 +80,7 @@ class _actualLoginState extends State<actualLogin> {
 Future<LoginSuccessful?> loginUser(String username, String password) async {
   var headers = {
     'Content-Type': 'application/json',
+    
   };
   var request = http.Request('POST', Uri.parse('https://test.theposgeniee.com/api/login'))
     ..headers.addAll(headers)
@@ -115,6 +116,7 @@ Future<LoginSuccessful?> loginUser(String username, String password) async {
     print('Exception: $e');
     return null;
   }
+  return null;
 }
 
 class LoginSuccessful {

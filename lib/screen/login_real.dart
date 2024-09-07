@@ -63,31 +63,39 @@ final _usernameController = TextEditingController();
  
 
   void _login() async {
-    setState(() {
-      _isLoading = true;
-    });
+    // setState(() {
+    //   _isLoading = true;
+    // });
+    print('beforApiCalling:');
 
     final response = await loginUser(
       _usernameController.text,
       _passwordController.text,
     );
+    
  if (response != null) {
         if (response.token != null){
+          
             // Save login state
 
         // Navigate to the home screen
         Navigator.pushReplacementNamed(context, home_page.routeName);
           
           _message = 'Login successfull Token: ${response.token}';
+          print('Login successfull Token: ${response.token}');
         } else {
           _message = 'Login failed: ${response.error}';
+          print('Login successfull Token: ${response.token}');
         }
+         print('DuringApiCalling:');
        } 
-    setState(() async{
-      _isLoading = false;
+        print('AfterApiCalling:');
+       //  print('Login successfull Token: ${response!.token}');
+    // setState(() async{
+    //   _isLoading = false;
       
      
-    });
+    // });
   }
  
 
@@ -340,6 +348,7 @@ final _usernameController = TextEditingController();
                           style: TextStyle(
                               color: Color.fromARGB(255, 250, 249, 249)),
                         ),
+                        
                       ),
                     ),
                     const SizedBox(
@@ -369,6 +378,8 @@ final _usernameController = TextEditingController();
 Future<LoginSuccessful?> loginUser(String username, String password) async {
   var headers = {
     'Content-Type': 'application/json',
+    'Accept': 'application/json',
+     
   };
   var request = http.Request('POST', Uri.parse('https://test.theposgeniee.com/api/login'))
     ..headers.addAll(headers)
@@ -406,6 +417,7 @@ Future<LoginSuccessful?> loginUser(String username, String password) async {
     print('Exception: $e');
     return null;
   }
+  return null;
 }
 
 class LoginSuccessful {

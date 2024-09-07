@@ -29,34 +29,36 @@ class _ReqresApiState extends State<ReqresApi> {
           title: Text("Reqres Api's  "),
         ),
         
-        body: SingleChildScrollView(
-             child: Expanded(
-              child:   GridView(
-                       scrollDirection: Axis.vertical,
-                       shrinkWrap: true,
-                       physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
-                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                           crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
-                     children: [
-                      
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-S'),
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-Pro'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetLink-pro'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetProvider'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetS-User'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetFindUser'),
-                      GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetResourc'),
-                      GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
-                      GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
-                      GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
+        body: Column(
+          children: [
+            Expanded(
+             child:   GridView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                    children: [
                      
+                     GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
+                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-S'),
+                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'SignUp-Pro'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetLink-pro'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetProvider'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetS-User'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetFindUser'),
+                     GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetResourc'),
+                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
+                     GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
+                     GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
                     
-                     ],
-                     ),
-       ),
-       ),
+                   
+                    ],
+                    ),
+                   ),
+          ],
+        ),
        
        ),
     );

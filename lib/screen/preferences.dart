@@ -150,35 +150,39 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
               onPressed: _isRecording ? _stopRecording : _startRecording,
               child: Text(_isRecording ? 'Stop Recording' : 'Start Recording'),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _recordings.length,
-                itemBuilder: (context, index) {
-                  String recording = _recordings[index];
-                  return ListTile(
-                    title: Text('Recording ${index + 1}'),
-                    subtitle: Text(recording),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _currentPlayingPath == recording && _isPlaying
-                            ? IconButton(
-                                icon: Icon(Icons.stop),
-                                onPressed: _stopPlayback,
-                              )
-                            : IconButton(
-                                icon: Icon(Icons.play_arrow),
-                                onPressed: () => _startPlayback(recording),
-                              ),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () => _deleteRecording(recording),
+            Row(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _recordings.length,
+                    itemBuilder: (context, index) {
+                      String recording = _recordings[index];
+                      return ListTile(
+                        title: Text('Recording ${index + 1}'),
+                        subtitle: Text(recording),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _currentPlayingPath == recording && _isPlaying
+                                ? IconButton(
+                                    icon: Icon(Icons.stop),
+                                    onPressed: _stopPlayback,
+                                  )
+                                : IconButton(
+                                    icon: Icon(Icons.play_arrow),
+                                    onPressed: () => _startPlayback(recording),
+                                  ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () => _deleteRecording(recording),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),

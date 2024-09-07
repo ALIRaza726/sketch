@@ -24,31 +24,33 @@ class _RealApiState extends State<RealApi> {
         appBar: AppBar(title:Text("Real Database Api's"),
         backgroundColor: Color.fromARGB(255, 108, 213, 234),
         ),
-        body: SingleChildScrollView(
-             child: Expanded(
-              child:   GridView(
-                       scrollDirection: Axis.vertical,
-                       shrinkWrap: true,
-                       physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
-                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                           crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
-                     children: [
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'Register'),
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'RegLogin'),
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'RealSignUP'),
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Prefrances'),
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Con'),
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
-                      GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
-                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApiPost'),
-                     
-                     
+        body: Column(
+          children: [
+            Expanded(
+             child:   GridView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                    children: [
+                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'Register'),
+                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'RegLogin'),
+                     GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'RealSignUP'),
+                     GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
+                     GridTileofApp(image: 'assets/images/login.png', screenName: 'Prefrances'),
+                     GridTileofApp(image: 'assets/images/login.png', screenName: 'Net-Con'),
+                     GridTileofApp(image: 'assets/images/login.png', screenName: 'Login'),
+                     GridTileofApp(image: 'assets/images/postApi.png', screenName: 'PostCreate'),
+                     GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'GetApiPost'),
                     
-                     ],
-                     ),
-       ),
-       ),
+                    
+                   
+                    ],
+                    ),
+                   ),
+          ],
+        ),
        
        ),
     );

@@ -12,6 +12,7 @@ import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
+import 'package:sketch/screen/delete_actualAPi.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
 import 'package:sketch/screen/getApiPost.dart';
@@ -79,8 +80,11 @@ class _home_pageState extends State<home_page> {
 
    Future<void> _logout(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await prefs.remove('isLoggedIn'); // Clear login state
     Navigator.pushReplacementNamed(context, RouteName.login);
+     print('logout:');
+      print('preferance:${prefs.toString()}');
   }
   
   // camera classes and variables strart
@@ -361,71 +365,74 @@ class _home_pageState extends State<home_page> {
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/background.jpg"), fit: BoxFit.cover),),
-           child: SingleChildScrollView(
-             child: Expanded(
-              child:   GridView(
-                       scrollDirection: Axis.vertical,
-                       shrinkWrap: true,
-                       physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
-                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                           crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
-                     children: [
-                      GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
-                      GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'signup',fontsize: 14.5,),
-                      GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
-                      GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
-                      GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'),
-                      GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome'),
-                      GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn'),
-                      GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView'),
-                      GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox'),
-                      GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu'),
-                      GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp'),
-                      GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail'),
-                      GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView'),
-                      GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'),
-                      GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'),
-                      GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'),
-                      GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigate'),
-                      GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'),
-                      GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'),
-                      GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'),
-                      GridTileofApp(image: 'assets/images/language.png', screenName: 'Language'),
-                      GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper'),
-                      GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'),
-                      GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
-                      GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
-                      GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferences'),
-                      GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
-                      GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
-                      GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
-                      // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
-                     // GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
-                     // GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
-                     //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register'),
-                     //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
-                     //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
-                     // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
-                      GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
-                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
-                      GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
-                      
-                     
-                     
-                     ],
-                     ),
-                ),
-                ),
+           child: Column(
+             children: [
+               Expanded(
+                child:   GridView(
+                         scrollDirection: Axis.vertical,
+                         shrinkWrap: true,
+                         physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
+                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                             crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
+                       children: [
+                        GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
+                        GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'signup',fontsize: 14.5,),
+                        GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
+                        GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
+                        GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'),
+                        GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome'),
+                        GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn'),
+                        GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView'),
+                        GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox'),
+                        GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu'),
+                        GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp'),
+                        GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail'),
+                        GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView'),
+                        GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'),
+                        GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'),
+                        GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'),
+                        GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigate'),
+                        GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'),
+                        GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'),
+                        GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'),
+                        GridTileofApp(image: 'assets/images/language.png', screenName: 'Language'),
+                        GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper'),
+                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'),
+                        GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
+                        GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
+                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferences'),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'SingleUser'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'FindUser'),
+                        // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Resource'),
+                       // GridTileofApp(image: 'assets/images/postApi.png', screenName: 'UserList'),
+                       // GridTileofApp(image: 'assets/images/ApiUpdate.png', screenName: 'ProfileUpd'),
+                       //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register'),
+                       //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Register2'),
+                       //  GridTileofApp(image: 'assets/images/postApi.png', screenName: 'Login'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Delete User'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Register'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Actual Login'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
+                       // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
+                        GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
+                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
+                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Update Api'),
+                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Delete Api'),
+                        
+                       
+                       
+                       ],
+                       ),
+                  ),
+             ],
+           ),
          ),
      ),
      );
@@ -553,6 +560,9 @@ class GridTileofApp extends StatelessWidget {
         }
         if (screenName == 'Update Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateRealApi(),));
+        }
+        if (screenName == 'Delete Api') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
         }
          
         

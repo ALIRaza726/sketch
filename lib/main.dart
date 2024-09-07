@@ -1,4 +1,4 @@
-import 'dart:io';
+// import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,14 +18,14 @@ import 'package:sketch/screen/home_page.dart';
 import 'package:sketch/screen/recording2.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 import 'package:sketch/utils/routes/routes.dart';
-class MyHttpOverrides extends HttpOverrides{
-  @override
-  HttpClient createHttpClient(SecurityContext? context){
-    return super.createHttpClient(context)
-     ..badCertificateCallback = (X509Certificate cert, String host, int 
-    port)=> true;
- }
-}
+// class MyHttpOverrides extends HttpOverrides{
+//   @override
+//   HttpClient createHttpClient(SecurityContext? context){
+//     return super.createHttpClient(context)
+//      ..badCertificateCallback = (X509Certificate cert, String host, int 
+//     port)=> true;
+//  }
+// }
 
 
 void main() {

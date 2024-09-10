@@ -207,9 +207,12 @@ class SearchApiState extends State<SearchApi> {
                 }
 
                 setState(() {
+                 
                   post.tittle = titleController.text;
                   post.desc = descController.text;
                   post.author = authorController.text;
+                 // Call function to update in database
+                  updatePost(post);
                 });
 
                 Navigator.of(context).pop();
@@ -226,6 +229,7 @@ class SearchApiState extends State<SearchApi> {
     var headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rlc3QudGhlcG9zZ2VuaWVlLmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3MjU5MTAwNzMsImV4cCI6MTcyNTkxMzY3MywibmJmIjoxNzI1OTEwMDczLCJqdGkiOiJBakQwcDdXSVVtNDU3cHR6Iiwic3ViIjoiNiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.TM2xhdOlQblZf7tL9RDwRFe9KDQJjquxu4AOfTOT3Ag'
     };
 
     var request = http.Request(

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:sketch/screen/actualApi_register.dart';
 import 'package:sketch/screen/home_page.dart';
 import 'package:sketch/screen/sign_up.dart';
 
@@ -91,7 +92,7 @@ final _usernameController = TextEditingController();
        } 
         print('AfterApiCalling:');
        //  print('Login successfull Token: ${response!.token}');
-     setState(() async{
+     setState(() {
        _isLoading = false;
       
      
@@ -318,6 +319,7 @@ final _usernameController = TextEditingController();
               if (_message != null) ...[
                 SizedBox(height: 20),
                 Text(_message!),
+               
               ],
                     const SizedBox(
                       height: 10,
@@ -360,7 +362,7 @@ final _usernameController = TextEditingController();
                               Navigator.push(
                               context,
                               MaterialPageRoute(
-                              builder: (context) => const signup()));
+                              builder: (context) =>  CheckAuthUi()));
               },
                               child: const Text("Don't have an account? Register"),
             ),

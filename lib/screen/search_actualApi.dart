@@ -295,15 +295,7 @@ class SearchApiState extends State<SearchApi> {
                           final post = _posts[index];
                           return Dismissible(
                             key: Key(post.id.toString()),
-                            background: Container(
-                                color: Colors.red,
-                                child: const Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Padding(
-                                        padding: EdgeInsets.only(right: 20.0),
-                                        child: Icon(Icons.delete,
-                                            color: Colors.white)))),
-                            secondaryBackground: Container(
+                            background:  Container(
                                 color: Colors.green,
                                 child: const Align(
                                     alignment: Alignment.centerLeft,
@@ -311,6 +303,15 @@ class SearchApiState extends State<SearchApi> {
                                         padding: EdgeInsets.only(left: 20.0),
                                         child: Icon(Icons.edit,
                                             color: Colors.white)))),
+                            secondaryBackground: Container(
+                                color: Colors.red,
+                                child: const Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                        padding: EdgeInsets.only(right: 20.0),
+                                        child: Icon(Icons.delete,
+                                            color: Colors.white)))),
+                           
                             confirmDismiss: (direction) async {
                               if (direction == DismissDirection.endToStart) {
                                 // Show delete dialog

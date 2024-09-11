@@ -66,8 +66,8 @@ dependencies:
   shimmer: ^2.0.0
   http: ^0.13.4
   connectivity_plus: ^3.0.0
-  flutter_localization: any
-  intl_utils: ^2.8.7
+  #flutter_localization: any
+  #intl_utils: ^2.8.7
 
 
 

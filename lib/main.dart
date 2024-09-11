@@ -1,5 +1,6 @@
 // import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -27,8 +28,17 @@ import 'package:sketch/utils/routes/routes.dart';
 // }
 
 
-void main() {
-  runApp(MultiProvider(
+void main()  async{
+   // Ensure Flutter binding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize EasyLocalization
+  await EasyLocalization.ensureInitialized();
+
+  runApp(EasyLocalization(
+      supportedLocales: const [Locale('en', 'US'), Locale('ur', 'PK')],
+      path: 'assets/langs', // Path to your translations
+      fallbackLocale: const Locale('en', 'US'),
+      child: MultiProvider(
       providers: [
         ChangeNotifierProvider<CartModel>(create: (context) => CartModel()),
         ChangeNotifierProvider<RecordingProvider>(create: (context) => RecordingProvider()),
@@ -45,8 +55,9 @@ void main() {
       //    create: (context) => ThemeProvider())
       ],
       builder: (context, child) {
-        return MyApp();
-      }));
+        return  const MyApp();
+      })),
+    );
 }
 
 class MyApp extends StatelessWidget {
@@ -64,9 +75,12 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         child:
         MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Sketch',
-      theme: ThemeData(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        title: 'Sketch',
+        theme: ThemeData(
        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

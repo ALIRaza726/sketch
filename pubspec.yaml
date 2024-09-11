@@ -66,8 +66,7 @@ dependencies:
   shimmer: ^2.0.0
   http: ^0.13.4
   connectivity_plus: ^3.0.0
-  #flutter_localization: any
-  #intl_utils: ^2.8.7
+  easy_localization: ^3.0.0
 
 
 
@@ -191,6 +190,7 @@ flutter:
       - assets/images/ApiUpdate.png
       - assets/images/loginfolder.png
       - assets/images/registerfolder.png
+      - assets/langs/
       
       
      

@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
@@ -143,7 +145,7 @@ class _home_pageState extends State<home_page> {
       child: Scaffold(
         appBar: AppBar(
           title:  Text(
-                          'Sketch ',
+                          ("Sketch"),
                           style: TextStyle(
                               color: Color.fromARGB(255, 38, 56, 61),
                               fontSize:
@@ -224,10 +226,10 @@ class _home_pageState extends State<home_page> {
                     //     ),
                     //   ),
                     // ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
-                      child: const Text(
-                          'Ali Raza',
+                      child:  Text(
+                          ("Ali Raza"),
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 25,
@@ -254,7 +256,7 @@ class _home_pageState extends State<home_page> {
                           ),
                         ),
                         Text(
-                          'Ali Raza',
+                          ('Ali Raza'),
                           style: TextStyle(
                               color: Color.fromARGB(255, 1, 1, 17),
                               fontSize:
@@ -323,12 +325,28 @@ class _home_pageState extends State<home_page> {
                                 fontWeight: FontWeight.w400),
                           ),
                         ),
+                         
                         const SizedBox(
                           height: 190,
                           width: 60,
                         ),
                       ],
                     ),
+                    SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Change language to English
+                context.setLocale(Locale('en', 'US'));
+              },
+              child: Text('Change to English'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Change language to Urdu
+                context.setLocale(Locale('ur', 'PK'));
+              },
+              child: Text('Change to Urdu'),
+            ),
                     GestureDetector(
                      onTap: () {
                 _logout(context);

@@ -1,23 +1,18 @@
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' ;
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
 import 'package:sketch/screen/PostApi_LoginUser.dart';
-import 'package:sketch/screen/actualPostCreate.dart';
-import 'package:sketch/screen/actual_loin_preferrance.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
 import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
-import 'package:sketch/screen/delete_actualAPi.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
-import 'package:sketch/screen/getApiPost.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
@@ -27,7 +22,7 @@ import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pick_audio_docx.dart';
 import 'package:sketch/screen/pick_image_video.dart';
-import 'package:sketch/screen/pop_up.dart';
+import 'package:sketch/screen/popUp_timer.dart';
 import 'package:sketch/screen/preferences.dart';
 import 'package:sketch/screen/radio_button.dart';
 import 'package:sketch/screen/realApi.dart.dart';
@@ -41,7 +36,6 @@ import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
 import 'package:sketch/screen/text_msg.dart';
-import 'package:sketch/screen/update_realApi.dart';
 import 'package:sketch/screen/wel_come.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 
@@ -65,15 +59,15 @@ class _home_pageState extends State<home_page> {
         return AlertDialog(
           iconColor: Colors.black,
           backgroundColor: Color.fromARGB(255, 195, 192, 192),
-          title: const Text('Log Out'),
-          content: const Text('Are you sure you want to log out'),
+          title: const Text('Log Out').tr(),
+          content: const Text('Are you sure you want to log out').tr(),
           actions: [
             TextButton(
                 onPressed: () {
                   // Navigator.pop(context);
                   _logout(context);
                 },
-                child: const Text("OK"))
+                child: const Text("OK").tr())
           ],
         );
       },
@@ -152,7 +146,7 @@ class _home_pageState extends State<home_page> {
                                   Responsive.isMobile(context) ? 30 : 20,
                               // fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.w900),
-                        ),
+                        ).tr(),
           elevation: 10,
           shadowColor: Color.fromARGB(255, 148, 218, 248),
           backgroundColor: Color.fromARGB(255, 134, 196, 223),
@@ -236,7 +230,7 @@ class _home_pageState extends State<home_page> {
                                fontStyle: FontStyle.italic,
                                
                               fontWeight: FontWeight.w900),
-                        ),
+                        ).tr(),
                     ),
                   ],
                 ),
@@ -248,13 +242,13 @@ class _home_pageState extends State<home_page> {
                     Row(
                       children: [
                         Text(
-                          'User Name: ',
+                          'User Name:',
                           style: TextStyle(
                             color: const Color.fromARGB(255, 1, 1, 17),
                             fontSize:
                                 Responsive.isMobile(context) ? 15: 20,
                           ),
-                        ),
+                        ).tr(),
                         Text(
                           ('Ali Raza'),
                           style: TextStyle(
@@ -263,7 +257,7 @@ class _home_pageState extends State<home_page> {
                                   Responsive.isMobile(context) ? 15 : 20,
                               // fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.w900),
-                        )
+                        ).tr(),
                       ],
                     ),
                     Row(
@@ -275,7 +269,7 @@ class _home_pageState extends State<home_page> {
                             fontSize:
                                 Responsive.isMobile(context) ? 15 : 20,
                           ),
-                        ),
+                        ).tr(),
                         const Text(
                           'Ali@gmail.com',
                           style: TextStyle(
@@ -286,16 +280,16 @@ class _home_pageState extends State<home_page> {
                         ),
                       ],
                     ),
-                    const Row(
+                     Row(
                       children: [
                         Text(
-                          'Password:    ',
+                          'Password:    '.tr(),
                           style: TextStyle(
                             color: Color.fromARGB(255, 1, 1, 17),
                             fontSize: 10,
                           ),
                         ),
-                        Text(
+                       const Text(
                           '*******',
                           style: TextStyle(
                             color: Color.fromARGB(255, 1, 1, 17),
@@ -318,12 +312,12 @@ class _home_pageState extends State<home_page> {
                             Navigator.pop(context);
                           },
                           child: const Text(
-                            '<< Back ',
+                            '<< Back',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 1, 1, 17),
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400),
-                          ),
+                          ).tr(),
                         ),
                          
                         const SizedBox(
@@ -338,14 +332,14 @@ class _home_pageState extends State<home_page> {
                 // Change language to English
                 context.setLocale(Locale('en', 'US'));
               },
-              child: Text('Change to English'),
+              child: Text('Change to English').tr(),
             ),
             ElevatedButton(
               onPressed: () {
                 // Change language to Urdu
                 context.setLocale(Locale('ur', 'PK'));
               },
-              child: Text('Change to Urdu'),
+              child: Text('Change to Urdu').tr(),
             ),
                     GestureDetector(
                      onTap: () {
@@ -393,35 +387,35 @@ class _home_pageState extends State<home_page> {
                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                              crossAxisCount: 4, crossAxisSpacing: 5, mainAxisSpacing: 5),
                        children: [
-                        GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'),
-                        GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'signup',fontsize: 14.5,),
-                        GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'),
-                        GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'),
-                        GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'),
-                        GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome'),
-                        GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn'),
-                        GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView'),
-                        GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox'),
+                        GridTileofApp(image: 'assets/images/login.png', screenName: 'LoginReal'.tr()),
+                        GridTileofApp(image: 'assets/images/sign_up.png', screenName: 'signup'.tr(),fontsize: 14.5,),
+                        GridTileofApp(image: 'assets/images/progress.png', screenName: 'SplashVid'.tr()),
+                        GridTileofApp(image: 'assets/images/date_time.png', screenName: 'DateTime'.tr()),
+                        GridTileofApp(image: 'assets/images/app_bar.png', screenName: 'AppBar'.tr()),
+                        GridTileofApp(image: 'assets/images/wel_come.png', screenName: 'WelCome'.tr()),
+                        GridTileofApp(image: 'assets/images/radio_button.png', screenName: 'RadioBtn'.tr()),
+                        GridTileofApp(image: 'assets/images/hide_view.png', screenName: 'HideView'.tr()),
+                        GridTileofApp(image: 'assets/images/check_box.png', screenName: 'CheckBox'.tr()),
                         GridTileofApp(image: 'assets/images/menu_buton.png', screenName: 'Menu'),
-                        GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp'),
-                        GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail'),
-                        GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView'),
-                        GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'),
-                        GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'),
-                        GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'),
-                        GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigate'),
-                        GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'),
-                        GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'),
-                        GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'),
-                        GridTileofApp(image: 'assets/images/language.png', screenName: 'Language'),
-                        GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper'),
-                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'),
-                        GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'),
-                        GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'),
-                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Preferences'),
-                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'),
-                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'),
-                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'),
+                        GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUp'.tr()),
+                        GridTileofApp(image: 'assets/images/send_mail.png', screenName: 'Mail'.tr()),
+                        GridTileofApp(image: 'assets/images/list_view.png', screenName: 'listView'.tr()),
+                        GridTileofApp(image: 'assets/images/pageview_scroll.png', screenName: 'Pagescrol'.tr()),
+                        GridTileofApp(image: 'assets/images/tabs_screen.png', screenName: 'TabScreen'.tr()),
+                        GridTileofApp(image: 'assets/images/map_screen.png', screenName: 'Map'.tr()),
+                        GridTileofApp(image: 'assets/images/bottom_navigation.png', screenName: 'B-Navigate'.tr()),
+                        GridTileofApp(image: 'assets/images/signpad_barcode].png', screenName: 'Sign-Bar'.tr()),
+                        GridTileofApp(image: 'assets/images/scroll_video.png', screenName: 'ScrolVideo'.tr()),
+                        GridTileofApp(image: 'assets/images/message.png', screenName: 'Message'.tr()),
+                        GridTileofApp(image: 'assets/images/language.png', screenName: 'Language'.tr()),
+                        GridTileofApp(image: 'assets/images/stepper.png', screenName: 'Stepper'.tr()),
+                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'S-Record'.tr()),
+                        GridTileofApp(image: 'assets/images/pick_img_video.png', screenName: 'ImgVid'.tr()),
+                        GridTileofApp(image: 'assets/images/pick_aud_docx.png', screenName: 'AudDocx'.tr()),
+                        GridTileofApp(image: 'assets/images/sound_recording.png', screenName: 'Pref'.tr()),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'.tr()),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'.tr()),
+                        GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'.tr()),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
@@ -439,8 +433,8 @@ class _home_pageState extends State<home_page> {
                        // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Ac RegLogin'),
                        // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Connectivity'),
                        // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
-                        GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'),
-                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'),
+                        GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'.tr()),
+                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'.tr()),
                        
                         
                        
@@ -479,100 +473,100 @@ class GridTileofApp extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (screenName == 'LoginReal') {
+        if (screenName == 'LoginReal'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthLogin(),));
         }
-         if (screenName == 'signup') {
+         if (screenName == 'signup'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthUi(),));
         }
-         if (screenName == 'SplashVid') {
+         if (screenName == 'SplashVid'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => splashSc_progres(),));
         }
-         if (screenName == 'DateTime') {
+         if (screenName == 'DateTime'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => time_date(),));
         }
-         if (screenName == 'AppBar') {
+         if (screenName == 'AppBar'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => app_bar(),));
         }
-         if (screenName == 'WelCome') {
+         if (screenName == 'WelCome'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => wel_come(),));
         }
-         if (screenName == 'RadioBtn') {
+         if (screenName == 'RadioBtn'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RadioButton(),));
         }
-         if (screenName == 'HideView') {
+         if (screenName == 'HideView'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => hide_view(),));
         }
-         if (screenName == 'CheckBox') {
+         if (screenName == 'CheckBox'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => checkBox(),));
         }
-         if (screenName == 'Menu') {
+         if (screenName == 'Menu'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MenuButon(),));
         }
-         if (screenName == 'PopUp') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUp(),));
+         if (screenName == 'PopUp'.tr()) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUpTimer(),));
         }
-         if (screenName == 'Mail') {
+         if (screenName == 'Mail'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => e_mail(),));
         }
-         if (screenName == 'listView') {
+         if (screenName == 'listView'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewScreen(),));
          }
-          if (screenName == 'Pagescrol') {
+          if (screenName == 'Pagescrol'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => PageScroll(),));
         }
-         if (screenName == 'TabScreen') {
+         if (screenName == 'TabScreen'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => tabs_screen(),));
         }
-         if (screenName == 'Map') {
+         if (screenName == 'Map'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen(),));
         }
-         if (screenName == 'B-Navigate') {
+         if (screenName == 'B-Navigate'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => bottombar(),));
         }
-         if (screenName == 'Sign-Bar') {
+         if (screenName == 'Sign-Bar'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => Signature_barCode(),));
         }
-         if (screenName == 'ScrolVideo') {
+         if (screenName == 'ScrolVideo'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => scrol_video(),));
         }
-         if (screenName == 'Message') {
+         if (screenName == 'Message'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => Message(),));
         }
-         if (screenName == 'Language') {
+         if (screenName == 'Language'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => chang_language(),));
         }
-         if (screenName == 'Stepper') {
+         if (screenName == 'Stepper'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => Stepper_Class(),));
         }
-        if (screenName == 'S-Record') {
+        if (screenName == 'S-Record'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => SoundRecording(),));
         } 
-         if (screenName == 'ImgVid') {
+         if (screenName == 'ImgVid'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageVideo(),));
         }
-         if (screenName == 'AudDocx') {
+         if (screenName == 'AudDocx'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => AudioDocx(),));
         }
-          if (screenName == 'Preferrences') {
+          if (screenName == 'Pref'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => PreferencesScreen(),));
         } 
-         if (screenName == 'screenshot') {
+         if (screenName == 'screenshot'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenShot(),));
         } 
-         if (screenName == 'SaveImage') {
+         if (screenName == 'SaveImage'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageSaveToGallery(),));
         } 
-         if (screenName == 'ImageUrl') {
+         if (screenName == 'ImageUrl'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageUrl(),));
         }
-         if (screenName == 'Login') {
+         if (screenName == 'Login'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUser(),));
         }
-         if (screenName == 'Reqres Api') {
+         if (screenName == 'Reqres Api'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ReqresApi(),));
         } 
-         if (screenName == 'Real Api') {
+         if (screenName == 'Real Api'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
         
@@ -591,7 +585,7 @@ class GridTileofApp extends StatelessWidget {
             height: 55,
           ),
           const SizedBox(height: 10),
-          Text(screenName, style:  TextStyle(fontSize:fontsize)),
+          Text(screenName.tr(), style:  TextStyle(fontSize:fontsize)),
           //Text(secondText, style: const TextStyle(fontSize: 12)),
         ],
       ),

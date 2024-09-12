@@ -1,4 +1,66 @@
 {
     "Sketch":"خاکہ",
-    "Ali Raza":"علی رضا"
+    "Ali Raza":"علی رضا",
+    "Are you sure you want to log out":"کیا آپ واقعی لاگ آؤٹ کرنا چاہتے ہیں؟",
+    "Log Out":"لاگ آؤٹ",
+    "User Name:":"صارف کا نام",
+    "OK":"ٹھیک ہے",
+    "E-mail: ":"ای میل:",
+    "Password:    ":"پاس ورڈ",
+    "<< Back":"پیچھے>>",
+    "Change to English":"انگریزی میں تبدیل کریں۔",
+    "Change to Urdu":"اردو میں تبدیل کریں۔",
+    "LogOut":"لاگ آؤٹ",
+    "LoginReal":"لاگ ان ریئل",
+    "signup":"سائن اپ",
+    "SplashVid":"سپلیش ویڈیو",
+    "DateTime":"تاریخ وقت",
+    "AppBar":"ایپ بار",
+    "PopUp":"پاپ اپ",
+    "WelCome":"خوش آمدید",
+    "RadioBtn":"ریڈیو بٹن",
+    "HideView":"منظر چھپائیں۔",
+    "CheckBox":"چیک باکس",
+    "Menu":"مینیو",
+    "Mail":"میل",
+    "listView":"فہرست دیکھیں",
+    "Pagescrol":"پیج اسکرول",
+    "TabScreen":"ٹیب اسکرین",
+    "Map":"نقشہ",
+    "B-Navigate":"نیچے نیویگیشن",
+    "Sign-Bar":"سائن بار",
+    "ScrolVideo":"اسکرول ویڈیو",
+    "Message":"پیغام",
+    "Language":"زبان",
+    "Stepper":"سٹیپر",
+    "S-Record":"ساؤنڈ ریکارڈ",
+    "ImgVid":"تصویری ویڈیو",
+    "AudDocx":"آڈیو دستاویز",
+    "screenshot":"اسکرین شاٹ",
+    "SaveImage":"سیو امیج",
+    "ImageUrl":"تصویری یوآرایل",
+    "Login":"لاگ ان",
+    "Reqres Api":"ریگریشن API",
+    "Real Api":"اصلی اےپیآئی",
+    "Login Page":"لاگ ان پیج",
+    "Already Registered":"پہلے سے رجسٹرڈ",
+    "User-Name":"صارف کا نام",
+    "Password":"پاس ورڈ",
+    "Pref":"ترجیحات",
+    "Login User":"لاگ ان ",
+    "Don't have an account? Register":"اکاؤنٹ نہیں ہے؟ رجسٹر کریں۔"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

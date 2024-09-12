@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
@@ -254,7 +255,7 @@ final _usernameController = TextEditingController();
                           fontSize: 30,
                           color: Color.fromARGB(255, 131, 124, 123),
                           fontWeight: FontWeight.bold),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 3,
                     ),
@@ -265,7 +266,7 @@ final _usernameController = TextEditingController();
                           color: Color.fromARGB(255, 131, 124, 123),
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.italic),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 10,
                     ),
@@ -278,7 +279,7 @@ final _usernameController = TextEditingController();
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: 'User-Name',
+                        labelText: 'User-Name'.tr(),
                           errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: Colors.red)),
@@ -304,7 +305,7 @@ final _usernameController = TextEditingController();
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: 'Password',
+                        labelText: 'Password'.tr(),
                         errorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(color: Colors.red)),
@@ -350,7 +351,7 @@ final _usernameController = TextEditingController();
                           'Login User',
                           style: TextStyle(
                               color: Color.fromARGB(255, 250, 249, 249)),
-                        ),
+                        ).tr(),
                         
                       ),
                     ),
@@ -364,7 +365,7 @@ final _usernameController = TextEditingController();
                               MaterialPageRoute(
                               builder: (context) =>  CheckAuthUi()));
               },
-                              child: const Text("Don't have an account? Register"),
+                              child: const Text("Don't have an account? Register").tr(),
             ),
                   ],
                 ),

@@ -56,7 +56,8 @@ void main()  async{
       ],
       builder: (context, child) {
         return  const MyApp();
-      })),
+      })
+      ),
     );
 }
 
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        title: 'Sketch',
+        title: 'Sketch'.tr(),
         theme: ThemeData(
        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

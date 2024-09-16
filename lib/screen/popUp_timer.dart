@@ -29,7 +29,7 @@ static Future<void> showPasswordDialog(BuildContext context) async {
     },
     transitionBuilder: (context, anim1, anim2, child) {
       return FadeTransition(
-        opacity: anim2,
+        opacity: anim1,
         child: AlertDialog(
           title: const Text('Enter Password'),
           content: SizedBox(

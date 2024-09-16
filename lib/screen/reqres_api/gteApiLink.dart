@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:sketch/models/getApiLink_model.dart';
-import 'package:sketch/screen/getApiLink_UserDetail.dart';
+import 'package:sketch/screen/reqres_api/getApiLink_UserDetail.dart';
 import 'package:http/http.dart' as http;
 class getApiLink extends StatefulWidget {
   const getApiLink({super.key});

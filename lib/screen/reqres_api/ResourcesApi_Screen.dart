@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sketch/models/ResourceApiModel.dart';
-import '../helpers/ResourceProvider.dart';
+import '../../helpers/ResourceProvider.dart';
 
 class ResourceScreen extends StatelessWidget {
   @override

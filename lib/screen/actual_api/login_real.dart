@@ -1,18 +1,18 @@
 import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
-import 'package:flutter/material.dart';
-import 'package:sketch/screen/actualApi_register.dart';
+import 'package:sketch/screen/actual_api/sign_up.dart';
 import 'package:sketch/screen/home_page.dart';
-import 'package:sketch/screen/sign_up.dart';
 
 class CheckAuthLogin extends StatefulWidget {
   @override
   _CheckAuthLoginState createState() => _CheckAuthLoginState();
 }
-
+final _usernameController = TextEditingController();
 class _CheckAuthLoginState extends State<CheckAuthLogin> {
   @override
   void initState() {
@@ -27,6 +27,7 @@ class _CheckAuthLoginState extends State<CheckAuthLogin> {
     if (isLoggedIn) {
       // If user is logged in, navigate to HomeScreen
       Navigator.pushReplacementNamed(context, home_page.routeName);
+      // home_page(active:  _usernameController.text,);
     } else {
       // If user is not logged in, navigate to SignupScreen
       Navigator.pushReplacementNamed(context, LoginReal.routeName);
@@ -59,7 +60,7 @@ String? _message;
 class LoginRealState extends State<LoginReal> {
 
 final _formKey = GlobalKey<FormState>();
-final _usernameController = TextEditingController();
+
   final _passwordController = TextEditingController();
   bool _isLoading = false;
  

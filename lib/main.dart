@@ -11,11 +11,11 @@ import 'package:sketch/helpers/singleUser_provider.dart';
 import 'package:sketch/models/cart.dart';
 import 'package:sketch/models/listview_model.dart';
 import 'package:sketch/models/menuBtn_provider.dart';
-import 'package:sketch/screen/DeleteApi.dart';
-import 'package:sketch/screen/PostApi_RegisterUser.dart';
-import 'package:sketch/screen/actual_loin_preferrance.dart';
+import 'package:sketch/screen/reqres_api/PostApi_RegisterUser.dart';
+import 'package:sketch/screen/actual_api/actual_loin_preferrance.dart';
 import 'package:sketch/screen/home_page.dart';
 import 'package:sketch/screen/recording2.dart';
+import 'package:sketch/screen/reqres_api/deleteApi.dart';
 import 'package:sketch/utils/routes/route_name.dart';
 import 'package:sketch/utils/routes/routes.dart';
 // class MyHttpOverrides extends HttpOverrides{

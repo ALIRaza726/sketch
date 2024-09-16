@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sketch/screen/actualApi_login.dart';
-import 'package:sketch/screen/actualApi_register.dart';
-import 'package:sketch/screen/actualPostCreate.dart';
-import 'package:sketch/screen/actual_loin_preferrance.dart';
-import 'package:sketch/screen/actual_reg_login.dart';
+import 'package:sketch/screen/actual_api/actualApi_login.dart';
+import 'package:sketch/screen/actual_api/actualApi_register.dart';
+import 'package:sketch/screen/actual_api/actualPostCreate.dart';
+import 'package:sketch/screen/actual_api/actual_loin_preferrance.dart';
+import 'package:sketch/screen/actual_api/actual_reg_login.dart';
+import 'package:sketch/screen/actual_api/search_actualApi.dart';
 import 'package:sketch/screen/chkConectivity.dart';
-import 'package:sketch/screen/delete_actualAPi.dart';
-import 'package:sketch/screen/getApiPost.dart';
-import 'package:sketch/screen/login_real.dart';
-import 'package:sketch/screen/search_actualAPi.dart';
-import 'package:sketch/screen/sign_up.dart';
-import 'package:sketch/screen/update_realApi.dart';
+import 'package:sketch/screen/actual_api/delete_actualAPi.dart';
+import 'package:sketch/screen/actual_api/getApiPost.dart';
+import 'package:sketch/screen/actual_api/login_real.dart';
+import 'package:sketch/screen/actual_api/sign_up.dart';
+import 'package:sketch/screen/actual_api/update_realApi.dart';
 
 class RealApi extends StatefulWidget {
   const RealApi({super.key});

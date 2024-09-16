@@ -1,7 +1,7 @@
 import 'package:sketch/screen/app_bar.dart';
-import 'package:sketch/screen/login_real.dart';
+import 'package:sketch/screen/actual_api/login_real.dart';
 import 'package:flutter/material.dart';
-import 'package:sketch/screen/sign_up.dart';
+import 'package:sketch/screen/actual_api/sign_up.dart';
 
 class wel_come extends StatefulWidget {
   static const routeName = '/WelcomeScreen';

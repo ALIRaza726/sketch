@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/PostApi_LoginUser.dart';
+import 'package:sketch/screen/reqres_api/PostApi_LoginUser.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
 import 'package:sketch/screen/change_language.dart';
@@ -13,25 +13,27 @@ import 'package:sketch/screen/check_box.dart';
 import 'package:sketch/screen/date_time.dart';
 import 'package:sketch/screen/download_img.dart';
 import 'package:sketch/screen/e_mail.dart';
+import 'package:sketch/screen/facebook_login.dart';
 import 'package:sketch/screen/hide_view.dart';
 import 'package:sketch/screen/image_url.dart';
 import 'package:sketch/screen/list_view.dart';
-import 'package:sketch/screen/login_real.dart';
+import 'package:sketch/screen/actual_api/login_real.dart';
 import 'package:sketch/screen/map_screen.dart';
 import 'package:sketch/screen/menu_buton.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
 import 'package:sketch/screen/pick_audio_docx.dart';
 import 'package:sketch/screen/pick_image_video.dart';
 import 'package:sketch/screen/popUp_timer.dart';
+import 'package:sketch/screen/pop_up.dart';
 import 'package:sketch/screen/preferences.dart';
 import 'package:sketch/screen/radio_button.dart';
-import 'package:sketch/screen/realApi.dart.dart';
+import 'package:sketch/screen/actual_api/realApi.dart.dart';
 import 'package:sketch/screen/recording2.dart';
-import 'package:sketch/screen/reqresApi.dart.dart';
+import 'package:sketch/screen/reqres_api/reqresApi.dart.dart';
 import 'package:sketch/screen/screenshot.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
-import 'package:sketch/screen/sign_up.dart';
+import 'package:sketch/screen/actual_api/sign_up.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
@@ -42,7 +44,10 @@ import 'package:sketch/utils/routes/route_name.dart';
 class home_page extends StatefulWidget {
   static const routeName = '/home_page';
   const home_page({super.key});
+// String active;
 
+  
+//    home_page({Key? key, required this.active}) : super(key: key);
   @override
   State<home_page> createState() => _home_pageState();
 }
@@ -57,6 +62,7 @@ class _home_pageState extends State<home_page> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          
           iconColor: Colors.black,
           backgroundColor: Color.fromARGB(255, 195, 192, 192),
           title: const Text('Log Out').tr(),
@@ -416,6 +422,7 @@ class _home_pageState extends State<home_page> {
                         GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'screenshot'.tr()),
                         GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'SaveImage'.tr()),
                         GridTileofApp(image: 'assets/images/screenshot.png', screenName: 'ImageUrl'.tr()),
+                        GridTileofApp(image: 'assets/images/pop_up.png', screenName: 'PopUpTimer'.tr()),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'GetApi'),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Link'),
                         // GridTileofApp(image: 'assets/images/getApi.png', screenName: 'Provider'),
@@ -435,6 +442,7 @@ class _home_pageState extends State<home_page> {
                        // GridTileofApp(image: 'assets/images/ApiDelete.png', screenName: 'Pre login'),
                         GridTileofApp(image: 'assets/images/loginfolder.png', screenName: 'Reqres Api'.tr()),
                         GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'Real Api'.tr()),
+                        GridTileofApp(image: 'assets/images/registerfolder.png', screenName: 'AuthFace'.tr()),
                        
                         
                        
@@ -504,7 +512,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MenuButon(),));
         }
          if (screenName == 'PopUp'.tr()) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUpTimer(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUp(),));
         }
          if (screenName == 'Mail'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => e_mail(),));
@@ -563,14 +571,20 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'Login'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUser(),));
         }
+        if (screenName == 'PopUpTimer'.tr()) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PopUpTimer(),));
+        }
          if (screenName == 'Reqres Api'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ReqresApi(),));
         } 
          if (screenName == 'Real Api'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
+        if (screenName == 'AuthFace'.tr()) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AuthFacebook(),));
+        }
         
-         
+
         
         
                                      

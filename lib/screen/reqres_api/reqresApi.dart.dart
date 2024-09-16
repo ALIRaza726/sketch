@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sketch/screen/DeleteApi.dart';
-import 'package:sketch/screen/PostApi_AddUser.dart';
-import 'package:sketch/screen/PostApi_LoginUser.dart';
-import 'package:sketch/screen/PostApi_RegisterUser.dart';
-import 'package:sketch/screen/PostApi_RegisterUser2.dart';
-import 'package:sketch/screen/ResourcesApi_Screen.dart';
-import 'package:sketch/screen/UpdateApi_UserProfile.dart';
-import 'package:sketch/screen/getApi_Simple.dart';
-import 'package:sketch/screen/getApi_findUser.dart';
-import 'package:sketch/screen/getApi_provider.dart';
-import 'package:sketch/screen/getApi_singleUser.dart';
-import 'package:sketch/screen/gteApiLink.dart';
+import 'package:sketch/screen/reqres_api/PostApi_AddUser.dart';
+import 'package:sketch/screen/reqres_api/PostApi_LoginUser.dart';
+import 'package:sketch/screen/reqres_api/PostApi_RegisterUser.dart';
+import 'package:sketch/screen/reqres_api/PostApi_RegisterUser2.dart';
+import 'package:sketch/screen/reqres_api/ResourcesApi_Screen.dart';
+import 'package:sketch/screen/reqres_api/UpdateApi_UserProfile.dart';
+import 'package:sketch/screen/reqres_api/deleteApi.dart';
+import 'package:sketch/screen/reqres_api/getApi_Simple.dart';
+import 'package:sketch/screen/reqres_api/getApi_findUser.dart';
+import 'package:sketch/screen/reqres_api/getApi_provider.dart';
+import 'package:sketch/screen/reqres_api/getApi_singleUser.dart';
+import 'package:sketch/screen/reqres_api/gteApiLink.dart';
 
 class ReqresApi extends StatefulWidget {
   const ReqresApi({super.key});

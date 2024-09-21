@@ -108,7 +108,7 @@ class GridTileofApp extends StatelessWidget {
          if (screenName == 'GetFindUser') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => FindUserScreen(),));
         }  
-         if (screenName == 'GetResource') {
+         if (screenName == 'GetResourc') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ResourceScreen(),));
         }
          if (screenName == 'SignUp-Pro') {

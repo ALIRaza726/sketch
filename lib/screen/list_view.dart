@@ -89,7 +89,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
                             color: Color.fromARGB(255, 53, 165, 179)),
                         icon: const Icon(Icons.arrow_drop_down),
                         elevation: 10,
-                        value: selectedItems[
+                        value: list.selectedItems[
                             items[index]], // Use index to refer to a single item
                         items: <String>['Item1', 'Item2', 'Item3', 'Item4']
                             .map<DropdownMenuItem<String>>((String value) {
@@ -103,14 +103,22 @@ class _ListViewScreenState extends State<ListViewScreen> {
                           //   selectedItems[items[index]] =
                           //       newValue; // Update using index
                           // });
-                           Provider.of<ListProvider>(context, listen: false)
+                     
+                     
+                      // print('aa:${Provider.of<ListProvider>(context, listen: false).selectedItems[items[index]]}');
+                      if(newValue!= null)
+                      {
+                         Provider.of<ListProvider>(context, listen: false)
                       .addvalue(items[index],newValue);
-                      print('aa:${selectedItems[newValue]}');
-                      setState(() {
-                        
+                      print('aa: $newValue');
+                      }
+                      
+                     
+                     
+                      
                    
                        Text(
-                            '${ selectedItems[newValue]}',
+                            '${ selectedItems[items[index]]}',
                             
                             style: const TextStyle(
                               color: Color.fromARGB(255, 165, 40, 40),
@@ -118,7 +126,8 @@ class _ListViewScreenState extends State<ListViewScreen> {
                             ),
                             textAlign: TextAlign.center,
                           );
-                             });
+                           
+                            
                         },
                       );
               })));

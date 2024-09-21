@@ -135,23 +135,23 @@ class _signupState extends State<signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 73, 247, 192),
-      body: Form(
-        key: GlobalKey<FormState>(),
-        child: Column(
-          children: [
-            Container(
-              height: 250,
-              width: double.infinity,
-              child: const DecoratedBox(
-                  position: DecorationPosition.background,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image:
-                              AssetImage("assets/images/background1.jpg")))),
-            ),
-            SingleChildScrollView(
-              child: Padding(
+      body: SingleChildScrollView(
+        child: Form(
+          key: GlobalKey<FormState>(),
+          child: Column(
+            children: [
+              Container(
+                height: 250,
+                width: double.infinity,
+                child: const DecoratedBox(
+                    position: DecorationPosition.background,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image:
+                                AssetImage("assets/images/background1.jpg")))),
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Form(
                   key: _formKey,
@@ -499,8 +499,8 @@ class _signupState extends State<signup> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
+import 'package:sketch/screen/checking.dart';
 import 'package:sketch/screen/reqres_api/PostApi_LoginUser.dart';
 import 'package:sketch/screen/app_bar.dart';
 import 'package:sketch/screen/bottom_navigation.dart';
@@ -581,7 +582,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RealApi(),));
         }
         if (screenName == 'AuthFace'.tr()) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AuthFacebook(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UserName(),));
         }
         
 

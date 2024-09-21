@@ -6,8 +6,11 @@ class ListProvider with ChangeNotifier {
 
   Map<String, String?> get selectedItems => _selectedItems;
 
+
   void addvalue(String key, String? value) {
-    _selectedItems[key] = value;
+    print('Ss:$value');
+    _selectedItems[key] =
+                                 value; ;
     notifyListeners();
   }
 

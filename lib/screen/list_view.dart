@@ -105,14 +105,20 @@ class _ListViewScreenState extends State<ListViewScreen> {
                           // });
                            Provider.of<ListProvider>(context, listen: false)
                       .addvalue(items[index],newValue);
+                      print('aa:${selectedItems[newValue]}');
+                      setState(() {
+                        
+                   
                        Text(
-                            '${list.selectedItems}',
+                            '${ selectedItems[newValue]}',
+                            
                             style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 9,
+                              color: Color.fromARGB(255, 165, 40, 40),
+                              fontSize: 5,
                             ),
                             textAlign: TextAlign.center,
                           );
+                             });
                         },
                       );
               })));

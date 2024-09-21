@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
-import 'package:sketch/screen/actual_api/sign_up.dart';
+import 'package:sketch/screen/actual_api/sign_up_real.dart';
 import 'package:sketch/screen/home_page.dart';
 
 class CheckAuthLogin extends StatefulWidget {
@@ -364,7 +364,7 @@ final _formKey = GlobalKey<FormState>();
                               Navigator.push(
                               context,
                               MaterialPageRoute(
-                              builder: (context) =>  CheckAuthUi()));
+                              builder: (context) =>  ChkAuthSignUp()));
               },
                               child: const Text("Don't have an account? Register").tr(),
             ),

@@ -9,8 +9,8 @@ import 'package:sketch/screen/chkConectivity.dart';
 import 'package:sketch/screen/actual_api/delete_actualAPi.dart';
 import 'package:sketch/screen/actual_api/getApiPost.dart';
 import 'package:sketch/screen/actual_api/login_real.dart';
-import 'package:sketch/screen/actual_api/sign_up.dart';
-import 'package:sketch/screen/actual_api/update_realApi.dart';
+import 'package:sketch/screen/actual_api/sign_up_real.dart';
+import 'package:sketch/screen/actual_api/update_actualApi.dart';
 
 class RealApi extends StatefulWidget {
   const RealApi({super.key});
@@ -95,14 +95,14 @@ class GridTileofApp extends StatelessWidget {
         }
         
          if (screenName == 'RealSignUP') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthUi(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ChkAuthSignUp(),));
         } 
 
          if (screenName == 'LoginReal') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthLogin(),));
         }
          if (screenName == 'Prefrances') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthScreen(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ChkAuthPrefferance(),));
         }
          if (screenName == 'Net-Con') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => chkConnectivity(),));
@@ -117,13 +117,13 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => GetPostApi(),));
         }
         if (screenName == 'Update Api') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateRealApi(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateActualApi(),));
         }
         if (screenName == 'Delete Api') {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
         }
         if (screenName == 'Search Api') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SearchApi(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateActualApi(),));
         }  
         
         

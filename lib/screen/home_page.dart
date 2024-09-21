@@ -34,7 +34,7 @@ import 'package:sketch/screen/reqres_api/reqresApi.dart.dart';
 import 'package:sketch/screen/screenshot.dart';
 import 'package:sketch/screen/scroll_video.dart';
 import 'package:sketch/screen/signPad_BarCode.dart';
-import 'package:sketch/screen/actual_api/sign_up.dart';
+import 'package:sketch/screen/actual_api/sign_up_real.dart';
 import 'package:sketch/screen/splashSc_progres.dart';
 import 'package:sketch/screen/stepper.dart';
 import 'package:sketch/screen/tabs_screen.dart';
@@ -486,7 +486,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthLogin(),));
         }
          if (screenName == 'signup'.tr()) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckAuthUi(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ChkAuthSignUp(),));
         }
          if (screenName == 'SplashVid'.tr()) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => splashSc_progres(),));

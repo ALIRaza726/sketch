@@ -84,37 +84,39 @@ class _RegisterLoginState extends State<RegisterLogin> {
       appBar: AppBar(
         title: Text('Register'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
-            ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            TextField(
-              controller: _fNameController,
-              decoration: InputDecoration(labelText: 'First Name'),
-            ),
-            TextField(
-              controller: _lNameController,
-              decoration: InputDecoration(labelText: 'Last Name'),
-            ),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _registerAndLogin,
-              child: Text('Register & Login'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(labelText: 'Username'),
+              ),
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true,
+              ),
+              TextField(
+                controller: _fNameController,
+                decoration: InputDecoration(labelText: 'First Name'),
+              ),
+              TextField(
+                controller: _lNameController,
+                decoration: InputDecoration(labelText: 'Last Name'),
+              ),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _registerAndLogin,
+                child: Text('Register & Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );

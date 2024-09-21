@@ -54,12 +54,12 @@ class Post {
       };
 }
 
-class SearchApi extends StatefulWidget {
+class SearchActualApi extends StatefulWidget {
   @override
-  SearchApiState createState() => SearchApiState();
+  SearchAcutalApiState createState() => SearchAcutalApiState();
 }
 
-class SearchApiState extends State<SearchApi> {
+class SearchAcutalApiState extends State<SearchActualApi> {
   List<Post> _posts = [];
   bool _isLoading = true;
   String searchQuery = '';

@@ -6,12 +6,12 @@ import 'package:sketch/helpers/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:sketch/screen/home_page.dart';
 
-class CheckAuthUi extends StatefulWidget {
+class ChkAuthSignUp extends StatefulWidget {
   @override
-  _CheckAuthUiState createState() => _CheckAuthUiState();
+  _ChkAuthSignUpState createState() => _ChkAuthSignUpState();
 }
 
-class _CheckAuthUiState extends State<CheckAuthUi> {
+class _ChkAuthSignUpState extends State<ChkAuthSignUp> {
   @override
   void initState() {
     super.initState();
@@ -499,7 +499,7 @@ class _signupState extends State<signup> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

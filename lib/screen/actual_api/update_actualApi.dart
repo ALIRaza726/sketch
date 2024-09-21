@@ -52,12 +52,12 @@ class Post {
       };
 }
 
-class UpdateRealApi extends StatefulWidget {
+class UpdateActualApi extends StatefulWidget {
   @override
-  UpdateRealApiState createState() => UpdateRealApiState();
+  UpdateActualApiState createState() => UpdateActualApiState();
 }
 
-class UpdateRealApiState extends State<UpdateRealApi> {
+class UpdateActualApiState extends State<UpdateActualApi> {
   List<Post> _posts = [];
   bool _isLoading = true;
 

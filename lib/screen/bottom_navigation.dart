@@ -1,10 +1,9 @@
-import 'package:sketch/screen/app_bar.dart';
+import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:flutter/material.dart';
-import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
+import 'package:sketch/screen/actual_api/sign_up_real.dart';
 import 'package:sketch/screen/home_page.dart';
 import 'package:sketch/screen/page_scroll(link).dart';
-import 'package:sketch/screen/actual_api/sign_up.dart';
 import 'package:sketch/screen/wel_come.dart';
 
 void main() => runApp(const bottombar());

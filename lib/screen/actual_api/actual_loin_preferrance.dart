@@ -5,12 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
 
 
-class CheckAuthScreen extends StatefulWidget {
+class ChkAuthPrefferance extends StatefulWidget {
   @override
-  _CheckAuthScreenState createState() => _CheckAuthScreenState();
+  _ChkAuthPrefferanceState createState() => _ChkAuthPrefferanceState();
 }
 
-class _CheckAuthScreenState extends State<CheckAuthScreen> {
+class _ChkAuthPrefferanceState extends State<ChkAuthPrefferance> {
   @override
   void initState() {
     super.initState();

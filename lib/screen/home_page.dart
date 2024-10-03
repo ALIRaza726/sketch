@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart' ;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sketch/helpers/responsive.dart';
+import 'package:sketch/models/theme_changer_provider.dart';
 import 'package:sketch/screen/checking.dart';
 import 'package:sketch/screen/reqres_api/PostApi_LoginUser.dart';
 import 'package:sketch/screen/app_bar.dart';
@@ -142,6 +144,9 @@ class _home_pageState extends State<home_page> {
   
  @override
   Widget build(BuildContext context) {
+
+    final themeChanger= Provider.of<ThemeChangerProvider>(context);
+    
     return  SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -305,9 +310,22 @@ class _home_pageState extends State<home_page> {
                         ),
                       ],
                     ),
+                    RadioListTile<ThemeMode>(
+                      title: Text('Light Theme'),
+                      value: ThemeMode.light,
+                       groupValue: themeChanger.themeMode,
+                        onChanged: themeChanger.setTheme
+                        ),
+                         RadioListTile<ThemeMode>(
+                      title: Text('Dark Theme'),
+                      value: ThemeMode.dark,
+                       groupValue: themeChanger.themeMode,
+                        onChanged: themeChanger.setTheme
+                        ),
                   ],
                 ),
               ),
+
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 230, horizontal: 10),
                 child: Column(

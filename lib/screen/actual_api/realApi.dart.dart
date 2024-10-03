@@ -123,7 +123,7 @@ class GridTileofApp extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DeleteActualApi(),));
         }
         if (screenName == 'Search Api') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateActualApi(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SearchActualApi(),));
         }  
         
         

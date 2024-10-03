@@ -11,6 +11,7 @@ import 'package:sketch/helpers/singleUser_provider.dart';
 import 'package:sketch/models/cart.dart';
 import 'package:sketch/models/listview_model.dart';
 import 'package:sketch/models/menuBtn_provider.dart';
+import 'package:sketch/models/theme_changer_provider.dart';
 import 'package:sketch/screen/reqres_api/PostApi_RegisterUser.dart';
 import 'package:sketch/screen/actual_api/actual_loin_preferrance.dart';
 import 'package:sketch/screen/home_page.dart';
@@ -50,6 +51,7 @@ void main()  async{
         ChangeNotifierProvider<UserDataProvider>(create: (context) => UserDataProvider()),
         ChangeNotifierProvider<RegisterUserProvider>(create: (context) =>RegisterUserProvider()),
         ChangeNotifierProvider<DeleteUserProvider>(create: (context) =>DeleteUserProvider()),
+        ChangeNotifierProvider<ThemeChangerProvider>(create: (context) =>ThemeChangerProvider()),
        
       //ChangeNotifierProvider<ThemeProvider>(
       //    create: (context) => ThemeProvider())
@@ -74,17 +76,32 @@ class MyApp extends StatelessWidget {
         //     : const Size(1101, 640),
         minTextAdapt: true,
         splitScreenMode: true,
-        child:
-        MaterialApp(
+        child: Builder(
+          builder: (BuildContext context){
+
+            final themeChanger = Provider.of<ThemeChangerProvider>(context);
+
+        return  MaterialApp(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
         title: 'Sketch'.tr(),
+        themeMode: themeChanger.themeMode,
         theme: ThemeData(
        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 102, 118, 208)),
         useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blueGrey,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 119, 122, 115)
+        ),
+        iconTheme: IconThemeData(
+          color: Color.fromARGB(255, 230, 70, 49)
+        ),
       ),
      initialRoute: RouteName.login,
      onGenerateRoute: Routes.generateRoute,
@@ -96,7 +113,9 @@ class MyApp extends StatelessWidget {
           
          
           },
-    ));
+    );
+          }
+        ));
     
     
   }
